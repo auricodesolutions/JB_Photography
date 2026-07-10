@@ -97,8 +97,8 @@ function App() {
           <>
             <Hero />
             <ExperienceSlider />
-            <BrandRail />
             <Portfolio />
+            <BrandRail />
             <Films />
             <JbReviews />
             <Booking />

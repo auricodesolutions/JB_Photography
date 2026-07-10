@@ -42,10 +42,7 @@ function Portfolio() {
           <p className="eyebrow">Featured Projects</p>
           <h2>Stories worth remembering</h2>
         </div>
-        <p className="portfolioIntro">
-          A curated collection of honest moments, quiet details, and celebrations
-          photographed across Sri Lanka.
-        </p>
+        
       </div>
 
       <div className="portfolioGrid">

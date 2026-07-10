@@ -87,38 +87,62 @@ export const portfolio = [
   {
     title: "A Quiet Forever",
     tag: "Wedding Story",
-    image: asset("img (112).jpeg"),
+    image: asset("img (132).jpeg"),
     alt: "Bride and groom sharing a quiet moment in a garden",
   },
   {
     title: "Garden Promises",
     tag: "Pre-wedding",
-    image: asset("img (17).jpeg"),
+    image: asset("img (28).jpeg"),
     alt: "Couple enjoying a romantic garden picnic",
   },
   {
     title: "Something Blue",
     tag: "Wedding Day",
-    image: asset("img (70).jpeg"),
+    image: asset("img (32).jpeg"),
     alt: "Traditional wedding couple in an elegant blue room",
   },
   {
     title: "Softly, In Light",
     tag: "Bridal Portrait",
-    image: asset("img (68).jpeg"),
+    image: asset("img (104).jpeg"),
     alt: "Bride in traditional dress standing in soft garden light",
   },
   {
     title: "By The Ocean",
     tag: "Love Story",
-    image: asset("img (90).jpeg"),
+    image: asset("img (116).jpeg"),
     alt: "Couple laughing together on a quiet beach",
   },
   {
     title: "After Dark",
     tag: "Couple Session",
-    image: asset("img (7).jpeg"),
+    image: asset("img (154).jpeg"),
     alt: "Couple dancing together during an evening portrait session",
+  },
+  {
+    title: "Golden Vows",
+    tag: "Wedding Portrait",
+    image: asset("img (172).jpeg"),
+    alt: "Wedding couple photographed in warm golden light",
+  },
+  {
+    title: "Close To You",
+    tag: "Wedding Story",
+    image: asset("img (146).jpeg"),
+    alt: "Bride and groom sharing an intimate wedding-day moment",
+  },
+  {
+    title: "The First Chapter",
+    tag: "Pre-wedding",
+    image: asset("img (138).jpeg"),
+    alt: "Couple posing together during an elegant pre-wedding session",
+  },
+  {
+    title: "Endless Romance",
+    tag: "Editorial Portrait",
+    image: asset("img (71).jpeg"),
+    alt: "Romantic editorial portrait captured by JB Photography",
   },
 ];
 
@@ -239,7 +263,7 @@ export const reviews = [
     date: "June 02, 2025",
     title: "Golden Hour",
     name: "Sachini & Pasindu",
-    image: asset("img (68).jpeg"),
+    image: asset("img (67).jpeg"),
     text: "Professional, kind, and very supportive from planning to delivery. Our families loved the photographs and we will treasure them for years.",
   },
   {
