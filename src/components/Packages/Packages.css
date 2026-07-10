@@ -1,0 +1,82 @@
+.packages {
+  color: var(--black);
+  background: var(--white);
+}
+
+.packages .eyebrow,
+.packages .sectionHeader a {
+  color: var(--grey);
+}
+
+.packages .sectionHeader a::before {
+  background: var(--black);
+}
+
+.packages .sectionHeader a:hover,
+.packages .sectionHeader a:focus-visible,
+.packages .sectionHeader a:active {
+  color: var(--white);
+  border-color: var(--black);
+}
+
+.packageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.package {
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  border: 1px solid var(--dark-line);
+  background: var(--soft-white);
+  transition:
+    transform 420ms var(--ease),
+    background 420ms ease,
+    color 420ms ease;
+}
+
+.package:hover {
+  color: var(--white);
+  background: var(--black);
+  transform: translateY(-8px);
+}
+
+.package p {
+  margin: 0;
+  color: var(--grey);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.package h3 {
+  margin: 38px 0;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 0.9;
+}
+
+.package ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.package li {
+  padding-top: 12px;
+  border-top: 1px solid currentColor;
+  color: inherit;
+  opacity: 0.68;
+}
+
+@media (max-width: 980px) {
+  .packageGrid {
+    grid-template-columns: 1fr;
+  }
+}

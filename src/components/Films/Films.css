@@ -1,0 +1,494 @@
+.films {
+  background: #050505;
+  color: #ffffff;
+  padding: 110px 7vw;
+  overflow: hidden;
+}
+
+.filmsInner {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* ---------------- HEADER ---------------- */
+
+.filmsHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 55px;
+}
+
+.filmsHeader .eyebrow {
+  color: #a9a9a9;
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.filmsHeader h2 {
+  color: #ffffff;
+  font-size: clamp(42px, 5vw, 82px);
+  line-height: 0.95;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.filmsHeaderBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 58px;
+  padding: 0 28px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    color 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.filmsHeaderBtn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #ffffff;
+  transform: translateX(-101%);
+  transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.filmsHeaderBtn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 14px;
+  height: 100%;
+  background: currentColor;
+  opacity: 0.14;
+  transition:
+    width 0.45s ease,
+    opacity 0.45s ease;
+}
+
+.filmsHeaderBtn:hover,
+.filmsHeaderBtn:focus-visible,
+.filmsHeaderBtn:active {
+  color: #050505;
+}
+
+.filmsHeaderBtn:hover::before,
+.filmsHeaderBtn:focus-visible::before,
+.filmsHeaderBtn:active::before {
+  transform: translateX(0);
+}
+
+.filmsHeaderBtn:hover::after,
+.filmsHeaderBtn:focus-visible::after,
+.filmsHeaderBtn:active::after {
+  width: 100%;
+  opacity: 0;
+}
+
+/* ---------------- VIDEO CARDS ONLY ---------------- */
+
+.filmGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.filmCard {
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  transition: 0.35s ease;
+}
+
+.filmCard:hover {
+  border-color: #ffffff;
+  transform: translateY(-5px);
+}
+
+.filmThumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #181818;
+  overflow: hidden;
+}
+
+.filmThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: 0.45s ease;
+}
+
+.filmCard:hover .filmThumb img {
+  transform: scale(1.06);
+  opacity: 0.78;
+}
+
+.filmThumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.45)
+  );
+  pointer-events: none;
+}
+
+.filmThumbEmpty {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #cfcfcf;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.filmThumb button {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 1px solid #ffffff;
+  background: rgba(5, 5, 5, 0.65);
+  color: #ffffff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  z-index: 3;
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.filmThumb button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #ffffff;
+  border-radius: inherit;
+  transform: translateX(-101%);
+  transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.filmThumb button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 100%;
+  background: currentColor;
+  opacity: 0.16;
+  transition:
+    width 0.45s ease,
+    opacity 0.45s ease;
+}
+
+.filmThumb button span {
+  position: relative;
+  z-index: 2;
+  margin-left: 4px;
+  font-size: 22px;
+}
+
+.filmThumb button:hover,
+.filmThumb button:focus-visible,
+.filmThumb button:active {
+  color: #050505;
+  transform: scale(1.08);
+}
+
+.filmThumb button:hover::before,
+.filmThumb button:focus-visible::before,
+.filmThumb button:active::before {
+  transform: translateX(0);
+}
+
+.filmThumb button:hover::after,
+.filmThumb button:focus-visible::after,
+.filmThumb button:active::after {
+  width: 100%;
+  opacity: 0;
+}
+
+.filmCardContent {
+  padding: 24px;
+}
+
+.filmCardContent p {
+  color: #a9a9a9;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.filmCardContent h3 {
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* ---------------- VIDEO POPUP MODAL ---------------- */
+
+.filmModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 9999;
+}
+
+.filmModalBox {
+  width: min(1100px, 100%);
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.65);
+}
+
+.filmModalClose {
+  position: absolute;
+  right: -1px;
+  top: -58px;
+  width: 52px;
+  height: 52px;
+  border: 1px solid #ffffff;
+  background: #ffffff;
+  color: #050505;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.filmModalClose:hover,
+.filmModalClose:focus-visible,
+.filmModalClose:active {
+  background: #050505;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.filmModalVideo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #151515;
+}
+
+.filmModalVideo iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.filmModalPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.filmModalPlaceholder strong {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.filmModalPlaceholder p {
+  color: #cfcfcf;
+  margin: 0;
+}
+
+.filmModalInfo {
+  padding: 22px 26px 26px;
+  background: #050505;
+}
+
+.filmModalInfo p {
+  color: #a9a9a9;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.filmModalInfo h3 {
+  color: #ffffff;
+  font-size: 26px;
+  margin: 0;
+}
+
+.filmWatchLink {
+  position: relative;
+  min-height: 42px;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  margin-top: 18px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition:
+    color 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.filmWatchLink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #ffffff;
+  transform: translateX(-101%);
+  transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.filmWatchLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  background: currentColor;
+  opacity: 0.14;
+  transition:
+    width 0.45s ease,
+    opacity 0.45s ease;
+}
+
+.filmWatchLink:hover,
+.filmWatchLink:focus-visible,
+.filmWatchLink:active {
+  color: #050505;
+  border-color: #ffffff;
+}
+
+.filmWatchLink:hover::before,
+.filmWatchLink:focus-visible::before,
+.filmWatchLink:active::before {
+  transform: translateX(0);
+}
+
+.filmWatchLink:hover::after,
+.filmWatchLink:focus-visible::after,
+.filmWatchLink:active::after {
+  width: 100%;
+  opacity: 0;
+}
+
+/* ---------------- TABLET ---------------- */
+
+@media (max-width: 1100px) {
+  .films {
+    padding: 90px 6vw;
+  }
+
+  .filmsHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .filmGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width: 768px) {
+  .films {
+    padding: 75px 20px;
+  }
+
+  .filmsHeader h2 {
+    font-size: 38px;
+    line-height: 1.05;
+  }
+
+  .filmsHeaderBtn {
+    width: 100%;
+  }
+
+  .filmGrid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .filmThumb button {
+    width: 58px;
+    height: 58px;
+  }
+
+  .filmCardContent h3 {
+    font-size: 20px;
+  }
+
+  .filmModal {
+    padding: 16px;
+  }
+
+  .filmModalClose {
+    right: 0;
+    top: -50px;
+    width: 46px;
+    height: 46px;
+    font-size: 30px;
+  }
+
+  .filmModalInfo {
+    padding: 18px;
+  }
+
+  .filmModalInfo h3 {
+    font-size: 21px;
+  }
+}

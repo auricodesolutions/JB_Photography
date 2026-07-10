@@ -1,0 +1,361 @@
+.experience {
+  width: 100%;
+  min-height: 760px;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 70px;
+  padding: 120px 7vw;
+  overflow: hidden;
+}
+
+/* ---------------- LEFT SIDE ---------------- */
+
+.experienceLeft {
+  position: relative;
+  min-height: 620px;
+}
+
+/* Large image slider */
+.experienceMainSlider {
+  position: absolute;
+  left: -7vw;
+  top: 0;
+  width: 78%;
+  height: 100%;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.experienceMainTrack {
+  display: flex;
+  height: 100%;
+  animation: experienceSlide 18s infinite ease-in-out;
+}
+
+.experienceMainTrack img {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Floating image slider */
+.experienceFloatingImage {
+  position: absolute;
+  right: -4%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50%;
+  height: 399px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+  z-index: 2;
+}
+
+.experienceSliderTrack {
+  display: flex;
+  height: 100%;
+  animation: experienceSlide 18s infinite ease-in-out;
+}
+
+.experienceSliderTrack img {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* ---------------- RIGHT SIDE ---------------- */
+
+.experienceContent {
+  max-width: 650px;
+}
+
+.eyebrow {
+  color: #777777;
+  font-size: 8px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.experienceContent h2 {
+  color: #111111;
+  font-size: clamp(30px, 3vw, 70px);
+  line-height: 0.95;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+}
+
+.experienceContent p {
+  color: #333333;
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+/* ---------------- BUTTONS ---------------- */
+
+.experienceActions {
+  display: flex;
+  gap: 22px;
+  margin-top: 45px;
+  flex-wrap: nowrap;
+}
+
+.experienceBtn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 1 1 0;
+  height: 58px;
+  min-width: 0;
+  padding: 0 24px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border: 1px solid #111111;
+  transition: color 0.45s ease, border-color 0.45s ease;
+}
+
+.experienceBtn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translateX(-101%);
+  transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.experienceBtn:hover::before,
+.experienceBtn:focus-visible::before,
+.experienceBtn:active::before {
+  transform: translateX(0);
+}
+
+.btnText,
+.btnArrow {
+  position: relative;
+  z-index: 2;
+}
+
+.btnText {
+  white-space: nowrap;
+}
+
+.btnArrow {
+  font-size: 30px;
+  line-height: 1;
+  transition: transform 0.35s ease;
+}
+
+.experienceBtn:hover .btnArrow,
+.experienceBtn:focus-visible .btnArrow,
+.experienceBtn:active .btnArrow {
+  transform: translateX(7px);
+}
+
+/* Dark Button */
+.experienceBtnDark {
+  background: #111111;
+  color: #ffffff;
+}
+
+.experienceBtnDark::before {
+  background: #ffffff;
+}
+
+.experienceBtnDark:hover,
+.experienceBtnDark:focus-visible,
+.experienceBtnDark:active {
+  color: #111111;
+}
+
+/* Light Button */
+.experienceBtnLight {
+  background: #ffffff;
+  color: #111111;
+}
+
+.experienceBtnLight::before {
+  background: #111111;
+}
+
+.experienceBtnLight:hover,
+.experienceBtnLight:focus-visible,
+.experienceBtnLight:active {
+  color: #ffffff;
+}
+
+/* Small left line animation */
+.experienceBtn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 100%;
+  background: currentColor;
+  opacity: 0.12;
+  transition: width 0.45s ease, opacity 0.45s ease;
+}
+
+.experienceBtn:hover::after,
+.experienceBtn:focus-visible::after,
+.experienceBtn:active::after {
+  width: 100%;
+  opacity: 0;
+}
+
+/* Mobile buttons */
+@media (max-width: 768px) {
+  .experienceActions {
+    gap: 14px;
+    margin-top: 34px;
+  }
+
+  .experienceBtn {
+    min-width: unset;
+    height: 50px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .btnArrow {
+    font-size: 26px;
+  }
+}
+
+/* ---------------- 3 IMAGE SLIDER ANIMATION ---------------- */
+
+@keyframes experienceSlide {
+  0%,
+  26% {
+    transform: translateX(0%);
+  }
+
+  33%,
+  59% {
+    transform: translateX(-100%);
+  }
+
+  66%,
+  92% {
+    transform: translateX(-200%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* ---------------- TABLET ---------------- */
+
+@media (max-width: 1100px) {
+  .experience {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 100px 6vw;
+  }
+
+  .experienceLeft {
+    min-height: 560px;
+  }
+
+  .experienceMainSlider {
+    left: 0;
+    width: 70%;
+  }
+
+  .experienceFloatingImage {
+    width: 52%;
+    height: 460px;
+    right: 2%;
+  }
+
+  .experienceContent {
+    max-width: 100%;
+  }
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width: 768px) {
+  .experience {
+    padding: 80px 20px;
+    gap: 14px;
+  }
+
+  .experienceLeft {
+    min-height: 570px;
+  }
+
+  .experienceMainSlider {
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: 440px;
+  }
+
+  .experienceFloatingImage {
+    width: min(64%, 260px);
+    height: 300px;
+    right: 18px;
+    bottom: 24px;
+    top: auto;
+    transform: none;
+    background: #ffffff;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+  }
+
+  .experienceSliderTrack img {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .experienceContent {
+    padding-top: 0;
+  }
+
+  .experienceContent h2 {
+    font-size: 38px;
+    line-height: 1.05;
+  }
+
+  .experienceContent p {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .experienceActions {
+    gap: 14px;
+    margin-top: 34px;
+  }
+
+  .experienceBtn {
+    min-width: unset;
+    height: 48px;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 420px) {
+  .experienceFloatingImage {
+    width: 66%;
+    height: 280px;
+    right: 16px;
+    bottom: 32px;
+  }
+}

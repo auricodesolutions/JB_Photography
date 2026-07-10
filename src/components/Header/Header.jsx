@@ -1,0 +1,55 @@
+import React, { useEffect, useState } from "react";
+import "./Header.css";
+
+function Header({ onNavigate }) {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const closeMenu = () => setOpen(false);
+  const goTo = (event, page, sectionId) => {
+    event.preventDefault();
+    onNavigate(page, sectionId);
+    closeMenu();
+  };
+
+  return (
+    <header className={`siteHeader ${scrolled ? "isScrolled" : ""}`}>
+      <a
+        href="/"
+        className="brand"
+        aria-label="JB Photography home"
+        onClick={(event) => goTo(event, "home")}
+      >
+        <img src="/assets/jb-logo-white.png" alt="JB Photography logo" />
+      </a>
+
+      <button
+        className={`menuButton ${open ? "isOpen" : ""}`}
+        type="button"
+        aria-label="Toggle navigation menu"
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span />
+        <span />
+      </button>
+
+      <nav className={open ? "isOpen" : ""} aria-label="Main navigation">
+        <a href="/about" onClick={(event) => goTo(event, "about")}>About</a>
+        <a href="/#services" onClick={(event) => goTo(event, "home", "services")}>Services</a>
+        <a href="/#portfolio" onClick={(event) => goTo(event, "home", "portfolio")}>Gallery</a>
+        <a href="/#films" onClick={(event) => goTo(event, "home", "films")}>Films</a>
+        <a href="/#contact" onClick={(event) => goTo(event, "home", "contact")}>Contact</a>
+        <a href="/#contact" className="quoteLink" onClick={(event) => goTo(event, "home", "contact")}>Ask a Quote</a>
+      </nav>
+    </header>
+  );
+}
+
+export default Header;

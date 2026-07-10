@@ -1,0 +1,332 @@
+.portfolio {
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.portfolio::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 82% 8%, rgba(255, 255, 255, 0.055), transparent 32%);
+}
+
+.portfolio .sectionHeader {
+  position: relative;
+}
+
+.portfolioIntro {
+  max-width: 410px;
+  margin: 0 0 5px;
+  color: #aaa;
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  line-height: 1.75;
+}
+
+.portfolioGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: clamp(180px, 18vw, 285px);
+  gap: clamp(8px, 1vw, 16px);
+}
+
+.project {
+  position: relative;
+  grid-column: span 4;
+  min-width: 0;
+  min-height: 240px;
+  overflow: hidden;
+  padding: 0;
+  color: var(--white);
+  background: var(--charcoal);
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.project1 {
+  grid-column: span 8;
+  grid-row: span 2;
+}
+
+.project4,
+.project5 {
+  grid-column: span 6;
+}
+
+.project img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.72) contrast(1.03);
+  transform: scale(1.025);
+  transition:
+    filter 650ms ease,
+    transform 1100ms var(--ease);
+}
+
+.projectShade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 30%, rgba(0, 0, 0, 0.84) 100%);
+  transition: opacity 600ms ease;
+}
+
+.projectContent {
+  position: absolute;
+  inset: auto clamp(18px, 2.2vw, 34px) clamp(18px, 2vw, 30px);
+  z-index: 2;
+  display: grid;
+  transform: translateY(30px);
+  transition: transform 600ms var(--ease);
+}
+
+.projectMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.projectTitle {
+  margin-top: 9px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 3vw, 3.35rem);
+  line-height: 1;
+}
+
+.projectExplore {
+  margin-top: 15px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 420ms ease, transform 420ms var(--ease);
+}
+
+.projectExplore b {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.9rem;
+  transition: transform 400ms var(--ease);
+}
+
+.project:hover img,
+.project:focus-visible img {
+  filter: saturate(1) contrast(1);
+  transform: scale(1.075);
+}
+
+.project:hover .projectShade,
+.project:focus-visible .projectShade {
+  opacity: 0.9;
+}
+
+.project:hover .projectContent,
+.project:focus-visible .projectContent {
+  transform: translateY(0);
+}
+
+.project:hover .projectExplore,
+.project:focus-visible .projectExplore {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project:hover .projectExplore b,
+.project:focus-visible .projectExplore b {
+  transform: translate(3px, -3px);
+}
+
+.project:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 4px;
+}
+
+.portfolio.is-visible .project {
+  animation: projectReveal 900ms var(--ease) both;
+  animation-delay: var(--project-delay);
+}
+
+@keyframes projectReveal {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.portfolioLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: clamp(20px, 5vw, 72px);
+  background: rgba(3, 3, 3, 0.96);
+  backdrop-filter: blur(14px);
+  animation: lightboxIn 380ms ease both;
+}
+
+.lightboxStage {
+  width: min(1120px, 84vw);
+  height: min(74vh, 760px);
+  animation: lightboxImageIn 650ms var(--ease) both;
+}
+
+.lightboxStage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.lightboxCaption {
+  position: absolute;
+  left: clamp(20px, 5vw, 72px);
+  bottom: clamp(20px, 3vw, 42px);
+}
+
+.lightboxCaption p {
+  margin: 0 0 7px;
+  color: #999;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.lightboxCaption h3 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.lightboxClose {
+  position: absolute;
+  top: clamp(18px, 3vw, 40px);
+  right: clamp(18px, 3vw, 40px);
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: transparent;
+  cursor: pointer;
+  transition: background 350ms ease, transform 350ms var(--ease);
+}
+
+.lightboxClose span {
+  position: absolute;
+  left: 13px;
+  top: 23px;
+  width: 21px;
+  height: 1px;
+  background: #fff;
+}
+
+.lightboxClose span:first-child { transform: rotate(45deg); }
+.lightboxClose span:last-child { transform: rotate(-45deg); }
+.lightboxClose:hover { background: rgba(255, 255, 255, 0.12); transform: rotate(6deg); }
+
+.lightboxControls {
+  position: absolute;
+  right: clamp(20px, 5vw, 72px);
+  bottom: clamp(20px, 3vw, 42px);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.lightboxControls button {
+  width: 45px;
+  height: 45px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  cursor: pointer;
+  transition: color 300ms ease, background 300ms ease, transform 300ms var(--ease);
+}
+
+.lightboxControls button:hover {
+  color: #050505;
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.lightboxControls span {
+  color: #aaa;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+@keyframes lightboxIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes lightboxImageIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 980px) {
+  .portfolioGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: clamp(260px, 46vw, 430px);
+  }
+
+  .project,
+  .project1,
+  .project4,
+  .project5 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 680px) {
+  .portfolioGrid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: min(125vw, 520px);
+  }
+
+  .project1 {
+    grid-row: auto;
+  }
+
+  .projectContent {
+    transform: translateY(0);
+  }
+
+  .projectExplore {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .lightboxStage {
+    width: 100%;
+    height: 66vh;
+  }
+
+  .lightboxCaption {
+    left: 20px;
+    bottom: 82px;
+  }
+
+  .lightboxControls {
+    left: 20px;
+    right: 20px;
+    justify-content: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio.is-visible .project { animation: none; }
+}

@@ -1,0 +1,352 @@
+:root {
+  --black: #050505;
+  --ink: #101010;
+  --charcoal: #171717;
+  --white: #ffffff;
+  --soft-white: #f6f2ea;
+  --muted: #b9b9b9;
+  --grey: #6f6f6f;
+  --line: rgba(255, 255, 255, 0.16);
+  --dark-line: rgba(0, 0, 0, 0.12);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color: var(--white);
+  background: var(--black);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--black);
+  overflow-x: hidden;
+}
+
+body::selection {
+  color: var(--black);
+  background: var(--white);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+video {
+  display: block;
+  width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+main {
+  background: var(--black);
+}
+
+.section {
+  padding: clamp(70px, 8vw, 124px) clamp(18px, 5vw, 76px);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: clamp(30px, 4vw, 56px);
+}
+
+.sectionHeader h2 {
+  max-width: 780px;
+  margin: 0;
+  font-size: clamp(2.35rem, 6vw, 6.2rem);
+  line-height: 0.96;
+}
+
+.sectionHeader a {
+  position: relative;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 0 18px;
+  color: var(--muted);
+  border: 1px solid currentColor;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  transition:
+    color 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.sectionHeader a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--white);
+  transform: translateX(-101%);
+  transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.sectionHeader a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  background: currentColor;
+  opacity: 0.12;
+  transition:
+    width 0.45s ease,
+    opacity 0.45s ease;
+}
+
+.sectionHeader a:hover::before,
+.sectionHeader a:focus-visible::before,
+.sectionHeader a:active::before {
+  transform: translateX(0);
+}
+
+.sectionHeader a:hover::after,
+.sectionHeader a:focus-visible::after,
+.sectionHeader a:active::after {
+  width: 100%;
+  opacity: 0;
+}
+
+.sectionHeader a:hover,
+.sectionHeader a:focus-visible,
+.sectionHeader a:active {
+  color: var(--black);
+  border-color: var(--white);
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.button,
+.formButton {
+  position: relative;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid currentColor;
+  border-radius: 0;
+  padding: 0 18px;
+  color: var(--white);
+  background: transparent;
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 360ms var(--ease),
+    color 360ms var(--ease),
+    background 360ms var(--ease),
+    border-color 360ms var(--ease);
+}
+
+.button::before,
+.formButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--white);
+  transform: translateX(-102%);
+  transition: transform 420ms var(--ease);
+}
+
+.button::after,
+.formButton::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  background: currentColor;
+  opacity: 0.12;
+  transition:
+    width 0.45s ease,
+    opacity 0.45s ease;
+}
+
+.button:hover,
+.button:focus-visible,
+.button:active,
+.formButton:hover,
+.formButton:focus-visible,
+.formButton:active {
+  color: var(--black);
+}
+
+.button:hover::before,
+.button:focus-visible::before,
+.button:active::before,
+.formButton:hover::before,
+.formButton:focus-visible::before,
+.formButton:active::before {
+  transform: translateX(0);
+}
+
+.button:hover::after,
+.button:focus-visible::after,
+.button:active::after,
+.formButton:hover::after,
+.formButton:focus-visible::after,
+.formButton:active::after {
+  width: 100%;
+  opacity: 0;
+}
+
+.button.light {
+  color: var(--black);
+  background: var(--white);
+  border-color: var(--white);
+}
+
+.button.light::before {
+  background: var(--black);
+}
+
+.button.light:hover,
+.button.light:focus-visible,
+.button.light:active {
+  color: var(--white);
+}
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(42px) scale(0.985);
+  transition:
+    opacity 950ms ease,
+    transform 950ms var(--ease);
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.pageLoader {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  gap: 14px;
+  color: var(--white);
+  background: var(--black);
+  animation: loaderOut 1100ms ease forwards;
+}
+
+.pageLoader img {
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+  animation: loaderPulse 900ms ease infinite alternate;
+}
+
+.pageLoader span {
+  margin-top: 112px;
+  position: absolute;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+@keyframes loaderPulse {
+  from {
+    opacity: 0.42;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes loaderOut {
+  0%,
+  72% {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .sectionHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+
+  [data-animate] {
+    opacity: 1;
+    transform: none;
+  }
+}

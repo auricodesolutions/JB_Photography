@@ -1,0 +1,345 @@
+.jbReviews {
+  width: 100%;
+  background: #ffffff;
+  padding: 110px 6vw;
+  overflow: hidden;
+}
+
+.jbReviewsInner {
+  position: relative;
+  width: 100%;
+  max-width: 1650px;
+  min-height: 620px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+/* ---------------- LEFT IMAGE ---------------- */
+
+.jbReviewImageBox {
+  position: relative;
+  width: 52%;
+  height: 540px;
+  z-index: 2;
+  overflow: hidden;
+  background: #eeeeee;
+  animation: jbReviewImageIn 0.35s var(--ease) both;
+}
+
+.jbReviewImageBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  animation: jbReviewImageZoom 3s ease both;
+}
+
+/* ---------------- RIGHT SIDE ---------------- */
+
+.jbReviewRight {
+  position: relative;
+  width: 58%;
+  margin-left: -7%;
+  z-index: 1;
+}
+
+.jbReviewCard {
+  min-height: 520px;
+  background: #f3f3f0;
+  padding: 70px 90px 70px 185px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: jbReviewTextIn 0.42s var(--ease) both;
+  text-align: center;
+}
+
+.jbReviewDate {
+  color: #5d5d5d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  font-style: italic;
+  line-height: 1;
+  margin: 0 0 18px;
+}
+
+.jbReviewCard h2 {
+  color: #111111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(28px, 2.2vw, 42px);
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin: 0 0 44px;
+}
+
+.jbReviewText {
+  max-width: 650px;
+  color: #6b6b6b;
+  font-size: clamp(18px, 1.25vw, 24px);
+  line-height: 1.75;
+  margin: 0 auto 46px;
+}
+
+.jbReviewName {
+  color: #333333;
+  font-size: 15px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ---------------- CONTROLS ---------------- */
+
+.jbReviewControls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 36px;
+  margin-top: 34px;
+}
+
+.jbReviewProgress {
+  display: none;
+}
+
+.jbReviewProgress::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #111111;
+  transform-origin: left;
+  animation: jbReviewProgress 3s linear forwards;
+}
+
+.jbReviewProgress.isPaused::before {
+  animation-play-state: paused;
+}
+
+.jbReviewControls button {
+  width: 132px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  color: #8a8a8a;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: 0.35s ease;
+}
+
+.jbReviewControls button:hover {
+  color: #111111;
+}
+
+.controlLine {
+  width: 100px;
+  height: 1px;
+  background: currentColor;
+  display: inline-block;
+}
+
+.controlArrow {
+  position: relative;
+  width: 18px;
+  height: 24px;
+  overflow: hidden;
+  font-size: 34px;
+  line-height: 1;
+  margin-top: -2px;
+  color: transparent;
+}
+
+.controlArrow::before {
+  position: absolute;
+  inset: 0;
+  color: currentColor;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.jbReviewControls button:first-child .controlArrow::before {
+  content: "<";
+}
+
+.jbReviewControls button:last-child .controlArrow::before {
+  content: ">";
+}
+
+.jbReviewCounter {
+  min-width: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #7c7c7c;
+  font-size: 26px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+.jbReviewCounter span {
+  color: #9a9a9a;
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+
+@keyframes jbReviewImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px) scale(1.03);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes jbReviewTextIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------- TABLET ---------------- */
+
+@media (max-width: 1100px) {
+  .jbReviews {
+    padding: 95px 5vw;
+  }
+
+  .jbReviewsInner {
+    display: block;
+    min-height: auto;
+  }
+
+  .jbReviewImageBox {
+    width: 70%;
+    height: 480px;
+  }
+
+  .jbReviewRight {
+    width: 86%;
+    margin-left: auto;
+    margin-top: -115px;
+  }
+
+  .jbReviewCard {
+    min-height: 470px;
+    padding: 145px 60px 60px;
+  }
+
+  .jbReviewControls {
+    justify-content: flex-end;
+  }
+
+  .jbReviewProgress {
+    margin-right: 0;
+  }
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width: 768px) {
+  .jbReviews {
+    padding: 75px 20px;
+  }
+
+  .jbReviewImageBox {
+    width: 100%;
+    height: 360px;
+  }
+
+  .jbReviewRight {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .jbReviewCard {
+    min-height: auto;
+    padding: 42px 24px;
+  }
+
+  .jbReviewDate {
+    font-size: 22px;
+  }
+
+  .jbReviewCard h2 {
+    font-size: 25px;
+    letter-spacing: 0.2em;
+    margin-bottom: 30px;
+  }
+
+  .jbReviewText {
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 34px;
+  }
+
+  .jbReviewName {
+    font-size: 13px;
+    letter-spacing: 0.28em;
+  }
+
+  .jbReviewControls {
+    justify-content: center;
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .jbReviewProgress {
+    width: 72%;
+    margin: 18px auto 0;
+  }
+
+  .jbReviewControls button {
+    width: 82px;
+  }
+
+  .controlLine {
+    width: 56px;
+  }
+
+  .controlArrow {
+    font-size: 28px;
+  }
+
+  .jbReviewCounter {
+    min-width: 84px;
+    font-size: 18px;
+  }
+}
+
+@keyframes jbReviewImageZoom {
+  from {
+    transform: scale(1.035);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes jbReviewProgress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}

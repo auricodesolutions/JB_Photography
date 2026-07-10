@@ -1,0 +1,223 @@
+.siteHeader {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  padding: 22px clamp(18px, 4vw, 64px);
+  color: var(--white);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+  transition:
+    background 380ms ease,
+    border-color 380ms ease,
+    padding 380ms var(--ease),
+    backdrop-filter 380ms ease;
+}
+
+.siteHeader.isScrolled {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: rgba(5, 5, 5, 0.78);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  transition:
+    transform 360ms var(--ease),
+    border-color 360ms ease;
+}
+
+.brand img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.brand:hover {
+  transform: scale(1.05) rotate(-4deg);
+  border-color: var(--white);
+}
+
+.siteHeader nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.8vw, 40px);
+}
+
+.siteHeader nav a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: color 260ms ease;
+}
+
+.siteHeader nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 360ms var(--ease);
+}
+
+.siteHeader nav a:hover {
+  color: var(--white);
+}
+
+.siteHeader nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.siteHeader nav .quoteLink {
+  overflow: hidden;
+  isolation: isolate;
+  padding: 13px 18px;
+  color: var(--black);
+  background: var(--white);
+  border: 1px solid var(--white);
+}
+
+.siteHeader nav .quoteLink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--black);
+  transform: translateX(-101%);
+  transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.siteHeader nav .quoteLink::after {
+  left: 0;
+  right: auto;
+  bottom: auto;
+  top: 0;
+  display: block;
+  width: 12px;
+  height: 100%;
+  background: currentColor;
+  opacity: 0.12;
+  transform: none;
+  transition:
+    width 0.45s ease,
+    opacity 0.45s ease;
+}
+
+.siteHeader nav .quoteLink:hover,
+.siteHeader nav .quoteLink:focus-visible,
+.siteHeader nav .quoteLink:active {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.siteHeader nav .quoteLink:hover::before,
+.siteHeader nav .quoteLink:focus-visible::before,
+.siteHeader nav .quoteLink:active::before {
+  transform: translateX(0);
+}
+
+.siteHeader nav .quoteLink:hover::after,
+.siteHeader nav .quoteLink:focus-visible::after,
+.siteHeader nav .quoteLink:active::after {
+  width: 100%;
+  opacity: 0;
+}
+
+.menuButton {
+  display: none;
+  width: 46px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  background: rgba(0, 0, 0, 0.22);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.menuButton span {
+  display: block;
+  width: 21px;
+  height: 1px;
+  margin: 7px auto;
+  background: currentColor;
+  transition: transform 320ms var(--ease);
+}
+
+.menuButton.isOpen span:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.menuButton.isOpen span:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+  .siteHeader {
+    align-items: flex-start;
+  }
+
+  .menuButton {
+    display: block;
+  }
+
+  .siteHeader nav {
+    position: absolute;
+    top: 100%;
+    left: 18px;
+    right: 18px;
+    display: grid;
+    gap: 0;
+    overflow: hidden;
+    max-height: 0;
+    background: rgba(5, 5, 5, 0.94);
+    border: 0 solid var(--line);
+    backdrop-filter: blur(18px);
+    transition:
+      max-height 430ms var(--ease),
+      border-width 430ms ease;
+  }
+
+  .siteHeader nav.isOpen {
+    max-height: 430px;
+    border-width: 1px;
+  }
+
+  .siteHeader nav a {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .siteHeader nav .quoteLink {
+    margin: 18px;
+    padding: 13px 18px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand {
+    width: 52px;
+    height: 52px;
+  }
+
+  .brand img {
+    width: 34px;
+    height: 34px;
+  }
+}

@@ -1,0 +1,31 @@
+.brandRail {
+  display: flex;
+  gap: 34px;
+  overflow: hidden;
+  padding: 18px 0;
+  border-block: 1px solid var(--line);
+  color: var(--white);
+  background: var(--ink);
+  white-space: nowrap;
+}
+
+.brandRail span {
+  flex: 0 0 auto;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.5rem, 4vw, 3.6rem);
+  opacity: 0.58;
+  animation: railMove 34s linear infinite;
+}
+
+.brandRail:hover span {
+  animation-play-state: paused;
+}
+
+@keyframes railMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
