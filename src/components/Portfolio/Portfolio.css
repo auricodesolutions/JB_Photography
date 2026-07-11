@@ -21,6 +21,9 @@
 
 .portfolio .sectionHeader h2 {
   color: var(--ink);
+  font-family: var(--editorial-font);
+  font-size: clamp(2rem, 4vw, 4rem);
+  letter-spacing: -0.035em;
 }
 
 .portfolio .sectionHeader .eyebrow,
@@ -99,6 +102,10 @@
   grid-row: span 2;
 }
 
+.project--portrait .projectMeta > span:last-child {
+  display: none;
+}
+
 .project--wide {
   grid-column: span 6;
 }
@@ -146,7 +153,7 @@
 
 .projectTitle {
   margin-top: 9px;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--editorial-font);
   font-size: clamp(1.6rem, 3vw, 3.35rem);
   line-height: 1;
 }

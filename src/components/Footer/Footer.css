@@ -23,7 +23,7 @@
   right: -70px;
   bottom: 30px;
   color: rgba(255, 255, 255, 0.035);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--editorial-font);
   font-size: clamp(180px, 22vw, 360px);
   font-weight: 700;
   line-height: 1;

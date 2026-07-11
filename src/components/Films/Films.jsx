@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { films } from "../../data/siteData.js";
 import "./Films.css";
 
@@ -34,10 +35,21 @@ function Films() {
   );
 
   const [activeFilm, setActiveFilm] = useState(null);
-
   const activeEmbed = activeFilm?.youtubeId
-    ? `https://www.youtube.com/embed/${activeFilm.youtubeId}?autoplay=1&rel=0&modestbranding=1`
+    ? `https://www.youtube-nocookie.com/embed/${activeFilm.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&origin=${encodeURIComponent(window.location.origin)}`
     : "";
+
+  useEffect(() => {
+    if (!activeFilm) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event) => event.key === "Escape" && setActiveFilm(null);
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [activeFilm]);
 
   return (
     <section className="films section" id="films" data-animate>
@@ -68,7 +80,7 @@ function Films() {
 
                 <button
                   type="button"
-                  aria-label={`Play ${film.title}`}
+                  aria-label={`Watch ${film.title} on YouTube`}
                   onClick={() => setActiveFilm(film)}
                 >
                   <span>▶</span>
@@ -84,49 +96,29 @@ function Films() {
         </div>
       </div>
 
-      {activeFilm && (
-        <div className="filmModal" onClick={() => setActiveFilm(null)}>
-          <div className="filmModalBox" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className="filmModalClose"
-              onClick={() => setActiveFilm(null)}
-              aria-label="Close video"
-            >
-              ×
-            </button>
-
+      {activeFilm && createPortal(
+        <div className="filmModal" role="dialog" aria-modal="true" aria-label={`${activeFilm.title} video`} onClick={() => setActiveFilm(null)}>
+          <div className="filmModalBox" onClick={(event) => event.stopPropagation()}>
+            <button type="button" className="filmModalClose" onClick={() => setActiveFilm(null)} aria-label="Close video">×</button>
             <div className="filmModalVideo">
-              {activeEmbed ? (
-                <iframe
-                  src={activeEmbed}
-                  title={`${activeFilm.title} YouTube video`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-              ) : (
-                <div className="filmModalPlaceholder">
-                  <strong>Video unavailable</strong>
-                  <p>Add this video&apos;s YouTube link in siteData.js.</p>
-                </div>
-              )}
+              <iframe
+                src={activeEmbed}
+                title={`${activeFilm.title} YouTube video`}
+                referrerPolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
             </div>
-
             <div className="filmModalInfo">
               <p>{activeFilm.label}</p>
               <h3>{activeFilm.title}</h3>
-              <a
-                className="filmWatchLink"
-                href={activeFilm.youtubeUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Watch on YouTube
-              </a>
+              <a className="filmWatchLink" href={activeFilm.youtubeUrl} target="_blank" rel="noreferrer">Watch on YouTube</a>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
+
     </section>
   );
 }

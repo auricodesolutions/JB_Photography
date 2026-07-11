@@ -60,7 +60,6 @@ function Portfolio() {
             <span className="projectContent">
               <span className="projectMeta">
                 <span>{item.tag}</span>
-                <span>{String(index + 1).padStart(2, "0")}</span>
               </span>
               <span className="projectTitle">{item.title}</span>
               <span className="projectExplore">View story <b aria-hidden="true">↗</b></span>

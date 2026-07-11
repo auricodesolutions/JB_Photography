@@ -105,14 +105,14 @@ export const portfolio = [
   {
     title: "Window Light",
     tag: "Wedding Portrait",
-    image: asset("img (1).jpeg"),
+    image: asset("img (170).jpeg"),
     alt: "Bride and groom silhouetted beside a bright window",
     layout: "portrait",
   },
   {
     title: "Just Us",
     tag: "Pre-wedding Portrait",
-    image: asset("img (7).jpeg"),
+    image: asset("img (20).jpeg"),
     alt: "Couple dancing together during an evening portrait session",
     layout: "portrait",
   },
@@ -125,7 +125,7 @@ export const portfolio = [
   {
     title: "Something Blue",
     tag: "Wedding Day",
-    image: asset("img (32).jpeg"),
+    image: asset("img (124).jpeg"),
     alt: "Traditional wedding couple in an elegant blue room",
   },
   {
@@ -151,7 +151,7 @@ export const portfolio = [
   {
     title: "Golden Vows",
     tag: "Wedding Portrait",
-    image: asset("img (172).jpeg"),
+    image: asset("img (110).jpeg"),
     alt: "Wedding couple photographed in warm golden light",
   },
   {
@@ -231,7 +231,7 @@ export const films = [
   {
     title: "Manuli & Dulshan | Wedding Highlight Video ",
     label: "Cinematic Wedding",
-    youtubeUrl: "https://youtu.be/CxI9kQmdmd8?si=3Nl17pXY9DmPM2RG",
+    youtubeUrl: "https://youtu.be/-7Tfe5jDiIw?si=_yT2Y0PzVrfcMzAa",
   },
   {
     title: "Manuli & Dulshan  | Wedding Highlight Video ",

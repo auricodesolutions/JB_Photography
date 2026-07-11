@@ -2,7 +2,7 @@
 
 .faqHeader { max-width: 920px; margin: 0 auto clamp(50px, 7vw, 90px); text-align: center; }
 .faqHeader .eyebrow { color: #746d64; }
-.faqHeader h2 { margin: 0 auto 22px; font-size: clamp(2.5rem, 5.2vw, 5.8rem); line-height: 0.98; }
+.faqHeader h2 { margin: 0 auto 22px; font-family: var(--editorial-font); font-size: clamp(2.5rem, 5.2vw, 5.8rem); line-height: 0.98; letter-spacing: -0.035em; }
 .faqHeader > p:last-child { max-width: 650px; margin: 0 auto; color: #625d56; font-size: clamp(0.95rem, 1.3vw, 1.15rem); line-height: 1.7; }
 
 .faqList { max-width: 980px; margin: 0 auto; border-top: 1px solid rgba(16, 16, 16, 0.45); }
