@@ -8,9 +8,14 @@ function Hero() {
   useEffect(() => {
     if (!heroImages.length) return;
 
+    heroImages.forEach((src) => {
+      const image = new Image();
+      image.src = src;
+    });
+
     const timer = window.setInterval(() => {
       setActive((value) => (value + 1) % heroImages.length);
-    }, 5200);
+    }, 4000);
 
     return () => window.clearInterval(timer);
   }, []);
@@ -24,12 +29,27 @@ function Hero() {
             alt=""
             key={image}
             className={index === active ? "isActive" : ""}
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
           />
         ))}
       </div>
 
       <div className="heroOverlay" />
       <div className="heroBlur" />
+
+      <div className="heroDots" aria-label="Choose hero photograph">
+        {heroImages.map((image, index) => (
+          <button
+            type="button"
+            className={index === active ? "isActive" : ""}
+            aria-label={`Show photograph ${index + 1}`}
+            aria-pressed={index === active}
+            onClick={() => setActive(index)}
+            key={`dot-${image}`}
+          />
+        ))}
+      </div>
 
       <div className="heroContent">
 

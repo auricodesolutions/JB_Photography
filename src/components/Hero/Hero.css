@@ -62,6 +62,38 @@
   pointer-events: none;
 }
 
+.heroDots {
+  position: absolute;
+  right: clamp(20px, 4vw, 60px);
+  bottom: 32px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.heroDots button {
+  width: 26px;
+  height: 3px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: rgba(255, 255, 255, 0.42);
+  cursor: pointer;
+  transition: width 380ms var(--ease), background 300ms ease, transform 300ms var(--ease);
+}
+
+.heroDots button:hover,
+.heroDots button:focus-visible {
+  background: rgba(255, 255, 255, 0.78);
+  transform: scaleY(1.8);
+}
+
+.heroDots button.isActive {
+  width: 46px;
+  background: var(--white);
+}
+
 /* Content */
 .heroContent {
   position: relative;
@@ -363,6 +395,19 @@
 
   .heroBtn span {
     font-size: 26px;
+  }
+
+  .heroDots {
+    right: 5%;
+    bottom: 22px;
+  }
+
+  .heroDots button {
+    width: 18px;
+  }
+
+  .heroDots button.isActive {
+    width: 32px;
   }
 }
 

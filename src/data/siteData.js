@@ -21,9 +21,11 @@ export const site = {
 const asset = (fileName) => `/assets/${encodeURIComponent(fileName)}`;
 
 export const heroImages = [
-  asset("img (158).jpeg"),
   asset("img (2).jpeg"),
-  asset("img (162).jpeg"),
+  asset("img (132).jpeg"),
+  asset("img (146).jpeg"),
+  asset("img (119).jpeg"),
+  asset("img1.jpeg"),
 ];
 
 /* ---------------- EXPERIENCE SECTION IMAGES ---------------- */
