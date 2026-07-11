@@ -23,8 +23,42 @@
   color: var(--ink);
 }
 
+.portfolio .sectionHeader .eyebrow,
+.portfolio .sectionHeader h2 {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 850ms ease,
+    transform 950ms var(--ease);
+}
+
+.portfolio.is-visible .sectionHeader .eyebrow,
+.portfolio.is-visible .sectionHeader h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio.is-visible .sectionHeader h2 {
+  transition-delay: 120ms;
+}
+
 .portfolio .eyebrow {
   color: #776f65;
+}
+
+.portfolio .sectionHeader a {
+  color: var(--grey);
+}
+
+.portfolio .sectionHeader a::before {
+  background: var(--black);
+}
+
+.portfolio .sectionHeader a:hover,
+.portfolio .sectionHeader a:focus-visible,
+.portfolio .sectionHeader a:active {
+  color: var(--white);
+  border-color: var(--black);
 }
 
 .portfolioIntro {
@@ -37,6 +71,7 @@
 
 .portfolioGrid {
   position: relative;
+  scroll-margin-top: 110px;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-auto-rows: clamp(180px, 18vw, 285px);
@@ -56,17 +91,15 @@
   text-align: left;
   cursor: pointer;
   isolation: isolate;
+  contain: paint;
 }
 
-.project1 {
-  grid-column: span 8;
+.project--portrait {
+  grid-column: span 4;
   grid-row: span 2;
 }
 
-.project4,
-.project5,
-.project9,
-.project10 {
+.project--wide {
   grid-column: span 6;
 }
 
@@ -77,6 +110,7 @@
   object-fit: cover;
   filter: saturate(0.72) contrast(1.03);
   transform: scale(1.025);
+  will-change: transform;
   transition:
     filter 650ms ease,
     transform 1100ms var(--ease);
@@ -296,11 +330,8 @@
   }
 
   .project,
-  .project1,
-  .project4,
-  .project5,
-  .project9,
-  .project10 {
+  .project--portrait,
+  .project--wide {
     grid-column: auto;
     grid-row: auto;
   }
@@ -312,7 +343,7 @@
     grid-auto-rows: min(125vw, 520px);
   }
 
-  .project1 {
+  .project--portrait {
     grid-row: auto;
   }
 

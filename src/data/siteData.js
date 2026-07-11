@@ -27,7 +27,7 @@ export const heroImages = [
 ];
 
 /* ---------------- EXPERIENCE SECTION IMAGES ---------------- */
-/* Large left slider - 3 images */
+/* Large left slider - 5 images */
 export const experienceMainImages = [
   {
     src: asset("img (80).jpeg"),
@@ -41,9 +41,17 @@ export const experienceMainImages = [
     src: asset("img (120).jpeg"),
     alt: "Elegant wedding photography moment",
   },
+  {
+    src: asset("img (42).jpeg"),
+    alt: "Elegant bride and groom portrait in natural light",
+  },
+  {
+    src: asset("img (181).jpeg"),
+    alt: "Bride and groom silhouetted beside a bright window",
+  },
 ];
 
-/* Small floating slider - 3 separate images */
+/* Small floating slider - 5 separate images */
 export const experienceFloatingImages = [
   {
     src: asset("img (19).jpeg"),
@@ -56,6 +64,14 @@ export const experienceFloatingImages = [
   {
     src: asset("img (98).jpeg"),
     alt: "Wedding couple creative portrait",
+  },
+  {
+    src: asset("img (159).jpeg"),
+    alt: "Couple dancing during an evening portrait session",
+  },
+  {
+    src: asset("img (94).jpeg"),
+    alt: "Intimate wedding portrait by JB Photography",
   },
 ];
 
@@ -78,17 +94,25 @@ export const experienceImages = [
     alt: "Wedding couple portrait by Jagath Bandara Photography",
   },
   {
-    src: asset("img (46).jpeg"),
+    src: asset("img (3).jpeg"),
     alt: "Elegant wedding moment captured by JB Photography",
   },
 ];
 
 export const portfolio = [
   {
-    title: "A Quiet Forever",
-    tag: "Wedding Story",
-    image: asset("img (132).jpeg"),
-    alt: "Bride and groom sharing a quiet moment in a garden",
+    title: "Window Light",
+    tag: "Wedding Portrait",
+    image: asset("img (1).jpeg"),
+    alt: "Bride and groom silhouetted beside a bright window",
+    layout: "portrait",
+  },
+  {
+    title: "Just Us",
+    tag: "Pre-wedding Portrait",
+    image: asset("img (7).jpeg"),
+    alt: "Couple dancing together during an evening portrait session",
+    layout: "portrait",
   },
   {
     title: "Garden Promises",
@@ -107,12 +131,14 @@ export const portfolio = [
     tag: "Bridal Portrait",
     image: asset("img (104).jpeg"),
     alt: "Bride in traditional dress standing in soft garden light",
+    layout: "wide",
   },
   {
     title: "By The Ocean",
     tag: "Love Story",
     image: asset("img (116).jpeg"),
     alt: "Couple laughing together on a quiet beach",
+    layout: "wide",
   },
   {
     title: "After Dark",
@@ -137,12 +163,14 @@ export const portfolio = [
     tag: "Pre-wedding",
     image: asset("img (138).jpeg"),
     alt: "Couple posing together during an elegant pre-wedding session",
+    layout: "wide",
   },
   {
     title: "Endless Romance",
     tag: "Editorial Portrait",
     image: asset("img (71).jpeg"),
     alt: "Romantic editorial portrait captured by JB Photography",
+    layout: "wide",
   },
 ];
 
@@ -306,8 +334,16 @@ export const socialLinks = [
 ];
 
 export const contactIntro = {
-  title: "Hey, It's Jagath Bandara!",
+  title: "Hey, It's Jagath!",
   subtitle: "Stay Connected & Check Out My Work!",
   text: "Stay updated with our latest wedding stories, films, reels, and photography work. Let’s create magic together.",
   hashtag: "#JB",
 };
+
+export const faqs = [
+  { question: "How far in advance should we book?", answer: "Popular wedding dates can fill quickly, so we recommend contacting us 6 to 12 months in advance. For pre-shoots and smaller events, 4 to 8 weeks is often enough." },
+  { question: "Do you travel outside Colombo?", answer: "Yes. We photograph weddings and celebrations throughout Sri Lanka, and destination coverage can also be arranged. Travel details will be included clearly in your quotation." },
+  { question: "Can we book both photography and wedding films?", answer: "Yes. Combined photography and cinematic-film coverage gives your team one coordinated timeline and a consistent storytelling style throughout the day." },
+  { question: "Will our photographs be professionally edited?", answer: "Every delivered photograph is carefully selected and professionally colour-corrected in our signature timeless style. Detailed retouching is applied where appropriate." },
+  { question: "How do we confirm our date?", answer: "Your date is confirmed after we agree on the coverage, complete the booking details, and receive the reservation payment. We will then guide you through planning and timelines." },
+];

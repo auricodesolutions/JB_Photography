@@ -47,6 +47,7 @@ img,
 video {
   display: block;
   width: 100%;
+  backface-visibility: hidden;
 }
 
 button,
@@ -266,6 +267,7 @@ main {
 [data-animate] {
   opacity: 0;
   transform: translateY(42px) scale(0.985);
+  will-change: opacity, transform;
   transition:
     opacity 950ms ease,
     transform 950ms var(--ease);
@@ -274,6 +276,87 @@ main {
 [data-animate].is-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
+  will-change: auto;
+}
+
+main .revealContent {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 720ms ease var(--reveal-delay, 0ms),
+    transform 820ms var(--ease) var(--reveal-delay, 0ms);
+}
+
+main .revealContent.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+main img.revealMedia {
+  opacity: 0;
+  clip-path: inset(7% 0 7% 0);
+  transition:
+    opacity 900ms ease var(--reveal-delay, 0ms),
+    clip-path 1100ms var(--ease) var(--reveal-delay, 0ms),
+    filter 650ms ease,
+    transform 1100ms var(--ease);
+}
+
+main img.revealMedia.is-visible {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+/* Stagger the main content inside each revealed section. */
+.section[data-animate] > *,
+.experience[data-animate] > *,
+.jbReviews[data-animate] > *,
+.footer[data-animate] > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 780ms ease,
+    transform 900ms var(--ease);
+}
+
+.section[data-animate].is-visible > *,
+.experience[data-animate].is-visible > *,
+.jbReviews[data-animate].is-visible > *,
+.footer[data-animate].is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section[data-animate].is-visible > :nth-child(2),
+.experience[data-animate].is-visible > :nth-child(2),
+.jbReviews[data-animate].is-visible > :nth-child(2),
+.footer[data-animate].is-visible > :nth-child(2) {
+  transition-delay: 120ms;
+}
+
+.section[data-animate].is-visible > :nth-child(3),
+.experience[data-animate].is-visible > :nth-child(3),
+.jbReviews[data-animate].is-visible > :nth-child(3),
+.footer[data-animate].is-visible > :nth-child(3) {
+  transition-delay: 220ms;
+}
+
+/* Keep reveals varied but cohesive across the full page. */
+[data-animate].brandRail:not(.is-visible) {
+  transform: translateY(24px);
+}
+
+[data-animate].footer:not(.is-visible) {
+  transform: translateY(20px);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
 }
 
 .pageLoader {
@@ -347,6 +430,13 @@ main {
 
   [data-animate] {
     opacity: 1;
+    transform: none;
+  }
+
+  .revealContent,
+  .revealMedia {
+    opacity: 1;
+    clip-path: none;
     transform: none;
   }
 }

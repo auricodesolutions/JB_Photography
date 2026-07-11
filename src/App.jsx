@@ -9,6 +9,8 @@ import Booking from "./components/Booking/Booking.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import WhatsAppButton from "./components/WhatsAppButton/WhatsAppButton.jsx";
 import JbReviews from "./components/JbReviews/JbReviews.jsx";
+import FAQ from "./components/FAQ/FAQ.jsx";
+import VideoCTA from "./components/VideoCTA/VideoCTA.jsx";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -46,12 +48,30 @@ function App() {
 
   useEffect(() => {
     const animatedItems = document.querySelectorAll("[data-animate]");
+    const contentSelector = [
+      "h2",
+      "h3",
+      "p",
+      ".eyebrow",
+      ".contactCards",
+      "form",
+      ".jbReviewControls",
+    ].join(", ");
+
+    const contentItems = document.querySelectorAll(
+      `main section:not(.hero):not(.brandRail) :is(${contentSelector})`,
+    );
+
+    const mediaItems = document.querySelectorAll(
+      "main section:not(.hero):not(.brandRail) img",
+    );
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -60,24 +80,63 @@ function App() {
 
     animatedItems.forEach((item) => observer.observe(item));
 
-    return () => observer.disconnect();
+    contentItems.forEach((item, index) => {
+      item.classList.add("revealContent");
+      item.style.setProperty("--reveal-delay", `${(index % 5) * 70}ms`);
+      observer.observe(item);
+    });
+
+    mediaItems.forEach((item, index) => {
+      item.classList.add("revealMedia");
+      item.style.setProperty("--reveal-delay", `${(index % 4) * 80}ms`);
+      observer.observe(item);
+    });
+
+    return () => {
+      observer.disconnect();
+      [...contentItems, ...mediaItems].forEach((item) => {
+        item.classList.remove("revealContent", "revealMedia", "is-visible");
+        item.style.removeProperty("--reveal-delay");
+      });
+    };
   }, [loading]);
 
   useEffect(() => {
     const moveItems = document.querySelectorAll("[data-parallax]");
+    const motionDisabled = window.matchMedia(
+      "(prefers-reduced-motion: reduce), (hover: none)",
+    ).matches;
+
+    if (!moveItems.length || motionDisabled) return undefined;
+
+    let frameId = 0;
+    let pointerX = 0;
+    let pointerY = 0;
 
     const handleMove = (event) => {
-      const x = (event.clientX / window.innerWidth - 0.5) * 2;
-      const y = (event.clientY / window.innerHeight - 0.5) * 2;
+      pointerX = event.clientX;
+      pointerY = event.clientY;
 
-      moveItems.forEach((item) => {
-        const speed = Number(item.dataset.parallax || 10);
-        item.style.transform = `translate3d(${x * speed}px, ${y * speed}px, 0)`;
+      if (frameId) return;
+
+      frameId = window.requestAnimationFrame(() => {
+        const x = (pointerX / window.innerWidth - 0.5) * 2;
+        const y = (pointerY / window.innerHeight - 0.5) * 2;
+
+        moveItems.forEach((item) => {
+          const speed = Number(item.dataset.parallax || 10);
+          item.style.transform = `translate3d(${x * speed}px, ${y * speed}px, 0)`;
+        });
+
+        frameId = 0;
       });
     };
 
-    window.addEventListener("pointermove", handleMove);
-    return () => window.removeEventListener("pointermove", handleMove);
+    window.addEventListener("pointermove", handleMove, { passive: true });
+    return () => {
+      window.removeEventListener("pointermove", handleMove);
+      if (frameId) window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   return (
@@ -101,7 +160,8 @@ function App() {
             <BrandRail />
             <Films />
             <JbReviews />
-            <Booking />
+            <VideoCTA />
+            <FAQ />
           </>
         )}
       </main>

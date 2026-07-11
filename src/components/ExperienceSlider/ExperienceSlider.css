@@ -26,12 +26,23 @@
   height: 100%;
   overflow: hidden;
   background: #ffffff;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition:
+    opacity 700ms ease 120ms,
+    clip-path 1200ms var(--ease) 120ms;
+}
+
+.experience.is-visible .experienceMainSlider {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
 }
 
 .experienceMainTrack {
   display: flex;
   height: 100%;
-  animation: experienceSlide 18s infinite ease-in-out;
+  will-change: transform;
+  animation: experienceSlide 30s infinite var(--ease);
 }
 
 .experienceMainTrack img {
@@ -40,6 +51,8 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transform: scale(1.035);
+  animation: experienceImageBreath 9s ease-in-out infinite alternate;
 }
 
 /* Floating image slider */
@@ -53,12 +66,28 @@
   overflow: hidden;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
   z-index: 2;
+  opacity: 0;
+  clip-path: inset(100% 0 0 0);
+  transition:
+    opacity 700ms ease 420ms,
+    clip-path 1050ms var(--ease) 420ms,
+    box-shadow 600ms ease;
+}
+
+.experience.is-visible .experienceFloatingImage {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+.experienceFloatingImage:hover {
+  box-shadow: 0 26px 62px rgba(0, 0, 0, 0.24);
 }
 
 .experienceSliderTrack {
   display: flex;
   height: 100%;
-  animation: experienceSlide 18s infinite ease-in-out;
+  will-change: transform;
+  animation: experienceSlide 30s infinite var(--ease);
 }
 
 .experienceSliderTrack img {
@@ -67,12 +96,38 @@
   height: 100%;
   object-fit: contain;
   object-position: center;
+  transform: scale(1.025);
+  animation: experienceImageBreath 8s ease-in-out infinite alternate-reverse;
 }
 
 /* ---------------- RIGHT SIDE ---------------- */
 
 .experienceContent {
   max-width: 650px;
+}
+
+.experienceContent > * {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 720ms ease,
+    transform 850ms var(--ease);
+}
+
+.experience.is-visible .experienceContent > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience.is-visible .experienceContent > :nth-child(1) { transition-delay: 180ms; }
+.experience.is-visible .experienceContent > :nth-child(2) { transition-delay: 280ms; }
+.experience.is-visible .experienceContent > :nth-child(3) { transition-delay: 380ms; }
+.experience.is-visible .experienceContent > :nth-child(4) { transition-delay: 480ms; }
+.experience.is-visible .experienceContent > :nth-child(5) { transition-delay: 580ms; }
+
+@keyframes experienceImageBreath {
+  from { transform: scale(1.025); }
+  to { transform: scale(1.075); }
 }
 
 .eyebrow {
@@ -237,26 +292,36 @@
   }
 }
 
-/* ---------------- 3 IMAGE SLIDER ANIMATION ---------------- */
+/* ---------------- 5 IMAGE SLIDER ANIMATION ---------------- */
 
 @keyframes experienceSlide {
   0%,
-  26% {
+  15% {
     transform: translateX(0%);
   }
 
-  33%,
-  59% {
+  20%,
+  35% {
     transform: translateX(-100%);
   }
 
-  66%,
-  92% {
+  40%,
+  55% {
     transform: translateX(-200%);
   }
 
+  60%,
+  75% {
+    transform: translateX(-300%);
+  }
+
+  80%,
+  95% {
+    transform: translateX(-400%);
+  }
+
   100% {
-    transform: translateX(0%);
+    transform: translateX(-500%);
   }
 }
 

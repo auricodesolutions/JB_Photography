@@ -44,6 +44,31 @@
   text-transform: uppercase;
 }
 
+.contactCards a {
+  transition:
+    color 320ms var(--ease),
+    padding 320ms var(--ease),
+    border-color 320ms ease;
+}
+
+.contactCards a:hover,
+.contactCards a:focus-visible {
+  padding-inline: 10px;
+  border-color: var(--black);
+}
+
+.contactCards a span,
+.contactCards a strong {
+  transition: color 320ms ease;
+}
+
+.contactCards a:hover span,
+.contactCards a:hover strong,
+.contactCards a:focus-visible span,
+.contactCards a:focus-visible strong {
+  color: var(--black);
+}
+
 .contactCards a span,
 .contactCards strong {
   color: var(--grey);
@@ -56,17 +81,55 @@
 .bookingForm {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 18px 14px;
+  padding: clamp(24px, 4vw, 48px);
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 28px 70px rgba(61, 52, 40, 0.1);
+}
+
+.bookingFormHeader {
+  grid-column: 1 / -1;
+  margin-bottom: 10px;
+}
+
+.bookingFormHeader > span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--grey);
+  font-size: 0.67rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.bookingFormHeader h3 {
+  margin: 0 0 9px;
+  color: var(--black);
+  font-size: clamp(1.7rem, 2.8vw, 2.7rem);
+  line-height: 1.05;
+}
+
+.bookingFormHeader p,
+.formNote {
+  margin: 0;
+  color: #716c65;
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
 .bookingForm label {
-  display: grid;
-  gap: 8px;
+  display: block;
   color: #4a4742;
   font-size: 0.76rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+}
+
+.bookingForm label > span {
+  display: inline;
+  color: #9d5d4c;
 }
 
 .fullField,
@@ -78,15 +141,24 @@
 .bookingForm select,
 .bookingForm textarea {
   width: 100%;
+  margin-top: 8px;
   min-height: 54px;
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  padding: 13px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 2px;
+  padding: 14px 16px;
   color: var(--black);
   background: var(--white);
   outline: none;
   transition:
     border-color 260ms ease,
-    background 260ms ease;
+    background 260ms ease,
+    box-shadow 260ms ease,
+    transform 260ms var(--ease);
+}
+
+.bookingForm input::placeholder,
+.bookingForm textarea::placeholder {
+  color: #99948d;
 }
 
 .bookingForm textarea {
@@ -99,12 +171,31 @@
 .bookingForm textarea:focus {
   border-color: var(--black);
   background: #fffdf8;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
 .formButton {
   color: var(--white);
   background: var(--black);
   border-color: var(--black);
+  min-height: 58px;
+  margin-top: 2px;
+}
+
+.formButton span {
+  font-size: 1.1rem;
+  transition: transform 320ms var(--ease);
+}
+
+.formButton:hover span,
+.formButton:focus-visible span {
+  transform: translateX(5px);
+}
+
+.formNote {
+  grid-column: 1 / -1;
+  text-align: center;
 }
 
 .formButton::before {

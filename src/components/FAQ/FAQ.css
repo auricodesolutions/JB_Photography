@@ -1,0 +1,30 @@
+.faq { color: var(--ink); background: #f4efe6; }
+
+.faqHeader { max-width: 920px; margin: 0 auto clamp(50px, 7vw, 90px); text-align: center; }
+.faqHeader .eyebrow { color: #746d64; }
+.faqHeader h2 { margin: 0 auto 22px; font-size: clamp(2.5rem, 5.2vw, 5.8rem); line-height: 0.98; }
+.faqHeader > p:last-child { max-width: 650px; margin: 0 auto; color: #625d56; font-size: clamp(0.95rem, 1.3vw, 1.15rem); line-height: 1.7; }
+
+.faqList { max-width: 980px; margin: 0 auto; border-top: 1px solid rgba(16, 16, 16, 0.45); }
+.faqItem { border-bottom: 1px solid rgba(16, 16, 16, 0.32); }
+.faqItem h3 { margin: 0; font-family: inherit; }
+.faqItem button { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 27px 4px; color: var(--ink); background: transparent; border: 0; text-align: left; font-size: clamp(1rem, 1.55vw, 1.35rem); font-weight: 700; cursor: pointer; transition: color 320ms ease, padding 420ms var(--ease); }
+.faqItem button:hover, .faqItem button:focus-visible, .faqItem.isOpen button { padding-inline: 12px; color: #705b43; }
+
+.faqItem button i { position: relative; flex: 0 0 18px; width: 18px; height: 18px; transition: transform 420ms var(--ease); }
+.faqItem button i::before, .faqItem button i::after { content: ""; position: absolute; top: 8px; left: 1px; width: 16px; height: 1.5px; background: currentColor; }
+.faqItem button i::after { transform: rotate(90deg); transition: transform 420ms var(--ease); }
+.faqItem.isOpen button i { transform: rotate(180deg); }
+.faqItem.isOpen button i::after { transform: rotate(0deg); }
+
+.faqAnswer { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 520ms var(--ease), opacity 380ms ease; }
+.faqAnswer > div { overflow: hidden; }
+.faqAnswer p { max-width: 780px; margin: 0; padding: 0 48px 28px 12px; color: #625d56; font-size: 1rem; line-height: 1.75; }
+.faqItem.isOpen .faqAnswer { grid-template-rows: 1fr; opacity: 1; }
+
+@media (max-width: 680px) {
+  .faqHeader { text-align: left; }
+  .faqHeader h2, .faqHeader > p:last-child { margin-inline: 0; }
+  .faqItem button { padding-block: 22px; }
+  .faqAnswer p { padding-right: 24px; }
+}

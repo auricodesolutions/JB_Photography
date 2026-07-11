@@ -13,9 +13,8 @@ function Booking() {
         <p className="eyebrow">Booking</p>
         <h2>Tell us about your date.</h2>
         <p>
-          Share the event type, date, location, and the style you like. This
-          form is frontend-ready and can be connected to PHP, Node.js, EmailJS,
-          or any backend later.
+          Share a few details about your celebration and we’ll get back to you
+          with availability, ideas, and a quotation tailored to your day.
         </p>
 
         <div className="contactCards">
@@ -31,15 +30,21 @@ function Booking() {
         </div>
       </div>
 
-      <form className="bookingForm">
+      <form className="bookingForm" onSubmit={(event) => event.preventDefault()}>
+        <div className="bookingFormHeader">
+          <span>Start your inquiry</span>
+          <h3>Let’s create something timeless.</h3>
+          <p>Fields marked with * are required.</p>
+        </div>
+
         <label>
-          Name
-          <input type="text" placeholder="Your name" />
+          Your name <span aria-hidden="true">*</span>
+          <input name="name" type="text" placeholder="e.g. Kasun & Nethmi" autoComplete="name" required />
         </label>
         <label>
-          Event type
-          <select defaultValue="">
-            <option value="" disabled>Select one</option>
+          Event type <span aria-hidden="true">*</span>
+          <select name="eventType" defaultValue="" required>
+            <option value="" disabled>Choose your event</option>
             <option>Wedding</option>
             <option>Pre-shoot</option>
             <option>Engagement</option>
@@ -48,18 +53,19 @@ function Booking() {
           </select>
         </label>
         <label>
-          Date
-          <input type="date" />
+          Event date <span aria-hidden="true">*</span>
+          <input name="date" type="date" required />
         </label>
         <label>
-          Phone / WhatsApp
-          <input type="tel" placeholder="Your contact number" />
+          Phone / WhatsApp <span aria-hidden="true">*</span>
+          <input name="phone" type="tel" placeholder="e.g. +94 77 123 4567" autoComplete="tel" required />
         </label>
         <label className="fullField">
-          Message
-          <textarea placeholder="Location, package idea, and special notes" />
+          Tell us about your plans
+          <textarea name="message" placeholder="Venue, preferred coverage, photography style, or anything else we should know…" />
         </label>
-        <button className="formButton" type="button">Send Inquiry</button>
+        <button className="formButton" type="submit">Send Inquiry <span aria-hidden="true">→</span></button>
+        <p className="formNote">We usually reply within one business day. Your details stay private.</p>
       </form>
     </section>
   );

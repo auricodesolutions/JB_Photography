@@ -42,13 +42,13 @@ function Portfolio() {
           <p className="eyebrow">Featured Projects</p>
           <h2>Stories worth remembering</h2>
         </div>
-        
+        <a href="#portfolioGrid">View Portfolio</a>
       </div>
 
-      <div className="portfolioGrid">
+      <div className="portfolioGrid" id="portfolioGrid">
         {portfolio.map((item, index) => (
           <button
-            className={`project project${index + 1}`}
+            className={`project${item.layout ? ` project--${item.layout}` : ""}`}
             key={item.title}
             type="button"
             onClick={() => setActiveIndex(index)}

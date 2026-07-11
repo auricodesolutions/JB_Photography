@@ -46,8 +46,8 @@ function Hero() {
         </p>
 
         <div className="heroActions">
-          <a href="#films" className="heroBtn heroBtnDark">
-            Explore Now <span>›</span>
+          <a href="#portfolio" className="heroBtn heroBtnDark">
+            View Portfolio <span>›</span>
           </a>
 
           <a href="#services" className="heroBtn heroBtnOutline">

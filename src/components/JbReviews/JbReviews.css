@@ -136,6 +136,19 @@
 
 .jbReviewControls button:hover {
   color: #111111;
+  transform: translateY(-2px);
+}
+
+.jbReviewControls button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.jbReviewControls button:first-child:hover .controlLine {
+  transform: translateX(-6px);
+}
+
+.jbReviewControls button:last-child:hover .controlLine {
+  transform: translateX(6px);
 }
 
 .controlLine {
@@ -143,6 +156,7 @@
   height: 1px;
   background: currentColor;
   display: inline-block;
+  transition: transform 350ms var(--ease);
 }
 
 .controlArrow {

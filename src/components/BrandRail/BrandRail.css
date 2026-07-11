@@ -1,31 +1,116 @@
 .brandRail {
-  display: flex;
-  gap: 34px;
+  position: relative;
+  isolation: isolate;
+  display: block;
   overflow: hidden;
   padding: 18px 0;
   border-block: 1px solid var(--line);
   color: var(--white);
   background: var(--ink);
   white-space: nowrap;
+  perspective: 760px;
+  perspective-origin: 50% 42%;
+  transform-style: preserve-3d;
 }
 
-.brandRail span {
-  flex: 0 0 auto;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.5rem, 4vw, 3.6rem);
-  opacity: 0.58;
+.brandRailTrack,
+.brandRailGroup {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  width: max-content;
+}
+
+.brandRailTrack {
+  transform-style: preserve-3d;
+  will-change: transform;
   animation: railMove 34s linear infinite;
 }
 
+.brandRail::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 50% 35%, #292929 0%, #171717 48%, #0c0c0c 100%),
+    var(--ink);
+  transform-origin: center;
+  transition: background 700ms ease;
+}
+
+.brandRail::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 20%, rgba(0, 0, 0, 0.48) 100%),
+    repeating-linear-gradient(90deg, transparent 0 70px, rgba(255, 255, 255, 0.025) 71px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 35%, rgba(0, 0, 0, 0.62));
+  box-shadow:
+    inset 0 22px 42px rgba(0, 0, 0, 0.45),
+    inset 0 -22px 42px rgba(0, 0, 0, 0.58);
+}
+
+.brandRail span {
+  position: relative;
+  flex: 0 0 auto;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.5rem, 4vw, 3.6rem);
+  color: #f3eee5;
+  opacity: 0.82;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.16);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  text-shadow:
+    1px 1px 0 #b8b0a4,
+    2px 2px 0 #8e877d,
+    3px 3px 0 #625d56,
+    5px 6px 2px rgba(0, 0, 0, 0.82),
+    0 18px 30px rgba(0, 0, 0, 0.76);
+  transition:
+    opacity 360ms ease,
+    text-shadow 500ms ease;
+}
+
+.brandRail span::after {
+  content: "◆";
+  display: inline-block;
+  margin-left: 34px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.28em;
+  vertical-align: middle;
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.9);
+  transform: translateZ(24px) rotate(45deg);
+}
+
 .brandRail:hover span {
+  opacity: 1;
+  text-shadow:
+    1px 1px 0 #d7d0c5,
+    2px 2px 0 #a69e92,
+    3px 3px 0 #777168,
+    6px 8px 3px rgba(0, 0, 0, 0.88),
+    0 22px 38px rgba(0, 0, 0, 0.88);
+}
+
+.brandRail:hover .brandRailTrack {
   animation-play-state: paused;
+}
+
+.brandRail:hover::before {
+  background:
+    radial-gradient(circle at 50% 35%, #303030 0%, #191919 48%, #0c0c0c 100%),
+    var(--ink);
 }
 
 @keyframes railMove {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 42px) rotateX(9deg) rotateY(-1.5deg);
   }
   to {
-    transform: translateX(-100%);
+    transform: translate3d(calc(-50% - 17px), 0, 42px) rotateX(9deg) rotateY(-1.5deg);
   }
 }

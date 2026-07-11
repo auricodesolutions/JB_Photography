@@ -6,10 +6,23 @@ function Header({ onNavigate }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let frameId = 0;
+
+    const updateHeader = () => {
+      setScrolled(window.scrollY > 40);
+      frameId = 0;
+    };
+
+    const onScroll = () => {
+      if (!frameId) frameId = window.requestAnimationFrame(updateHeader);
+    };
+
     onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frameId) window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   const closeMenu = () => setOpen(false);
@@ -43,7 +56,7 @@ function Header({ onNavigate }) {
       <nav className={open ? "isOpen" : ""} aria-label="Main navigation">
         <a href="/about" onClick={(event) => goTo(event, "about")}>About</a>
         <a href="/#services" onClick={(event) => goTo(event, "home", "services")}>Services</a>
-        <a href="/#portfolio" onClick={(event) => goTo(event, "home", "portfolio")}>Gallery</a>
+        <a href="/#portfolio" onClick={(event) => goTo(event, "home", "portfolio")}>Portfolio</a>
         <a href="/#films" onClick={(event) => goTo(event, "home", "films")}>Films</a>
         <a href="/#contact" onClick={(event) => goTo(event, "home", "contact")}>Contact</a>
         <a href="/#contact" className="quoteLink" onClick={(event) => goTo(event, "home", "contact")}>Ask a Quote</a>

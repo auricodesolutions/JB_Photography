@@ -6,10 +6,16 @@ function BrandRail() {
   const list = Array.from({ length: 6 }, () => railText);
 
   return (
-    <section className="brandRail" aria-label="Jagath Bandara Photography brand rail">
-      {[...list, ...list].map((item, index) => (
-        <span key={`${item}-${index}`}>{item}</span>
-      ))}
+    <section className="brandRail" aria-label="Jagath Bandara Photography brand rail" data-animate>
+      <div className="brandRailTrack">
+        {[0, 1].map((group) => (
+          <div className="brandRailGroup" key={group} aria-hidden={group === 1}>
+            {list.map((item, index) => (
+              <span key={`${group}-${item}-${index}`}>{item}</span>
+            ))}
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
