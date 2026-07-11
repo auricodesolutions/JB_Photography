@@ -9,11 +9,11 @@ function Footer() {
     <footer className="footer" data-animate>
       <div className="footerTop">
         <div className="footerBrandBlock">
-          <a href="#home" className="footerLogo" aria-label="JB Photography home">
-            <img src="/assets/jb-logo-white.png" alt="JB Photography logo" />
+          <a href="#home" className="footerLogo" aria-label="JB WEDDINGS home">
+            <img src="/assets/jb-logo-white.png" alt="JB WEDDINGS logo" />
           </a>
 
-          <p className="footerLabel">Jagath Bandara Photography</p>
+          <p className="footerLabel">JB WEDDINGS</p>
 
 
           <p className="footerText">

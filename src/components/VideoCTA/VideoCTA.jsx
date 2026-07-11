@@ -3,7 +3,7 @@ import "./VideoCTA.css";
 
 function VideoCTA() {
   return (
-    <section className="videoCta" aria-label="Book JB Photography" data-animate>
+    <section className="videoCta" aria-label="Book JB WEDDINGS" data-animate>
       <div className="videoCtaMedia" aria-hidden="true">
         <video autoPlay muted loop playsInline preload="metadata" poster="/assets/img%20(172).jpeg">
           <source src="/assets/video.mp4" type="video/mp4" />

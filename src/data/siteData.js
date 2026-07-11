@@ -1,6 +1,6 @@
 export const site = {
-  name: "JB Photography",
-  fullName: "Jagath Bandara Photography & Wedding Films",
+  name: "JB WEDDINGS",
+  fullName: "JB WEDDINGS",
   email: "jbphotography@email.com",
   phone: "+94 7X XXX XXXX",
   whatsapp: "947XXXXXXXX",
@@ -33,7 +33,7 @@ export const heroImages = [
 export const experienceMainImages = [
   {
     src: asset("img (80).jpeg"),
-    alt: "Wedding couple portrait by Jagath Bandara Photography",
+    alt: "Wedding couple portrait by JB WEDDINGS",
   },
   {
     src: asset("img (11).jpeg"),
@@ -57,7 +57,7 @@ export const experienceMainImages = [
 export const experienceFloatingImages = [
   {
     src: asset("img (19).jpeg"),
-    alt: "Elegant wedding moment captured by JB Photography",
+    alt: "Elegant wedding moment captured by JB WEDDINGS",
   },
   {
     src: asset("img (55).jpeg"),
@@ -73,7 +73,7 @@ export const experienceFloatingImages = [
   },
   {
     src: asset("img (94).jpeg"),
-    alt: "Intimate wedding portrait by JB Photography",
+    alt: "Intimate wedding portrait by JB WEDDINGS",
   },
 ];
 
@@ -81,11 +81,11 @@ export const experienceFloatingImages = [
 export const experienceImages = [
   {
     src: asset("img (7).jpeg"),
-    alt: "Wedding couple portrait by Jagath Bandara Photography",
+    alt: "Wedding couple portrait by JB WEDDINGS",
   },
   {
     src: asset("img (3).jpeg"),
-    alt: "Elegant wedding moment captured by JB Photography",
+    alt: "Elegant wedding moment captured by JB WEDDINGS",
   },
   {
     src: asset("img (115).jpeg"),
@@ -93,11 +93,11 @@ export const experienceImages = [
   },
   {
     src: asset("img (112).jpeg"),
-    alt: "Wedding couple portrait by Jagath Bandara Photography",
+    alt: "Wedding couple portrait by JB WEDDINGS",
   },
   {
     src: asset("img (3).jpeg"),
-    alt: "Elegant wedding moment captured by JB Photography",
+    alt: "Elegant wedding moment captured by JB WEDDINGS",
   },
 ];
 
@@ -171,7 +171,7 @@ export const portfolio = [
     title: "Endless Romance",
     tag: "Editorial Portrait",
     image: asset("img (71).jpeg"),
-    alt: "Romantic editorial portrait captured by JB Photography",
+    alt: "Romantic editorial portrait captured by JB WEDDINGS",
     layout: "wide",
   },
 ];
@@ -179,11 +179,11 @@ export const portfolio = [
 export const about = {
   title: "A calm eye for honest wedding stories.",
   lead:
-    "Jagath Bandara Photography creates elegant wedding photographs and films with a quiet, emotional, and timeless feeling.",
+    "JB WEDDINGS creates elegant wedding photographs and films with a quiet, emotional, and timeless feeling.",
   text:
     "From the first conversation to the final gallery, we guide couples with patience and care. Our focus is on natural portraits, meaningful details, family moments, and the small in-between emotions that make every celebration personal.",
   image: asset("img (1).jpeg"),
-  imageAlt: "Wedding couple photographed by Jagath Bandara Photography",
+  imageAlt: "Wedding couple photographed by JB WEDDINGS",
   stats: [
     {
       value: "10+",
@@ -266,7 +266,7 @@ export const reviews = [
     title: "Just Kiss",
     name: "Isuru & Hiruni",
     image: asset("img (7).jpeg"),
-    text: "Jagath Bandara Photography definitely has an eye for special shots and the final work was amazing. He is patient, creative, and very supportive throughout the day. We would recommend him for any special occasion.",
+    text: "JB WEDDINGS definitely has an eye for special shots and the final work was amazing. He is patient, creative, and very supportive throughout the day. We would recommend him for any special occasion.",
   },
   {
     date: "March 04, 2025",
@@ -339,7 +339,7 @@ export const contactIntro = {
   title: "Hey, It's Jagath!",
   subtitle: "Stay Connected & Check Out My Work!",
   text: "Stay updated with our latest wedding stories, films, reels, and photography work. Let’s create magic together.",
-  hashtag: "#JB",
+  hashtag: "#JBWeddings",
 };
 
 export const faqs = [

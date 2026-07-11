@@ -143,8 +143,8 @@ function App() {
     <>
       {loading && (
         <div className="pageLoader" aria-label="Website loading">
-          <img src="/assets/jb-logo-white.png" alt="JB Photography" />
-          <span>JB Photography</span>
+          <img src="/assets/jb-logo-white.png" alt="JB WEDDINGS" />
+          <span>JB WEDDINGS</span>
         </div>
       )}
 

@@ -59,7 +59,7 @@ function Hero() {
         </h1>
 
         <p className="heroDescription">
-          At JB Photography, we believe every love story deserves to be told
+          At JB WEDDINGS, we believe every love story deserves to be told
           beautifully. With an artistic eye and a passion for timeless
           storytelling, we create frames that celebrate love, style, and life’s
           most meaningful occasions.

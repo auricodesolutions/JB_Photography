@@ -4,7 +4,7 @@ import "./Booking.css";
 
 function Booking() {
   const whatsappMessage = encodeURIComponent(
-    "Hello JB Photography, I would like to ask for a wedding/event quotation.",
+    "Hello JB WEDDINGS, I would like to ask for a wedding/event quotation.",
   );
 
   return (

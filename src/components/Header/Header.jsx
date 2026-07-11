@@ -37,10 +37,10 @@ function Header({ onNavigate }) {
       <a
         href="/"
         className="brand"
-        aria-label="JB Photography home"
+        aria-label="JB WEDDINGS home"
         onClick={(event) => goTo(event, "home")}
       >
-        <img src="/assets/jb-logo-white.png" alt="JB Photography logo" />
+        <img src="/assets/jb-logo-white.png" alt="JB WEDDINGS logo" />
       </a>
 
       <button

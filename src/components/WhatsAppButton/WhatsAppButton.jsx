@@ -4,7 +4,7 @@ import "./WhatsAppButton.css";
 
 function WhatsAppButton() {
   const message = encodeURIComponent(
-    "Hello JB Photography, I would like to ask for a wedding/event quotation.",
+    "Hello JB WEDDINGS, I would like to ask for a wedding/event quotation.",
   );
 
   return (
@@ -13,7 +13,7 @@ function WhatsAppButton() {
       href={`https://wa.me/${site.whatsapp}?text=${message}`}
       target="_blank"
       rel="noreferrer"
-      aria-label="Contact JB Photography on WhatsApp"
+      aria-label="Contact JB WEDDINGS on WhatsApp"
     >
       <svg
         className="whatsappButton__icon"
