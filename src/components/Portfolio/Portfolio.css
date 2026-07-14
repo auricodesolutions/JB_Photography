@@ -92,7 +92,7 @@
   background: var(--charcoal);
   border: 0;
   text-align: left;
-  cursor: pointer;
+  cursor: default;
   isolation: isolate;
   contain: paint;
 }
@@ -113,14 +113,70 @@
 .project img {
   position: absolute;
   inset: 0;
+  width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
   filter: saturate(0.72) contrast(1.03);
   transform: scale(1.025);
   will-change: transform;
   transition:
-    filter 650ms ease,
-    transform 1100ms var(--ease);
+    opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 720ms ease,
+    transform 950ms var(--ease);
+}
+
+.projectSwapImage {
+  opacity: 1;
+}
+
+.projectSwapImage--hover {
+  opacity: 0;
+  filter: saturate(0.82) contrast(1.02) blur(3px);
+  transform: scale(1.14);
+}
+
+.project .projectSwapImage.is-hidden {
+  opacity: 0;
+  filter: saturate(0.8) contrast(1) blur(2px);
+  transform: scale(0.98);
+}
+
+.project .projectSwapImage--hover.is-visible {
+  opacity: 1;
+  filter: saturate(1) contrast(1.04) blur(0);
+  transform: scale(1.075);
+}
+
+.project::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 62%
+  );
+  transform: translateX(-115%);
+  transition:
+    transform 900ms var(--ease),
+    opacity 250ms ease;
+}
+
+.project:hover::after,
+.project[data-previewing="true"]::after {
+  opacity: 1;
+  transform: translateX(115%);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .project {
+    touch-action: manipulation;
+  }
 }
 
 .projectShade {
@@ -133,11 +189,10 @@
 
 .projectContent {
   position: absolute;
-  inset: auto clamp(18px, 2.2vw, 34px) clamp(18px, 2vw, 30px);
+  inset: auto clamp(16px, 1.8vw, 28px) clamp(16px, 1.8vw, 26px);
   z-index: 2;
   display: grid;
-  transform: translateY(30px);
-  transition: transform 600ms var(--ease);
+  max-width: calc(100% - 32px);
 }
 
 .projectMeta {
@@ -152,28 +207,13 @@
 }
 
 .projectTitle {
-  margin-top: 9px;
+  margin-top: 7px;
   font-family: var(--editorial-font);
-  font-size: clamp(1.6rem, 3vw, 3.35rem);
-  line-height: 1;
-}
-
-.projectExplore {
-  margin-top: 15px;
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 420ms ease, transform 420ms var(--ease);
-}
-
-.projectExplore b {
-  display: inline-block;
-  margin-left: 6px;
-  font-size: 0.9rem;
-  transition: transform 400ms var(--ease);
+  font-size: clamp(1.35rem, 2.15vw, 2.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.38);
 }
 
 .project:hover img,
@@ -187,27 +227,6 @@
   opacity: 0.9;
 }
 
-.project:hover .projectContent,
-.project:focus-visible .projectContent {
-  transform: translateY(0);
-}
-
-.project:hover .projectExplore,
-.project:focus-visible .projectExplore {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.project:hover .projectExplore b,
-.project:focus-visible .projectExplore b {
-  transform: translate(3px, -3px);
-}
-
-.project:focus-visible {
-  outline: 2px solid var(--white);
-  outline-offset: 4px;
-}
-
 .portfolio.is-visible .project {
   animation: projectReveal 900ms var(--ease) both;
   animation-delay: var(--project-delay);
@@ -216,118 +235,6 @@
 @keyframes projectReveal {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-.portfolioLightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: grid;
-  place-items: center;
-  padding: clamp(20px, 5vw, 72px);
-  background: rgba(3, 3, 3, 0.96);
-  backdrop-filter: blur(14px);
-  animation: lightboxIn 380ms ease both;
-}
-
-.lightboxStage {
-  width: min(1120px, 84vw);
-  height: min(74vh, 760px);
-  animation: lightboxImageIn 650ms var(--ease) both;
-}
-
-.lightboxStage img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.lightboxCaption {
-  position: absolute;
-  left: clamp(20px, 5vw, 72px);
-  bottom: clamp(20px, 3vw, 42px);
-}
-
-.lightboxCaption p {
-  margin: 0 0 7px;
-  color: #999;
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.lightboxCaption h3 {
-  margin: 0;
-  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-}
-
-.lightboxClose {
-  position: absolute;
-  top: clamp(18px, 3vw, 40px);
-  right: clamp(18px, 3vw, 40px);
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  background: transparent;
-  cursor: pointer;
-  transition: background 350ms ease, transform 350ms var(--ease);
-}
-
-.lightboxClose span {
-  position: absolute;
-  left: 13px;
-  top: 23px;
-  width: 21px;
-  height: 1px;
-  background: #fff;
-}
-
-.lightboxClose span:first-child { transform: rotate(45deg); }
-.lightboxClose span:last-child { transform: rotate(-45deg); }
-.lightboxClose:hover { background: rgba(255, 255, 255, 0.12); transform: rotate(6deg); }
-
-.lightboxControls {
-  position: absolute;
-  right: clamp(20px, 5vw, 72px);
-  bottom: clamp(20px, 3vw, 42px);
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.lightboxControls button {
-  width: 45px;
-  height: 45px;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: transparent;
-  cursor: pointer;
-  transition: color 300ms ease, background 300ms ease, transform 300ms var(--ease);
-}
-
-.lightboxControls button:hover {
-  color: #050505;
-  background: #fff;
-  transform: translateY(-2px);
-}
-
-.lightboxControls span {
-  color: #aaa;
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-}
-
-@keyframes lightboxIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes lightboxImageIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
 }
 
 @media (max-width: 980px) {
@@ -354,32 +261,13 @@
     grid-row: auto;
   }
 
-  .projectContent {
-    transform: translateY(0);
-  }
-
-  .projectExplore {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .lightboxStage {
-    width: 100%;
-    height: 66vh;
-  }
-
-  .lightboxCaption {
-    left: 20px;
-    bottom: 82px;
-  }
-
-  .lightboxControls {
-    left: 20px;
-    right: 20px;
-    justify-content: flex-end;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .portfolio.is-visible .project { animation: none; }
+
+  .projectSwapImage,
+  .project::after {
+    transition: none;
+  }
 }

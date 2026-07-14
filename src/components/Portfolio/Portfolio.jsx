@@ -3,37 +3,26 @@ import { portfolio } from "../../data/siteData.js";
 import "./Portfolio.css";
 
 function Portfolio() {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const activeProject = activeIndex === null ? null : portfolio[activeIndex];
-
-  const closeGallery = () => setActiveIndex(null);
-  const showPrevious = () =>
-    setActiveIndex((current) =>
-      current === null ? 0 : (current - 1 + portfolio.length) % portfolio.length,
-    );
-  const showNext = () =>
-    setActiveIndex((current) =>
-      current === null ? 0 : (current + 1) % portfolio.length,
-    );
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [touchPreviewIndex, setTouchPreviewIndex] = useState(null);
 
   useEffect(() => {
-    if (activeIndex === null) return undefined;
+    portfolio.forEach((item) => {
+      const image = new Image();
+      image.src = item.hoverImage;
+    });
+  }, []);
 
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") closeGallery();
-      if (event.key === "ArrowLeft") showPrevious();
-      if (event.key === "ArrowRight") showNext();
-    };
+  const handleMouseEnter = (index) => {
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      setHoveredIndex(index);
+    }
+  };
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [activeIndex]);
+  const handleTouchPreview = (index) => {
+    setHoveredIndex(null);
+    setTouchPreviewIndex((current) => (current === index ? null : index));
+  };
 
   return (
     <section className="portfolio section" id="portfolio" data-animate>
@@ -46,62 +35,41 @@ function Portfolio() {
       </div>
 
       <div className="portfolioGrid" id="portfolioGrid">
-        {portfolio.map((item, index) => (
-          <button
-            className={`project${item.layout ? ` project--${item.layout}` : ""}`}
-            key={item.title}
-            type="button"
-            onClick={() => setActiveIndex(index)}
-            aria-label={`View ${item.title} in gallery`}
-            style={{ "--project-delay": `${index * 80}ms` }}
-          >
-            <img src={item.image} alt={item.alt} loading="lazy" />
-            <span className="projectShade" />
-            <span className="projectContent">
-              <span className="projectMeta">
-                <span>{item.tag}</span>
+        {portfolio.map((item, index) => {
+          const isPreviewing = hoveredIndex === index || touchPreviewIndex === index;
+
+          return (
+            <article
+              className={`project${item.layout ? ` project--${item.layout}` : ""}`}
+              key={item.title}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              onTouchEnd={() => handleTouchPreview(index)}
+              data-previewing={touchPreviewIndex === index}
+              style={{ "--project-delay": `${index * 80}ms` }}
+            >
+              <img
+                className={`projectSwapImage${isPreviewing ? " is-hidden" : ""}`}
+                src={item.image}
+                alt={item.alt}
+                loading="lazy"
+              />
+              <img
+                className={`projectSwapImage projectSwapImage--hover${isPreviewing ? " is-visible" : ""}`}
+                src={item.hoverImage}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              />
+              <span className="projectShade" />
+              <span className="projectContent">
+                <span className="projectMeta">{item.tag}</span>
+                <span className="projectTitle">{item.title}</span>
               </span>
-              <span className="projectTitle">{item.title}</span>
-              <span className="projectExplore">View story <b aria-hidden="true">↗</b></span>
-            </span>
-          </button>
-        ))}
+            </article>
+          );
+        })}
       </div>
-
-      {activeProject && (
-        <div
-          className="portfolioLightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${activeProject.title} gallery preview`}
-          onClick={closeGallery}
-        >
-          <button
-            className="lightboxClose"
-            type="button"
-            onClick={closeGallery}
-            aria-label="Close gallery"
-            autoFocus
-          >
-            <span />
-            <span />
-          </button>
-
-          <div className="lightboxStage" onClick={(event) => event.stopPropagation()}>
-            <img src={activeProject.image} alt={activeProject.alt} />
-            <div className="lightboxCaption">
-              <p>{activeProject.tag}</p>
-              <h3>{activeProject.title}</h3>
-            </div>
-          </div>
-
-          <div className="lightboxControls" onClick={(event) => event.stopPropagation()}>
-            <button type="button" onClick={showPrevious} aria-label="Previous photograph">←</button>
-            <span>{String(activeIndex + 1).padStart(2, "0")} / {String(portfolio.length).padStart(2, "0")}</span>
-            <button type="button" onClick={showNext} aria-label="Next photograph">→</button>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

@@ -157,7 +157,6 @@ function App() {
             <Hero />
             <ExperienceSlider />
             <Portfolio />
-            <BrandRail />
             <Films />
             <JbReviews />
             <VideoCTA />

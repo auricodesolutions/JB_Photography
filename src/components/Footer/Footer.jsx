@@ -4,6 +4,7 @@ import "./Footer.css";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
+  const whatsappMessage = encodeURIComponent(site.whatsappMessage);
 
   return (
     <footer className="footer" data-animate>
@@ -22,7 +23,7 @@ function Footer() {
 
           <div className="footerCtaGroup">
             <a
-              href={`https://wa.me/${site.whatsapp}`}
+              href={`https://wa.me/${site.whatsapp}?text=${whatsappMessage}`}
               target="_blank"
               rel="noreferrer"
               className="footerPrimaryBtn"
@@ -41,9 +42,18 @@ function Footer() {
             <h3>Explore</h3>
             <a href="#home">Home</a>
             <a href="#portfolio">Portfolio</a>
-            <a href="#services">Services</a>
             <a href="#films">Wedding Films</a>
-            <a href="#packages">Packages</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#faq">FAQ</a>
+          </div>
+
+          <div className="footerColumn">
+            <h3>Follow Us</h3>
+            {socialLinks.map((social) => (
+              <a href={social.url} target="_blank" rel="noreferrer" key={social.name}>
+                {social.name}
+              </a>
+            ))}
           </div>
 
           <div className="footerColumn">
@@ -55,41 +65,18 @@ function Footer() {
             <a href="#services">Event Coverage</a>
           </div>
 
-          <div className="footerColumn">
-            <h3>Contact</h3>
-            <a href={`tel:${site.phone}`}>{site.phone}</a>
-            <a href={`mailto:${site.email}`}>{site.email}</a>
-            <a
-              href={`https://wa.me/${site.whatsapp}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              WhatsApp
-            </a>
-            <span>{site.location}</span>
-          </div>
-
-          <div className="footerColumn footerSocialColumn">
-            <h3>Social</h3>
-            {socialLinks.map((link) => (
-              <a
-                href={link.url}
-                target="_blank"
-                rel="noreferrer"
-                key={link.name}
-              >
-                {link.name} <span>↗</span>
-              </a>
-            ))}
-          </div>
         </div>
       </div>
 
 
       <div className="footerBottom">
-        <p>
-          © {currentYear} {site.name}. All rights reserved.
-        </p>
+        <div className="footerLegal">
+          <p>© {currentYear} {site.name}. All rights reserved.</p>
+          <div className="footerLegalLinks">
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms">Terms</a>
+          </div>
+        </div>
 
         <p>
           Designed & Developed by{" "}

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { reviews } from "../../data/siteData.js";
 import "./JbReviews.css";
 
+const REVIEW_INTERVAL = 8000;
+
 function JbReviews() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   const totalReviews = reviews.length;
   const activeReview = reviews[activeIndex];
@@ -20,14 +21,14 @@ function JbReviews() {
   const formatNumber = (num) => String(num).padStart(2, "0");
 
   useEffect(() => {
-    if (isPaused || totalReviews <= 1) return undefined;
+    if (totalReviews <= 1) return undefined;
 
-    const timer = window.setInterval(() => {
+    const timer = window.setTimeout(() => {
       setActiveIndex((prev) => (prev === totalReviews - 1 ? 0 : prev + 1));
-    }, 3000);
+    }, REVIEW_INTERVAL);
 
-    return () => window.clearInterval(timer);
-  }, [isPaused, totalReviews]);
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, totalReviews]);
 
   if (!activeReview) return null;
 
@@ -36,10 +37,7 @@ function JbReviews() {
       className="jbReviews"
       id="reviews"
       data-animate
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocus={() => setIsPaused(true)}
-      onBlur={() => setIsPaused(false)}
+      style={{ "--review-duration": `${REVIEW_INTERVAL}ms` }}
     >
       <div className="jbReviewsInner">
         <div className="jbReviewImageBox" key={`image-${activeIndex}`}>
@@ -78,7 +76,7 @@ function JbReviews() {
             </button>
           </div>
 
-          <div className={`jbReviewProgress ${isPaused ? "isPaused" : ""}`} key={activeIndex} />
+          <div className="jbReviewProgress" key={activeIndex} />
         </div>
       </div>
     </section>

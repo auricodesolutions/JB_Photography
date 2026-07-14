@@ -70,8 +70,8 @@ function Hero() {
             View Portfolio <span>›</span>
           </a>
 
-          <a href="#services" className="heroBtn heroBtnOutline">
-            Our Services <span>›</span>
+          <a href="#contact" className="heroBtn heroBtnOutline">
+            Book Your Date <span>›</span>
           </a>
         </div>
       </div>

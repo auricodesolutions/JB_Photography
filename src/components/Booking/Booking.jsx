@@ -3,9 +3,7 @@ import { site } from "../../data/siteData.js";
 import "./Booking.css";
 
 function Booking() {
-  const whatsappMessage = encodeURIComponent(
-    "Hello JB WEDDINGS, I would like to ask for a wedding/event quotation.",
-  );
+  const whatsappMessage = encodeURIComponent(site.whatsappMessage);
 
   return (
     <section className="booking section" id="contact" data-animate>

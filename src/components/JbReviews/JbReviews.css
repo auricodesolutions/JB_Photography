@@ -24,7 +24,7 @@
   z-index: 2;
   overflow: hidden;
   background: #eeeeee;
-  animation: jbReviewImageIn 0.35s var(--ease) both;
+  animation: jbReviewImageIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .jbReviewImageBox img {
@@ -33,7 +33,7 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  animation: jbReviewImageZoom 3s ease both;
+  animation: jbReviewImageZoom var(--review-duration, 8s) ease-out both;
 }
 
 /* ---------------- RIGHT SIDE ---------------- */
@@ -53,7 +53,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: jbReviewTextIn 0.42s var(--ease) both;
+  animation: jbReviewTextIn 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
   text-align: center;
 }
 
@@ -113,11 +113,7 @@
   height: 100%;
   background: #111111;
   transform-origin: left;
-  animation: jbReviewProgress 3s linear forwards;
-}
-
-.jbReviewProgress.isPaused::before {
-  animation-play-state: paused;
+  animation: jbReviewProgress var(--review-duration, 8s) linear forwards;
 }
 
 .jbReviewControls button {
@@ -207,7 +203,7 @@
 @keyframes jbReviewImageIn {
   from {
     opacity: 0;
-    transform: translateX(-30px) scale(1.03);
+    transform: translateX(-18px) scale(1.025);
   }
 
   to {
@@ -219,7 +215,7 @@
 @keyframes jbReviewTextIn {
   from {
     opacity: 0;
-    transform: translateY(22px);
+    transform: translateY(16px);
   }
 
   to {
