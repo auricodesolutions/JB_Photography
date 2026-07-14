@@ -75,7 +75,7 @@ function App() {
           }
         });
       },
-      { threshold: 0.14 },
+      { threshold: 0.02 },
     );
 
     animatedItems.forEach((item) => observer.observe(item));

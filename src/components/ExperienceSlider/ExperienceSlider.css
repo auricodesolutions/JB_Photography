@@ -42,7 +42,7 @@
   display: flex;
   height: 100%;
   will-change: transform;
-  animation: experienceSlide 30s infinite var(--ease);
+  animation: experienceSlide 28s ease-in-out infinite alternate;
 }
 
 .experienceMainTrack img {
@@ -87,7 +87,7 @@
   display: flex;
   height: 100%;
   will-change: transform;
-  animation: experienceSlide 30s infinite var(--ease);
+  animation: experienceSlide 28s ease-in-out infinite alternate;
 }
 
 .experienceSliderTrack img {
@@ -293,36 +293,32 @@
   }
 }
 
-/* ---------------- 5 IMAGE SLIDER ANIMATION ---------------- */
+/* ---------------- SMOOTH LEFT / RIGHT IMAGE SLIDER ---------------- */
 
 @keyframes experienceSlide {
   0%,
-  15% {
+  12% {
     transform: translateX(0%);
   }
 
-  20%,
-  35% {
+  22%,
+  32% {
     transform: translateX(-100%);
   }
 
-  40%,
-  55% {
+  42%,
+  52% {
     transform: translateX(-200%);
   }
 
-  60%,
-  75% {
+  62%,
+  72% {
     transform: translateX(-300%);
   }
 
-  80%,
-  95% {
-    transform: translateX(-400%);
-  }
-
+  82%,
   100% {
-    transform: translateX(-500%);
+    transform: translateX(-400%);
   }
 }
 

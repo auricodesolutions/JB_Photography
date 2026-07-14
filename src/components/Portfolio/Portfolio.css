@@ -110,42 +110,33 @@
   grid-column: span 6;
 }
 
-.project img {
+.projectImageTrack {
   position: absolute;
   inset: 0;
-  width: 100%;
+  display: flex;
+  width: 200%;
+  height: 100%;
+  will-change: transform;
+  transform: translateX(0);
+  transition: transform 1100ms ease-in-out;
+}
+
+.projectImageTrack.is-previewing {
+  transform: translateX(-50%);
+}
+
+.projectImageTrack img {
+  flex: 0 0 50%;
+  min-width: 50%;
+  width: 50%;
   height: 100%;
   object-fit: cover;
   pointer-events: none;
   filter: saturate(0.72) contrast(1.03);
   transform: scale(1.025);
-  will-change: transform;
   transition:
-    opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 720ms ease,
-    transform 950ms var(--ease);
-}
-
-.projectSwapImage {
-  opacity: 1;
-}
-
-.projectSwapImage--hover {
-  opacity: 0;
-  filter: saturate(0.82) contrast(1.02) blur(3px);
-  transform: scale(1.14);
-}
-
-.project .projectSwapImage.is-hidden {
-  opacity: 0;
-  filter: saturate(0.8) contrast(1) blur(2px);
-  transform: scale(0.98);
-}
-
-.project .projectSwapImage--hover.is-visible {
-  opacity: 1;
-  filter: saturate(1) contrast(1.04) blur(0);
-  transform: scale(1.075);
+    filter 650ms ease,
+    transform 1100ms ease-in-out;
 }
 
 .project::after {
@@ -176,6 +167,31 @@
 @media (hover: none), (pointer: coarse) {
   .project {
     touch-action: manipulation;
+  }
+
+  .projectImageTrack {
+    animation: portfolioMobileSlide 8s ease-in-out infinite;
+  }
+
+  .project[data-previewing="true"] .projectImageTrack {
+    animation: none;
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes portfolioMobileSlide {
+  0%,
+  32% {
+    transform: translateX(0);
+  }
+
+  50%,
+  82% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }
 
@@ -216,8 +232,9 @@
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.38);
 }
 
-.project:hover img,
-.project:focus-visible img {
+.project:hover .projectImageTrack img,
+.project:focus-visible .projectImageTrack img,
+.project[data-previewing="true"] .projectImageTrack img {
   filter: saturate(1) contrast(1);
   transform: scale(1.075);
 }
@@ -266,8 +283,10 @@
 @media (prefers-reduced-motion: reduce) {
   .portfolio.is-visible .project { animation: none; }
 
-  .projectSwapImage,
+  .projectImageTrack,
+  .projectImageTrack img,
   .project::after {
+    animation: none;
     transition: none;
   }
 }

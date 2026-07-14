@@ -48,19 +48,20 @@ function Portfolio() {
               data-previewing={touchPreviewIndex === index}
               style={{ "--project-delay": `${index * 80}ms` }}
             >
-              <img
-                className={`projectSwapImage${isPreviewing ? " is-hidden" : ""}`}
-                src={item.image}
-                alt={item.alt}
-                loading="lazy"
-              />
-              <img
-                className={`projectSwapImage projectSwapImage--hover${isPreviewing ? " is-visible" : ""}`}
-                src={item.hoverImage}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-              />
+              <span
+                className={`projectImageTrack${isPreviewing ? " is-previewing" : ""}`}
+              >
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  loading="lazy"
+                />
+                <img
+                  src={item.hoverImage}
+                  alt=""
+                  loading="lazy"
+                />
+              </span>
               <span className="projectShade" />
               <span className="projectContent">
                 <span className="projectMeta">{item.tag}</span>

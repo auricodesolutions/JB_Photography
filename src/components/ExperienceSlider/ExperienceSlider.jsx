@@ -11,11 +11,10 @@ function ExperienceSlider() {
       <div className="experienceLeft">
         <div className="experienceMainSlider">
           <div className="experienceMainTrack">
-            {[...experienceMainImages, experienceMainImages[0]].map((image, index) => (
+            {experienceMainImages.map((image, index) => (
               <img
                 src={image.src}
-                alt={index === experienceMainImages.length ? "" : image.alt}
-                aria-hidden={index === experienceMainImages.length}
+                alt={image.alt}
                 key={`main-${image.src}-${index}`}
               />
             ))}
@@ -24,11 +23,10 @@ function ExperienceSlider() {
 
         <div className="experienceFloatingImage">
           <div className="experienceSliderTrack">
-            {[...experienceFloatingImages, experienceFloatingImages[0]].map((image, index) => (
+            {experienceFloatingImages.map((image, index) => (
               <img
                 src={image.src}
-                alt={index === experienceFloatingImages.length ? "" : image.alt}
-                aria-hidden={index === experienceFloatingImages.length}
+                alt={image.alt}
                 key={`floating-${image.src}-${index}`}
               />
             ))}
