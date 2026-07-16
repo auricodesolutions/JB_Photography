@@ -3,7 +3,7 @@
   background: #050505;
   color: #ffffff;
   overflow: hidden;
-  padding: 90px 6% 28px;
+  padding: 42px 6% 28px;
 }
 
 .footer::before {
@@ -311,7 +311,7 @@
 /* Tablet */
 @media (max-width: 1100px) {
   .footer {
-    padding-top: 76px;
+    padding-top: 40px;
   }
 
   .footerTop {
@@ -337,7 +337,7 @@
 /* Mobile */
 @media (max-width: 680px) {
   .footer {
-    padding: 62px 22px 24px;
+    padding: 36px 22px 24px;
   }
 
   .footerLogo {

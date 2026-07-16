@@ -55,10 +55,10 @@ function Header({ onNavigate }) {
 
       <nav className={open ? "isOpen" : ""} aria-label="Main navigation">
         <a href="/#home" onClick={(event) => goTo(event, "home", "home")}>Home</a>
+        <a href="/about" onClick={(event) => goTo(event, "about")}>About</a>
         <a href="/#portfolio" onClick={(event) => goTo(event, "home", "portfolio")}>Portfolio</a>
         <a href="/#films" onClick={(event) => goTo(event, "home", "films")}>Wedding Films</a>
         <a href="/#reviews" onClick={(event) => goTo(event, "home", "reviews")}>Reviews</a>
-        <a href="/#faq" onClick={(event) => goTo(event, "home", "faq")}>FAQ</a>
         <a href="/#contact" className="quoteLink" onClick={(event) => goTo(event, "home", "contact")}>Ask a Quote</a>
       </nav>
     </header>

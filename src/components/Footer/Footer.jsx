@@ -10,7 +10,7 @@ function Footer() {
     <footer className="footer" data-animate>
       <div className="footerTop">
         <div className="footerBrandBlock">
-          <a href="#home" className="footerLogo" aria-label="JB WEDDINGS home">
+          <a href="/#home" className="footerLogo" aria-label="JB WEDDINGS home">
             <img src="/assets/jb-logo-white.png" alt="JB WEDDINGS logo" />
           </a>
 
@@ -31,7 +31,7 @@ function Footer() {
               Ask a Quote <span>↗</span>
             </a>
 
-            <a href="#portfolio" className="footerSecondaryBtn">
+            <a href="/#portfolio" className="footerSecondaryBtn">
               View Portfolio
             </a>
           </div>
@@ -40,11 +40,11 @@ function Footer() {
         <div className="footerColumns">
           <div className="footerColumn">
             <h3>Explore</h3>
-            <a href="#home">Home</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#films">Wedding Films</a>
-            <a href="#reviews">Reviews</a>
-            <a href="#faq">FAQ</a>
+            <a href="/#home">Home</a>
+            <a href="/about">About</a>
+            <a href="/#portfolio">Portfolio</a>
+            <a href="/#films">Wedding Films</a>
+            <a href="/#reviews">Reviews</a>
           </div>
 
           <div className="footerColumn">
@@ -58,11 +58,11 @@ function Footer() {
 
           <div className="footerColumn">
             <h3>Services</h3>
-            <a href="#services">Wedding Photography</a>
-            <a href="#services">Wedding Videography</a>
-            <a href="#services">Pre-shoot Photography</a>
-            <a href="#services">Engagement Shoots</a>
-            <a href="#services">Event Coverage</a>
+            <a href="/about#services">Wedding Photography</a>
+            <a href="/about#services">Wedding Videography</a>
+            <a href="/about#services">Pre-shoot Photography</a>
+            <a href="/about#services">Engagement Shoots</a>
+            <a href="/about#services">Event Coverage</a>
           </div>
 
         </div>

@@ -190,13 +190,29 @@ export const portfolio = [
 ];
 
 export const about = {
-  title: "A calm eye for honest wedding stories.",
+  title: "Your wedding is more than a day. It is a story worth remembering well.",
   lead:
-    "JB WEDDINGS creates elegant wedding photographs and films with a quiet, emotional, and timeless feeling.",
+    "JB WEDDINGS is a Sri Lankan wedding photography and filmmaking studio devoted to honest emotion, refined imagery, and stories that remain meaningful for generations.",
   text:
-    "From the first conversation to the final gallery, we guide couples with patience and care. Our focus is on natural portraits, meaningful details, family moments, and the small in-between emotions that make every celebration personal.",
+    "From the first conversation to the final gallery, we guide every couple with patience and care. We notice the meaningful details, the people you love, and the quiet in-between moments that make your celebration entirely your own.",
+  secondText:
+    "Our style brings documentary honesty together with elegant portraiture. The result is a collection that feels natural today and timeless when you return to it years from now.",
   image: asset("img (1).jpeg"),
   imageAlt: "Wedding couple photographed by JB WEDDINGS",
+  studioImage: asset("img (42).jpeg"),
+  studioImageAlt: "Romantic couple portrait photographed by JB WEDDINGS",
+  founderTitle: "The man behind the lens",
+  founderName: "Jagath Bandara",
+  founderRole: "Founder & Lead Photographer",
+  founderImage: asset("owner.jpg"),
+  founderImageAlt: "Jagath Bandara, founder and lead photographer of JB WEDDINGS",
+  founderIntro:
+    "leads JB WEDDINGS with a passion for honest emotion, elegant imagery, and timeless wedding stories.",
+  founderText: [
+    "With a calm presence and a careful eye for detail, Jagath approaches every celebration as a story with its own people, traditions, and rhythm. He gives couples gentle direction when it is helpful, then allows the real moments to unfold naturally.",
+    "From intimate ceremonies to grand Sri Lankan weddings, his focus remains the same: to preserve the laughter, emotion, and quiet connections that make each day personal. Every finished collection is created to feel beautiful now and deeply meaningful for years to come.",
+    "Under his direction, JB WEDDINGS brings photography and cinematic filmmaking together as one thoughtful experience, from the first conversation through to the final delivery.",
+  ],
   stats: [
     {
       value: "10+",
@@ -211,32 +227,60 @@ export const about = {
       label: "Film delivery",
     },
   ],
+  storytellingTitle: ["Timeless stories", "through the lens"],
+  storytellingVideo: asset("video.mp4"),
+  storytellingVideoPoster: asset("img (172).jpeg"),
+  storytellingText: [
+    "At JB WEDDINGS, we believe every photograph carries the heartbeat of a story. What began as a passion for capturing fleeting moments has grown into a craft devoted to preserving emotion, movement, and meaning in every frame.",
+    "From quiet glances to joyful celebrations, we create imagery that feels honest, beautiful, and unmistakably yours. Creativity, authenticity, and care guide every story we photograph and film.",
+    "Every image we deliver is more than a memory. It is part of your legacy, told through light, emotion, and timeless artistry.",
+  ],
+  quote:
+    "The best wedding photographs do more than show how everything looked. They bring back how it felt.",
 };
 
 export const services = [
   {
     title: "Wedding Photography",
     text: "Elegant wedding photography with timeless portraits, candid emotions, family moments, and refined editing.",
+    image: asset("img (1).jpeg"),
+    alt: "Bride and groom photographed in window light",
+    includes: ["Wedding-day coverage", "Professionally edited photographs", "Private online gallery"],
   },
   {
     title: "Wedding Videography",
     text: "Cinematic wedding films created with emotion, movement, music, and storytelling.",
+    image: asset("img (170).jpeg"),
+    alt: "Elegant bridal portrait captured by JB WEDDINGS",
+    includes: ["Cinematic highlight film", "Ceremony and speeches", "4K digital delivery"],
   },
   {
     title: "Pre-shoot Photography",
     text: "Creative couple sessions planned with beautiful locations, natural light, outfits, and mood.",
+    image: asset("img (100).jpeg"),
+    alt: "Couple enjoying a relaxed outdoor pre-shoot",
+    includes: ["Creative planning", "Location and outfit guidance", "Edited portrait gallery"],
   },
   {
     title: "Engagement Shoots",
     text: "Graceful engagement portraits for announcements, invitations, memories, and social media.",
+    image: asset("img (42).jpeg"),
+    alt: "Romantic engagement portrait photographed through reflections",
+    includes: ["Guided couple session", "Natural and editorial portraits", "Online gallery"],
   },
   {
     title: "Homecoming Coverage",
     text: "Complete homecoming coverage with ceremony moments, couple portraits, family photos, and celebrations.",
+    image: asset("img (150).jpeg"),
+    alt: "Bride and groom during their wedding celebration",
+    includes: ["Ceremony and reception coverage", "Couple and family portraits", "Edited image collection"],
   },
   {
     title: "Event Photography",
     text: "Professional coverage for birthdays, private events, corporate functions, and special celebrations.",
+    image: asset("img (154).jpeg"),
+    alt: "Couple photographed during an evening celebration",
+    includes: ["Flexible event coverage", "Key moments and group portraits", "Professional image delivery"],
   },
 ];
 

@@ -1,0 +1,596 @@
+.aboutPage {
+  overflow: hidden;
+  background: var(--black);
+}
+
+.aboutPage h1,
+.aboutPage h2,
+.aboutPage h3 {
+  font-family: var(--editorial-font);
+}
+
+.aboutStorytelling h2 {
+  margin: 0;
+  font-size: clamp(2.7rem, 6.4vw, 6.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+}
+
+.aboutFounder {
+  position: relative;
+  isolation: isolate;
+  padding-top: clamp(150px, 14vw, 210px);
+  color: var(--white);
+  background: #030303;
+}
+
+.aboutFounderBackdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0.12;
+}
+
+.aboutFounderBackdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #030303 4%, rgba(3, 3, 3, 0.72) 50%, #030303 96%);
+}
+
+.aboutFounderBackdrop img {
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) blur(2px);
+  transform: scale(1.08);
+}
+
+.aboutFounderHeading {
+  max-width: 1100px;
+  margin: 0 auto clamp(30px, 4vw, 48px);
+  text-align: center;
+}
+
+.aboutFounderHeading h1 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(2.5rem, 4.2vw, 4.8rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
+.aboutFounderLine {
+  position: relative;
+  height: 2px;
+  margin: 38px auto 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), var(--white), rgba(255, 255, 255, 0.2));
+}
+
+.aboutFounderLine span {
+  position: absolute;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--white);
+  transform: translateY(-50%);
+}
+
+.aboutFounderLine span:first-child { left: -1px; }
+.aboutFounderLine span:last-child { right: -1px; }
+
+.aboutFounderGrid {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.72fr) minmax(0, 1.28fr);
+  align-items: start;
+  gap: clamp(52px, 9vw, 150px);
+}
+
+.aboutFounderPortrait {
+  margin: -18px 0 0;
+}
+
+.aboutFounderPortrait img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 8px;
+  background: #050505;
+}
+
+.aboutFounderPortrait figcaption {
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.aboutFounderCopy {
+  max-width: 900px;
+}
+
+.aboutFounderCopy p {
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(0.98rem, 1.35vw, 1.18rem);
+  line-height: 1.9;
+}
+
+.aboutFounderCopy .aboutFounderLead {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1.08rem, 1.7vw, 1.4rem);
+  font-weight: 650;
+}
+
+.aboutFounderSignature {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 42px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.aboutFounderSignature span {
+  color: var(--white);
+  font-family: var(--editorial-font);
+  font-size: 2rem;
+}
+
+.aboutFounderSignature small {
+  color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.aboutStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.aboutStat {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  border-right: 1px solid var(--line);
+}
+
+.aboutStat:last-child {
+  border-right: 0;
+}
+
+.aboutStat strong {
+  font-family: var(--editorial-font);
+  font-size: clamp(3.3rem, 7vw, 7.5rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.aboutStat span {
+  margin-top: 13px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.aboutPage .aboutServicesNew.section {
+  padding: clamp(74px, 8vw, 124px) clamp(18px, 4vw, 64px) !important;
+  color: var(--ink);
+  background: var(--soft-white);
+}
+
+.aboutServicesNewHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(36px, 7vw, 110px);
+  margin-bottom: clamp(42px, 5vw, 70px);
+}
+
+.aboutServicesNewHeader .eyebrow {
+  color: var(--grey);
+}
+
+.aboutServicesNewHeader h2 {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(2.8rem, 5.7vw, 6.2rem);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+}
+
+.aboutServicesNewHeader > p {
+  max-width: 500px;
+  margin: 0 0 6px;
+  color: #62615b;
+  line-height: 1.75;
+}
+
+.aboutServiceAccordion {
+  display: flex;
+  gap: 8px;
+  height: clamp(590px, 67vh, 740px);
+  overflow: hidden;
+}
+
+.aboutServiceAccordionCard {
+  position: relative;
+  min-width: 72px;
+  flex: 0.72 1 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #171717;
+  transition: flex 850ms var(--ease), filter 450ms ease;
+}
+
+.aboutServiceAccordionCard.is-active {
+  flex: 5 1 0;
+}
+
+.aboutServiceAccordionCard > img,
+.aboutServiceAccordionShade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.aboutServiceAccordionCard > img {
+  z-index: -2;
+  object-fit: cover;
+  filter: saturate(0.82) brightness(0.74);
+  transform: scale(1.04);
+  transition: transform 1000ms var(--ease), filter 700ms ease;
+}
+
+.aboutServiceAccordionCard.is-active > img {
+  filter: saturate(0.96) brightness(0.88);
+  transform: scale(1);
+}
+
+.aboutServiceAccordionShade {
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.2) 46%, rgba(0, 0, 0, 0.88));
+}
+
+.aboutServiceTrigger {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  padding: 22px 18px;
+  color: var(--white);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.aboutServiceTrigger > span {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  font-size: 0.62rem;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  transform: translateX(-50%);
+}
+
+.aboutServiceTrigger > strong {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  font-family: var(--editorial-font);
+  font-size: clamp(1.2rem, 1.6vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: translateX(-50%) rotate(180deg);
+  transition: opacity 300ms ease;
+}
+
+.aboutServiceAccordionCard.is-active .aboutServiceTrigger {
+  inset: 18px auto auto 18px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  backdrop-filter: blur(8px);
+}
+
+.aboutServiceAccordionCard.is-active .aboutServiceTrigger > span {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.aboutServiceAccordionCard.is-active .aboutServiceTrigger > strong {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.aboutServiceExpanded {
+  position: absolute;
+  z-index: 1;
+  left: clamp(24px, 4vw, 58px);
+  right: clamp(24px, 4vw, 58px);
+  bottom: clamp(28px, 4vw, 52px);
+  max-width: 680px;
+  color: var(--white);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(28px);
+  transition: opacity 430ms ease 180ms, transform 600ms var(--ease) 180ms, visibility 0s linear 620ms;
+}
+
+.aboutServiceAccordionCard.is-active .aboutServiceExpanded {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 260ms;
+}
+
+.aboutServiceExpanded .eyebrow {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.aboutServiceExpanded h3 {
+  margin: 0 0 17px;
+  font-size: clamp(2.8rem, 5vw, 5.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+
+.aboutServiceExpanded > p:not(.eyebrow) {
+  max-width: 590px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.65;
+}
+
+.aboutServiceExpanded ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aboutServiceExpanded li {
+  padding: 8px 11px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(8px);
+}
+
+.aboutServiceExpanded a {
+  display: inline-block;
+  margin-top: 24px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid currentColor;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.aboutPage .aboutStorytelling.section {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.82fr) minmax(0, 1.18fr);
+  align-items: stretch;
+  min-height: 0;
+  border-bottom: 10px solid var(--soft-white);
+  padding: 0 clamp(18px, 5vw, 76px) !important;
+  color: var(--ink);
+  background: var(--soft-white);
+}
+
+.aboutStorytellingVisual {
+  position: relative;
+  align-self: stretch;
+  height: auto;
+  min-height: 0;
+  overflow: hidden;
+  background: #d8d2c8;
+}
+
+.aboutStorytellingVisual video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.aboutStorytellingCopy {
+  align-self: start;
+  padding: 0 clamp(30px, 5vw, 82px) 28px;
+}
+
+.aboutStorytelling .eyebrow {
+  color: var(--grey);
+}
+
+.aboutStorytelling h2 {
+  display: grid;
+  max-width: 920px;
+  font-size: clamp(2.5rem, 3.6vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+@media (min-width: 901px) {
+  .aboutStorytelling h2 span {
+    white-space: nowrap;
+  }
+}
+
+.aboutStorytellingText {
+  max-width: 900px;
+  margin-top: clamp(34px, 4vw, 56px);
+}
+
+.aboutStorytellingText p {
+  margin: 0 0 26px;
+  color: #373a36;
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  line-height: 1.75;
+}
+
+.aboutStorytellingText p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .aboutFounderGrid,
+  .aboutPage .aboutStorytelling.section {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutFounderPortrait {
+    width: min(72%, 520px);
+    margin: -10px auto 0;
+  }
+
+  .aboutServicesNewHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .aboutServiceAccordion {
+    height: 650px;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+  }
+
+  .aboutServiceAccordionCard,
+  .aboutServiceAccordionCard.is-active {
+    min-width: 0;
+    flex: 0 0 min(82vw, 560px);
+    scroll-snap-align: center;
+  }
+
+  .aboutStorytellingVisual {
+    height: 580px;
+    min-height: 0;
+  }
+
+  .aboutStorytellingCopy {
+    padding: 40px clamp(24px, 5vw, 60px) 58px;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .aboutPage .aboutServicesNew.section {
+    padding: 68px 18px !important;
+  }
+
+  .aboutServicesNewHeader h2 {
+    font-size: clamp(2.8rem, 14vw, 4.4rem);
+  }
+
+  .aboutServiceAccordion {
+    height: 610px;
+  }
+
+  .aboutServiceAccordionCard,
+  .aboutServiceAccordionCard.is-active {
+    flex-basis: 86vw;
+  }
+
+  .aboutServiceExpanded {
+    left: 20px;
+    right: 20px;
+    bottom: 28px;
+  }
+
+  .aboutServiceExpanded h3 {
+    font-size: clamp(2.6rem, 13vw, 4rem);
+  }
+
+  .aboutServiceExpanded li {
+    font-size: 0.62rem;
+  }
+
+  .aboutFounderPortrait,
+  .aboutStorytellingVisual {
+    width: 100%;
+  }
+
+  .aboutPage .aboutStorytelling.section {
+    min-height: auto;
+  }
+
+  .aboutStorytellingVisual {
+    height: auto;
+    min-height: 0;
+  }
+
+  .aboutStorytellingVisual {
+    aspect-ratio: 4 / 5;
+  }
+
+  .aboutStorytellingCopy {
+    padding: 40px 18px 58px;
+  }
+
+  .aboutFounderHeading {
+    margin-bottom: 44px;
+  }
+
+  .aboutFounderHeading h1 {
+    font-size: clamp(2.45rem, 11vw, 3.8rem);
+    white-space: normal;
+  }
+
+  .aboutFounderLine {
+    margin-top: 28px;
+  }
+
+  .aboutFounderCopy p {
+    line-height: 1.75;
+  }
+
+  .aboutStats {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutStat {
+    min-height: 190px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .aboutStat:last-child {
+    border-bottom: 0;
+  }
+
+}

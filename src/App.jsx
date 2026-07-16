@@ -11,6 +11,7 @@ import WhatsAppButton from "./components/WhatsAppButton/WhatsAppButton.jsx";
 import JbReviews from "./components/JbReviews/JbReviews.jsx";
 import FAQ from "./components/FAQ/FAQ.jsx";
 import VideoCTA from "./components/VideoCTA/VideoCTA.jsx";
+import About from "./components/About/About.jsx";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -99,7 +100,7 @@ function App() {
         item.style.removeProperty("--reveal-delay");
       });
     };
-  }, [loading]);
+  }, [loading, page]);
 
   useEffect(() => {
     const moveItems = document.querySelectorAll("[data-parallax]");
@@ -151,7 +152,7 @@ function App() {
       <Header onNavigate={navigate} />
       <main>
         {page === "about" ? (
-          <About onNavigate={navigate} />
+          <About />
         ) : (
           <>
             <Hero />
