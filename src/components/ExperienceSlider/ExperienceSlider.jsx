@@ -5,7 +5,12 @@ import {
 } from "../../data/siteData.js";
 import "./ExperienceSlider.css";
 
-function ExperienceSlider() {
+function ExperienceSlider({ onNavigate }) {
+  const goToAbout = (event, sectionId) => {
+    event.preventDefault();
+    onNavigate("about", sectionId);
+  };
+
   return (
     <section className="experience" data-animate>
       <div className="experienceLeft">
@@ -50,17 +55,25 @@ function ExperienceSlider() {
           emotional storytelling, and artistic touch.
         </p>
 
-       <div className="experienceActions">
-  <a href="#films" className="experienceBtn experienceBtnDark">
-    <span className="btnText">Read more</span>
-    <span className="btnArrow">›</span>
-  </a>
+        <div className="experienceActions">
+          <a
+            href="/about#behind-the-lens"
+            className="experienceBtn experienceBtnDark"
+            onClick={(event) => goToAbout(event, "behind-the-lens")}
+          >
+            <span className="btnText">Read more</span>
+            <span className="btnArrow">›</span>
+          </a>
 
-  <a href="#services" className="experienceBtn experienceBtnLight">
-    <span className="btnText">Our Services</span>
-    <span className="btnArrow">›</span>
-  </a>
-</div>
+          <a
+            href="/about#services"
+            className="experienceBtn experienceBtnLight"
+            onClick={(event) => goToAbout(event, "services")}
+          >
+            <span className="btnText">Our Services</span>
+            <span className="btnArrow">›</span>
+          </a>
+        </div>
       </div>
     </section>
   );

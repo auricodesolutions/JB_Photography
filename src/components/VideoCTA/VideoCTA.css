@@ -5,7 +5,7 @@
   align-items: center;
   overflow: hidden;
   padding: clamp(70px, 9vw, 140px) clamp(18px, 6vw, 100px);
-  background: #171717 url("/assets/img%20(172).jpeg") center / cover no-repeat;
+  background: #111111 url("/assets/img%20(172).jpeg") center / cover no-repeat;
   isolation: isolate;
 }
 
@@ -33,14 +33,14 @@
 
 .videoCtaOverlay {
   z-index: -2;
-  background: linear-gradient(90deg, rgba(4, 8, 6, 0.68), rgba(4, 8, 6, 0.2) 65%, rgba(4, 8, 6, 0.38));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.24) 65%, rgba(0, 0, 0, 0.48));
 }
 
 .videoCtaPanel {
   width: min(640px, 100%);
   padding: clamp(24px, 3.5vw, 46px);
   color: var(--white);
-  background: rgba(18, 22, 20, 0.58);
+  background: rgba(0, 0, 0, 0.62);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.26);
   backdrop-filter: blur(15px);
@@ -63,8 +63,8 @@
 .videoCtaPanel h2 span {
   width: fit-content;
   padding: 4px 10px;
-  color: #172019;
-  background: rgba(246, 242, 234, 0.92);
+  color: #000000;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .videoCtaPanel > p:not(.eyebrow) {

@@ -1,15 +1,15 @@
-.faq { color: var(--ink); background: #f4efe6; }
+.faq { color: var(--white); background: #000000; }
 
 .faqHeader { max-width: 920px; margin: 0 auto clamp(50px, 7vw, 90px); text-align: center; }
-.faqHeader .eyebrow { color: #746d64; }
+.faqHeader .eyebrow { color: rgba(255, 255, 255, 0.62); }
 .faqHeader h2 { margin: 0 auto 22px; font-family: var(--editorial-font); font-size: clamp(2.5rem, 5.2vw, 5.8rem); line-height: 0.98; letter-spacing: -0.035em; }
-.faqHeader > p:last-child { max-width: 650px; margin: 0 auto; color: #625d56; font-size: clamp(0.95rem, 1.3vw, 1.15rem); line-height: 1.7; }
+.faqHeader > p:last-child { max-width: 650px; margin: 0 auto; color: var(--muted); font-size: clamp(0.95rem, 1.3vw, 1.15rem); line-height: 1.7; }
 
-.faqList { max-width: 980px; margin: 0 auto; border-top: 1px solid rgba(16, 16, 16, 0.45); }
-.faqItem { border-bottom: 1px solid rgba(16, 16, 16, 0.32); }
+.faqList { max-width: 980px; margin: 0 auto; border-top: 1px solid var(--line); }
+.faqItem { border-bottom: 1px solid var(--line); }
 .faqItem h3 { margin: 0; font-family: inherit; }
-.faqItem button { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 27px 4px; color: var(--ink); background: transparent; border: 0; text-align: left; font-size: clamp(1rem, 1.55vw, 1.35rem); font-weight: 700; cursor: pointer; transition: color 320ms ease, padding 420ms var(--ease); }
-.faqItem button:hover, .faqItem button:focus-visible, .faqItem.isOpen button { padding-inline: 12px; color: #705b43; }
+.faqItem button { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 27px 4px; color: var(--white); background: transparent; border: 0; text-align: left; font-size: clamp(1rem, 1.55vw, 1.35rem); font-weight: 700; cursor: pointer; transition: color 420ms ease, padding 520ms var(--ease); }
+.faqItem button:hover, .faqItem button:focus-visible, .faqItem.isOpen button { padding-inline: 12px; color: rgba(255, 255, 255, 0.68); }
 
 .faqItem button i { position: relative; flex: 0 0 18px; width: 18px; height: 18px; transition: transform 420ms var(--ease); }
 .faqItem button i::before, .faqItem button i::after { content: ""; position: absolute; top: 8px; left: 1px; width: 16px; height: 1.5px; background: currentColor; }
@@ -19,7 +19,7 @@
 
 .faqAnswer { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 520ms var(--ease), opacity 380ms ease; }
 .faqAnswer > div { overflow: hidden; }
-.faqAnswer p { max-width: 780px; margin: 0; padding: 0 48px 28px 12px; color: #625d56; font-size: 1rem; line-height: 1.75; }
+.faqAnswer p { max-width: 780px; margin: 0; padding: 0 48px 28px 12px; color: var(--muted); font-size: 1rem; line-height: 1.75; }
 .faqItem.isOpen .faqAnswer { grid-template-rows: 1fr; opacity: 1; }
 
 @media (max-width: 680px) {

@@ -190,8 +190,8 @@
 
 .aboutPage .aboutServicesNew.section {
   padding: clamp(74px, 8vw, 124px) clamp(18px, 4vw, 64px) !important;
-  color: var(--ink);
-  background: var(--soft-white);
+  color: var(--white);
+  background: #080808;
 }
 
 .aboutServicesNewHeader {
@@ -203,7 +203,7 @@
 }
 
 .aboutServicesNewHeader .eyebrow {
-  color: var(--grey);
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .aboutServicesNewHeader h2 {
@@ -217,7 +217,7 @@
 .aboutServicesNewHeader > p {
   max-width: 500px;
   margin: 0 0 6px;
-  color: #62615b;
+  color: var(--muted);
   line-height: 1.75;
 }
 
@@ -398,10 +398,10 @@
   grid-template-columns: minmax(360px, 0.82fr) minmax(0, 1.18fr);
   align-items: stretch;
   min-height: 0;
-  border-bottom: 10px solid var(--soft-white);
+  border-bottom: 10px solid #080808;
   padding: 0 clamp(18px, 5vw, 76px) !important;
-  color: var(--ink);
-  background: var(--soft-white);
+  color: var(--white);
+  background: #080808;
 }
 
 .aboutStorytellingVisual {
@@ -410,7 +410,7 @@
   height: auto;
   min-height: 0;
   overflow: hidden;
-  background: #d8d2c8;
+  background: var(--charcoal);
 }
 
 .aboutStorytellingVisual video {
@@ -428,7 +428,7 @@
 }
 
 .aboutStorytelling .eyebrow {
-  color: var(--grey);
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .aboutStorytelling h2 {
@@ -455,7 +455,7 @@
 
 .aboutStorytellingText p {
   margin: 0 0 26px;
-  color: #373a36;
+  color: var(--muted);
   font-size: clamp(1rem, 1.35vw, 1.25rem);
   line-height: 1.75;
 }

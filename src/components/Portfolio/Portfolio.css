@@ -1,8 +1,8 @@
 .portfolio {
   position: relative;
   overflow: hidden;
-  color: var(--ink);
-  background: var(--soft-white);
+  color: var(--white);
+  background: #080808;
 }
 
 .portfolio::before {
@@ -11,8 +11,8 @@
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 82% 8%, rgba(155, 118, 72, 0.1), transparent 32%),
-    linear-gradient(120deg, rgba(255, 255, 255, 0.46), transparent 45%);
+    radial-gradient(circle at 82% 8%, rgba(255, 255, 255, 0.06), transparent 32%),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.025), transparent 45%);
 }
 
 .portfolio .sectionHeader {
@@ -20,7 +20,7 @@
 }
 
 .portfolio .sectionHeader h2 {
-  color: var(--ink);
+  color: var(--white);
   font-family: var(--editorial-font);
   font-size: clamp(2rem, 4vw, 4rem);
   letter-spacing: -0.035em;
@@ -46,7 +46,7 @@
 }
 
 .portfolio .eyebrow {
-  color: #776f65;
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .portfolio .sectionHeader a {
@@ -54,20 +54,20 @@
 }
 
 .portfolio .sectionHeader a::before {
-  background: var(--black);
+  background: var(--white);
 }
 
 .portfolio .sectionHeader a:hover,
 .portfolio .sectionHeader a:focus-visible,
 .portfolio .sectionHeader a:active {
-  color: var(--white);
-  border-color: var(--black);
+  color: var(--black);
+  border-color: var(--white);
 }
 
 .portfolioIntro {
   max-width: 410px;
   margin: 0 0 5px;
-  color: #655f57;
+  color: var(--muted);
   font-size: clamp(0.9rem, 1.2vw, 1.05rem);
   line-height: 1.75;
 }

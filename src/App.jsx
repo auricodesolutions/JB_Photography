@@ -24,7 +24,7 @@ function App() {
     window.history.pushState({}, "", sectionId ? `${path}#${sectionId}` : path);
     setPage(targetPage);
 
-    if (targetPage === "home" && sectionId) {
+    if (sectionId) {
       window.setTimeout(() => {
         document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
       }, 60);
@@ -156,7 +156,7 @@ function App() {
         ) : (
           <>
             <Hero />
-            <ExperienceSlider />
+            <ExperienceSlider onNavigate={navigate} />
             <Portfolio />
             <Films />
             <JbReviews />

@@ -59,15 +59,15 @@
   flex: 0 0 auto;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.5rem, 4vw, 3.6rem);
-  color: #f3eee5;
+  color: #ffffff;
   opacity: 0.82;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.16);
   transform-style: preserve-3d;
   backface-visibility: hidden;
   text-shadow:
-    1px 1px 0 #b8b0a4,
-    2px 2px 0 #8e877d,
-    3px 3px 0 #625d56,
+    1px 1px 0 #c8c8c8,
+    2px 2px 0 #888888,
+    3px 3px 0 #505050,
     5px 6px 2px rgba(0, 0, 0, 0.82),
     0 18px 30px rgba(0, 0, 0, 0.76);
   transition:
@@ -89,9 +89,9 @@
 .brandRail:hover span {
   opacity: 1;
   text-shadow:
-    1px 1px 0 #d7d0c5,
-    2px 2px 0 #a69e92,
-    3px 3px 0 #777168,
+    1px 1px 0 #e0e0e0,
+    2px 2px 0 #aaaaaa,
+    3px 3px 0 #707070,
     6px 8px 3px rgba(0, 0, 0, 0.88),
     0 22px 38px rgba(0, 0, 0, 0.88);
 }
