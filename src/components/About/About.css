@@ -188,7 +188,7 @@
   text-transform: uppercase;
 }
 
-.aboutPage .aboutServicesNew.section {
+.aboutServicesNew.section {
   padding: clamp(74px, 8vw, 124px) clamp(18px, 4vw, 64px) !important;
   color: var(--white);
   background: #080808;
@@ -209,7 +209,7 @@
 .aboutServicesNewHeader h2 {
   max-width: 900px;
   margin: 0;
-  font-size: clamp(2.8rem, 5.7vw, 6.2rem);
+  font-size: clamp(2.6rem, 4.8vw, 5rem);
   line-height: 0.94;
   letter-spacing: -0.04em;
 }
@@ -224,7 +224,7 @@
 .aboutServiceAccordion {
   display: flex;
   gap: 8px;
-  height: clamp(590px, 67vh, 740px);
+  height: clamp(520px, 61vh, 660px);
   overflow: hidden;
 }
 
@@ -280,16 +280,6 @@
   cursor: pointer;
 }
 
-.aboutServiceTrigger > span {
-  position: absolute;
-  top: 22px;
-  left: 50%;
-  font-size: 0.62rem;
-  font-weight: 850;
-  letter-spacing: 0.16em;
-  transform: translateX(-50%);
-}
-
 .aboutServiceTrigger > strong {
   position: absolute;
   left: 50%;
@@ -305,24 +295,7 @@
 }
 
 .aboutServiceAccordionCard.is-active .aboutServiceTrigger {
-  inset: 18px auto auto 18px;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  backdrop-filter: blur(8px);
-}
-
-.aboutServiceAccordionCard.is-active .aboutServiceTrigger > span {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.aboutServiceAccordionCard.is-active .aboutServiceTrigger > strong {
-  opacity: 0;
-  pointer-events: none;
+  display: none;
 }
 
 .aboutServiceExpanded {
@@ -331,7 +304,7 @@
   left: clamp(24px, 4vw, 58px);
   right: clamp(24px, 4vw, 58px);
   bottom: clamp(28px, 4vw, 52px);
-  max-width: 680px;
+  max-width: 570px;
   color: var(--white);
   opacity: 0;
   visibility: hidden;
@@ -352,45 +325,116 @@
 
 .aboutServiceExpanded h3 {
   margin: 0 0 17px;
-  font-size: clamp(2.8rem, 5vw, 5.8rem);
+  font-size: clamp(2.6rem, 4.2vw, 4.7rem);
   line-height: 0.92;
   letter-spacing: -0.04em;
 }
 
 .aboutServiceExpanded > p:not(.eyebrow) {
-  max-width: 590px;
+  max-width: 520px;
   margin: 0;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.65;
 }
 
-.aboutServiceExpanded ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 24px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.aboutServiceExpanded li {
-  padding: 8px 11px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  font-size: 0.68rem;
-  letter-spacing: 0.05em;
-  backdrop-filter: blur(8px);
-}
-
 .aboutServiceExpanded a {
   display: inline-block;
-  margin-top: 24px;
+  margin-top: 20px;
   padding-bottom: 5px;
   border-bottom: 1px solid currentColor;
   font-size: 0.68rem;
   font-weight: 850;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+}
+
+.aboutWhy.section {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(320px, 0.9fr) minmax(340px, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  padding-top: clamp(84px, 9vw, 140px) !important;
+  padding-bottom: clamp(84px, 9vw, 140px) !important;
+  color: var(--white);
+  background: #080808;
+}
+
+.aboutWhy .eyebrow {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.aboutWhyIntro h2 {
+  max-width: 520px;
+  margin: 0 0 26px;
+  font-size: clamp(2.8rem, 4.5vw, 5.3rem);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+}
+
+.aboutWhyIntro > p:last-child {
+  max-width: 430px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+  line-height: 1.7;
+}
+
+.aboutWhyVisual {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: #151515;
+}
+
+.aboutWhyVisual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  pointer-events: none;
+}
+
+.aboutWhyVisual img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease), filter 700ms ease;
+}
+
+.aboutWhyVisual:hover img {
+  transform: scale(1.035);
+}
+
+.aboutWhyReasons {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.aboutWhyReasons article {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.7fr) 1fr;
+  gap: 20px;
+  padding: clamp(20px, 2.2vw, 30px) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.aboutWhyReasons h3,
+.aboutWhyReasons p {
+  margin: 0;
+}
+
+.aboutWhyReasons h3 {
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.aboutWhyReasons p {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.92rem;
+  line-height: 1.65;
 }
 
 .aboutPage .aboutStorytelling.section {
@@ -482,24 +526,36 @@
   }
 
   .aboutServiceAccordion {
-    height: 650px;
-    gap: 14px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
+    height: 600px;
+    gap: 6px;
+    overflow: hidden;
   }
 
-  .aboutServiceAccordionCard,
+  .aboutServiceAccordionCard {
+    min-width: 42px;
+    flex: 0.65 1 0;
+  }
+
   .aboutServiceAccordionCard.is-active {
     min-width: 0;
-    flex: 0 0 min(82vw, 560px);
-    scroll-snap-align: center;
+    flex: 5 1 0;
   }
 
   .aboutStorytellingVisual {
     height: 580px;
     min-height: 0;
+  }
+
+  .aboutWhy.section {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .aboutWhyIntro {
+    grid-column: 1 / -1;
+  }
+
+  .aboutWhyVisual {
+    align-self: stretch;
   }
 
   .aboutStorytellingCopy {
@@ -509,8 +565,8 @@
 }
 
 @media (max-width: 640px) {
-  .aboutPage .aboutServicesNew.section {
-    padding: 68px 18px !important;
+  .aboutServicesNew.section {
+    padding: 68px 12px !important;
   }
 
   .aboutServicesNewHeader h2 {
@@ -518,26 +574,65 @@
   }
 
   .aboutServiceAccordion {
-    height: 610px;
+    height: min(540px, 72svh);
+    min-height: 470px;
+    gap: 4px;
   }
 
-  .aboutServiceAccordionCard,
+  .aboutServiceAccordionCard {
+    min-width: 25px;
+    flex: 0.55 1 0;
+  }
+
   .aboutServiceAccordionCard.is-active {
-    flex-basis: 86vw;
+    min-width: 0;
+    flex: 5 1 0;
+  }
+
+  .aboutServiceTrigger {
+    padding: 14px 6px;
+  }
+
+  .aboutServiceTrigger > strong {
+    bottom: 18px;
+    font-size: clamp(0.72rem, 3.2vw, 0.9rem);
+  }
+
+  .aboutServiceAccordionCard.is-active .aboutServiceTrigger {
+    inset: 12px auto auto 12px;
+    width: 38px;
+    height: 38px;
   }
 
   .aboutServiceExpanded {
-    left: 20px;
-    right: 20px;
-    bottom: 28px;
+    left: 14px;
+    right: 14px;
+    bottom: 20px;
+  }
+
+  .aboutServiceExpanded .eyebrow {
+    margin-bottom: 10px;
+    font-size: 0.48rem;
   }
 
   .aboutServiceExpanded h3 {
-    font-size: clamp(2.6rem, 13vw, 4rem);
+    margin-bottom: 10px;
+    font-size: clamp(1.75rem, 8.5vw, 2.6rem);
+    line-height: 0.98;
   }
 
-  .aboutServiceExpanded li {
-    font-size: 0.62rem;
+  .aboutServiceExpanded > p:not(.eyebrow) {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.76rem;
+    line-height: 1.48;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .aboutServiceExpanded a {
+    margin-top: 16px;
+    font-size: 0.56rem;
   }
 
   .aboutFounderPortrait,
@@ -560,6 +655,32 @@
 
   .aboutStorytellingCopy {
     padding: 40px 18px 58px;
+  }
+
+  .aboutWhy.section {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 72px 18px !important;
+  }
+
+  .aboutWhyIntro,
+  .aboutWhyVisual {
+    grid-column: auto;
+  }
+
+  .aboutWhyIntro h2 {
+    margin-bottom: 20px;
+    font-size: clamp(2.65rem, 13vw, 4rem);
+  }
+
+  .aboutWhyVisual {
+    aspect-ratio: 4 / 4.8;
+  }
+
+  .aboutWhyReasons article {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    padding: 22px 0;
   }
 
   .aboutFounderHeading {

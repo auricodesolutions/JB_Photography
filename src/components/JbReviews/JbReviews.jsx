@@ -18,8 +18,6 @@ function JbReviews() {
     setActiveIndex((prev) => (prev === totalReviews - 1 ? 0 : prev + 1));
   };
 
-  const formatNumber = (num) => String(num).padStart(2, "0");
-
   useEffect(() => {
     if (totalReviews <= 1) return undefined;
 
@@ -63,12 +61,6 @@ function JbReviews() {
               <span className="controlLine"></span>
               <span className="controlArrow">‹</span>
             </button>
-
-            <div className="jbReviewCounter">
-              <strong>{formatNumber(activeIndex + 1)}</strong>
-              <span>/</span>
-              <strong>{formatNumber(totalReviews)}</strong>
-            </div>
 
             <button type="button" onClick={goNext} aria-label="Next review">
               <span className="controlLine"></span>

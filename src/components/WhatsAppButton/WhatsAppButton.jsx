@@ -50,13 +50,18 @@ function WhatsAppButton() {
   return (
     <div className="whatsappWidget" ref={widgetRef}>
       {isOpen && (
-        <div className="whatsappPanel" role="dialog" aria-label="WhatsApp inquiry">
+        <div
+          className="whatsappPanel"
+          role="dialog"
+          aria-label="WhatsApp inquiry"
+          data-lenis-prevent=""
+        >
           <div className="whatsappPanel__header">
             <div className="whatsappPanel__identity">
               <span className="whatsappPanel__avatar" aria-hidden="true">JB</span>
               <div>
                 <strong>{site.name}</strong>
-                <span>Typically replies within a few minutes</span>
+                <span className="whatsappPanel__status"><i /> Online · Usually replies in minutes</span>
               </div>
             </div>
 
@@ -71,7 +76,8 @@ function WhatsAppButton() {
           </div>
 
           <div className="whatsappPanel__body">
-            <h2>👋 Hi! How can we help with your special day?</h2>
+            <p className="whatsappPanel__eyebrow">Wedding inquiry</p>
+            <h2>How can we help with your special day?</h2>
 
             <div className="whatsappPanel__options" aria-label="Choose an inquiry type">
               {inquiryOptions.map((option) => (
@@ -79,6 +85,7 @@ function WhatsAppButton() {
                   type="button"
                   className={selectedOption === option.label ? "isSelected" : ""}
                   onClick={() => selectInquiry(option)}
+                  aria-pressed={selectedOption === option.label}
                   key={option.label}
                 >
                   {option.label}
@@ -91,7 +98,7 @@ function WhatsAppButton() {
               <textarea
                 value={draftMessage}
                 onChange={(event) => setDraftMessage(event.target.value)}
-                rows="5"
+                rows="4"
                 aria-label="WhatsApp message"
               />
               <small>{currentTime}</small>
@@ -105,15 +112,15 @@ function WhatsAppButton() {
               target="_blank"
               rel="noreferrer"
             >
-              <span aria-hidden="true">➤</span> Send on WhatsApp
+              <span aria-hidden="true">➤</span> Continue on WhatsApp
             </a>
-            <p className="whatsappPanel__note">WhatsApp will open in a new tab or app.</p>
+            <p className="whatsappPanel__note">Your message will be ready to send in WhatsApp.</p>
           </div>
         </div>
       )}
 
       <button
-        className="whatsappButton"
+        className={`whatsappButton ${isOpen ? "isOpen" : ""}`}
         type="button"
         onClick={() => setIsOpen((open) => !open)}
         aria-label={isOpen ? "Close WhatsApp message" : "Contact JB WEDDINGS on WhatsApp"}

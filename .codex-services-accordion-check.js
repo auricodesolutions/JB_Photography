@@ -1,7 +1,28 @@
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
 
 // node_modules/react/cjs/react.development.js
 var require_react_development = __commonJS({
@@ -978,6 +999,7 @@ var require_react_development = __commonJS({
 // node_modules/react/index.js
 var require_react = __commonJS({
   "node_modules/react/index.js"(exports, module) {
+    "use strict";
     if (false) {
       module.exports = null;
     } else {
@@ -986,9 +1008,372 @@ var require_react = __commonJS({
   }
 });
 
+// src/components/AboutServices/AboutServices.jsx
+var import_react = __toESM(require_react(), 1);
+
+// src/data/siteData.js
+var site = {
+  name: "JB WEDDINGS",
+  fullName: "JB WEDDINGS",
+  email: "jbphotography@email.com",
+  phone: "+94 7X XXX XXXX",
+  whatsapp: "947XXXXXXXX",
+  whatsappMessage: "Hello JB WEDDINGS, I would like to know more about your wedding photography and videography services.",
+  location: "Sri Lanka",
+  facebook: "https://www.facebook.com/Jagath-Bandara-Photography-102906635559836/",
+  weddingFilms: "https://www.facebook.com/profile.php?id=100095189754439&mibextid=ZbWKwL",
+  instagram: "https://www.instagram.com/jagathbandaraphotography?igsh=c3pvamt0ZHRiejdx",
+  tiktok: "https://www.tiktok.com/@jagathbandaraphotography",
+  youtube: "https://youtube.com/@jagathbandaraphotography?si=_4VmLi3lr1Zx--W5"
+};
+var asset = (fileName) => `/assets/${encodeURIComponent(fileName)}`;
+var heroImages = [
+  asset("img (2).jpeg"),
+  asset("img (132).jpeg"),
+  asset("img (123).jpeg")
+];
+var experienceMainImages = [
+  {
+    src: asset("img (80).jpeg"),
+    alt: "Wedding couple portrait by JB WEDDINGS"
+  },
+  {
+    src: asset("img (5).jpeg"),
+    alt: "Bride and groom wedding portrait"
+  },
+  {
+    src: asset("img (120).jpeg"),
+    alt: "Elegant wedding photography moment"
+  },
+  {
+    src: asset("img (42).jpeg"),
+    alt: "Elegant bride and groom portrait in natural light"
+  },
+  {
+    src: asset("img (181).jpeg"),
+    alt: "Bride and groom silhouetted beside a bright window"
+  }
+];
+var experienceFloatingImages = [
+  {
+    src: asset("img (19).jpeg"),
+    alt: "Elegant wedding moment captured by JB WEDDINGS"
+  },
+  {
+    src: asset("img (55).jpeg"),
+    alt: "Bride and groom photography session"
+  },
+  {
+    src: asset("img (98).jpeg"),
+    alt: "Wedding couple creative portrait"
+  },
+  {
+    src: asset("img (159).jpeg"),
+    alt: "Couple dancing during an evening portrait session"
+  },
+  {
+    src: asset("img (94).jpeg"),
+    alt: "Intimate wedding portrait by JB WEDDINGS"
+  }
+];
+var experienceImages = [
+  {
+    src: asset("img (7).jpeg"),
+    alt: "Wedding couple portrait by JB WEDDINGS"
+  },
+  {
+    src: asset("img (3).jpeg"),
+    alt: "Elegant wedding moment captured by JB WEDDINGS"
+  },
+  {
+    src: asset("img (115).jpeg"),
+    alt: "Bride and groom photography session"
+  },
+  {
+    src: asset("img (112).jpeg"),
+    alt: "Wedding couple portrait by JB WEDDINGS"
+  },
+  {
+    src: asset("img (3).jpeg"),
+    alt: "Elegant wedding moment captured by JB WEDDINGS"
+  }
+];
+var portfolio = [
+  {
+    title: "Window Light",
+    tag: "Wedding Portrait",
+    image: asset("img (170).jpeg"),
+    hoverImage: asset("img (19).jpeg"),
+    alt: "Bride and groom silhouetted beside a bright window",
+    layout: "portrait"
+  },
+  {
+    title: "Just Us",
+    tag: "Pre-wedding Portrait",
+    image: asset("img (20).jpeg"),
+    hoverImage: asset("img (21).jpeg"),
+    alt: "Couple dancing together during an evening portrait session",
+    layout: "portrait"
+  },
+  {
+    title: "Garden Promises",
+    tag: "Pre-wedding",
+    image: asset("img (28).jpeg"),
+    hoverImage: asset("img (29).jpeg"),
+    alt: "Couple enjoying a romantic garden picnic"
+  },
+  {
+    title: "Something Blue",
+    tag: "Wedding Day",
+    image: asset("img (165).jpeg"),
+    hoverImage: asset("img (107).jpeg"),
+    alt: "Traditional wedding couple in an elegant blue room"
+  },
+  {
+    title: "Softly, In Light",
+    tag: "Bridal Portrait",
+    image: asset("img (104).jpeg"),
+    hoverImage: asset("img (105).jpeg"),
+    alt: "Bride in traditional dress standing in soft garden light",
+    layout: "wide"
+  },
+  {
+    title: "By The Ocean",
+    tag: "Love Story",
+    image: asset("img (116).jpeg"),
+    hoverImage: asset("img (68).jpeg"),
+    alt: "Couple laughing together on a quiet beach",
+    layout: "wide"
+  },
+  {
+    title: "After Dark",
+    tag: "Couple Session",
+    image: asset("img (154).jpeg"),
+    hoverImage: asset("img (155).jpeg"),
+    alt: "Couple dancing together during an evening portrait session"
+  },
+  {
+    title: "Golden Vows",
+    tag: "Wedding Portrait",
+    image: asset("img (110).jpeg"),
+    hoverImage: asset("img (111).jpeg"),
+    alt: "Wedding couple photographed in warm golden light"
+  },
+  {
+    title: "Close To You",
+    tag: "Wedding Story",
+    image: asset("img (146).jpeg"),
+    hoverImage: asset("img (97).jpeg"),
+    alt: "Bride and groom sharing an intimate wedding-day moment"
+  },
+  {
+    title: "The First Chapter",
+    tag: "Pre-wedding",
+    image: asset("img (138).jpeg"),
+    hoverImage: asset("img (139).jpeg"),
+    alt: "Couple posing together during an elegant pre-wedding session",
+    layout: "wide"
+  },
+  {
+    title: "Endless Romance",
+    tag: "Editorial Portrait",
+    image: asset("img (71).jpeg"),
+    hoverImage: asset("img (72).jpeg"),
+    alt: "Romantic editorial portrait captured by JB WEDDINGS",
+    layout: "wide"
+  }
+];
+var about = {
+  title: "Your wedding is more than a day. It is a story worth remembering well.",
+  lead: "JB WEDDINGS is a Sri Lankan wedding photography and filmmaking studio devoted to honest emotion, refined imagery, and stories that remain meaningful for generations.",
+  text: "From the first conversation to the final gallery, we guide every couple with patience and care. We notice the meaningful details, the people you love, and the quiet in-between moments that make your celebration entirely your own.",
+  secondText: "Our style brings documentary honesty together with elegant portraiture. The result is a collection that feels natural today and timeless when you return to it years from now.",
+  image: asset("img (1).jpeg"),
+  imageAlt: "Wedding couple photographed by JB WEDDINGS",
+  studioImage: asset("img (42).jpeg"),
+  studioImageAlt: "Romantic couple portrait photographed by JB WEDDINGS",
+  founderTitle: "The man behind the lens",
+  founderName: "Jagath Bandara",
+  founderRole: "Founder & Lead Photographer",
+  founderImage: asset("owner.jpg"),
+  founderImageAlt: "Jagath Bandara, founder and lead photographer of JB WEDDINGS",
+  founderIntro: "leads JB WEDDINGS with a passion for honest emotion, elegant imagery, and timeless wedding stories.",
+  founderText: [
+    "With a calm presence and a careful eye for detail, Jagath approaches every celebration as a story with its own people, traditions, and rhythm. He gives couples gentle direction when it is helpful, then allows the real moments to unfold naturally.",
+    "From intimate ceremonies to grand Sri Lankan weddings, his focus remains the same: to preserve the laughter, emotion, and quiet connections that make each day personal. Every finished collection is created to feel beautiful now and deeply meaningful for years to come.",
+    "Under his direction, JB WEDDINGS brings photography and cinematic filmmaking together as one thoughtful experience, from the first conversation through to the final delivery."
+  ],
+  stats: [
+    {
+      value: "10+",
+      label: "Years experience"
+    },
+    {
+      value: "250+",
+      label: "Stories captured"
+    },
+    {
+      value: "4K",
+      label: "Film delivery"
+    }
+  ],
+  storytellingTitle: ["Timeless stories", "through the lens"],
+  storytellingVideo: asset("video.mp4"),
+  storytellingVideoPoster: asset("img (172).jpeg"),
+  storytellingText: [
+    "At JB WEDDINGS, we believe every photograph carries the heartbeat of a story. What began as a passion for capturing fleeting moments has grown into a craft devoted to preserving emotion, movement, and meaning in every frame.",
+    "From quiet glances to joyful celebrations, we create imagery that feels honest, beautiful, and unmistakably yours. Creativity, authenticity, and care guide every story we photograph and film.",
+    "Every image we deliver is more than a memory. It is part of your legacy, told through light, emotion, and timeless artistry."
+  ],
+  quote: "The best wedding photographs do more than show how everything looked. They bring back how it felt."
+};
+var services = [
+  {
+    title: "Wedding Photography",
+    text: "Elegant wedding photography with timeless portraits, candid emotions, family moments, and refined editing.",
+    image: asset("img (1).jpeg"),
+    alt: "Bride and groom photographed in window light",
+    includes: ["Wedding-day coverage", "Professionally edited photographs", "Private online gallery"]
+  },
+  {
+    title: "Wedding Videography",
+    text: "Cinematic wedding films created with emotion, movement, music, and storytelling.",
+    image: asset("img (170).jpeg"),
+    alt: "Elegant bridal portrait captured by JB WEDDINGS",
+    includes: ["Cinematic highlight film", "Ceremony and speeches", "4K digital delivery"]
+  },
+  {
+    title: "Pre-shoot Photography",
+    text: "Creative couple sessions planned with beautiful locations, natural light, outfits, and mood.",
+    image: asset("img (100).jpeg"),
+    alt: "Couple enjoying a relaxed outdoor pre-shoot",
+    includes: ["Creative planning", "Location and outfit guidance", "Edited portrait gallery"]
+  },
+  {
+    title: "Engagement Shoots",
+    text: "Graceful engagement portraits for announcements, invitations, memories, and social media.",
+    image: asset("img (42).jpeg"),
+    alt: "Romantic engagement portrait photographed through reflections",
+    includes: ["Guided couple session", "Natural and editorial portraits", "Online gallery"]
+  },
+  {
+    title: "Homecoming Coverage",
+    text: "Complete homecoming coverage with ceremony moments, couple portraits, family photos, and celebrations.",
+    image: asset("img (150).jpeg"),
+    alt: "Bride and groom during their wedding celebration",
+    includes: ["Ceremony and reception coverage", "Couple and family portraits", "Edited image collection"]
+  },
+  {
+    title: "Event Photography",
+    text: "Professional coverage for birthdays, private events, corporate functions, and special celebrations.",
+    image: asset("img (154).jpeg"),
+    alt: "Couple photographed during an evening celebration",
+    includes: ["Flexible event coverage", "Key moments and group portraits", "Professional image delivery"]
+  }
+];
+var reviews = [
+  {
+    date: "February 25, 2024",
+    title: "Just Kiss",
+    name: "Isuru & Hiruni",
+    image: asset("img (7).jpeg"),
+    text: "JB WEDDINGS definitely has an eye for special shots and the final work was amazing. He is patient, creative, and very supportive throughout the day. We would recommend him for any special occasion."
+  },
+  {
+    date: "March 04, 2025",
+    title: "Whispers In The Dusk",
+    name: "Janith & Bhagya",
+    image: asset("img (112).jpeg"),
+    text: "They treated us with care and support throughout the day. We felt comfortable working with them and received a beautiful collection of memories."
+  },
+  {
+    date: "April 18, 2025",
+    title: "Aesthetic Gallery",
+    name: "Dhammika & Kaveesha",
+    image: asset("img (17).jpeg"),
+    text: "Absolutely, highly recommended. Words can hardly describe how incredible the final gallery was. Every photo felt artistic, emotional, and beautifully edited."
+  },
+  {
+    date: "May 12, 2025",
+    title: "Love Story",
+    name: "Nethmi & Avishka",
+    image: asset("img (70).jpeg"),
+    text: "The whole experience felt relaxed and natural. They captured real smiles, little details, and emotional moments without making anything feel forced."
+  },
+  {
+    date: "June 02, 2025",
+    title: "Golden Hour",
+    name: "Sachini & Pasindu",
+    image: asset("img (67).jpeg"),
+    text: "Professional, kind, and very supportive from planning to delivery. Our families loved the photographs and we will treasure them for years."
+  },
+  {
+    date: "June 24, 2025",
+    title: "Forever Begins",
+    name: "Tharushi & Kavindu",
+    image: asset("img (90).jpeg"),
+    text: "From the first conversation to the final album, everything was handled with so much patience. The images were elegant, warm, and timeless."
+  },
+  {
+    date: "July 12, 2025",
+    title: "Timeless Frames",
+    name: "Dinithi & Ravindu",
+    image: asset("img (108).jpeg"),
+    text: "They saw the quiet moments we did not even notice. The final collection told the full story of our wedding day in such a beautiful way."
+  }
+];
+var socialLinks = [
+  {
+    name: "Facebook",
+    url: site.facebook
+  },
+  {
+    name: "Instagram",
+    url: site.instagram
+  },
+  {
+    name: "TikTok",
+    url: site.tiktok
+  },
+  {
+    name: "YouTube",
+    url: site.youtube
+  }
+];
+
+// src/components/AboutServices/AboutServices.jsx
+function AboutServices() {
+  const [activeService, setActiveService] = (0, import_react.useState)(0);
+  return /* @__PURE__ */ import_react.default.createElement("section", { className: "aboutServicesNew section", id: "services", "data-animate": true }, /* @__PURE__ */ import_react.default.createElement("header", { className: "aboutServicesNewHeader" }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("p", { className: "eyebrow" }, "The JB WEDDINGS experience"), /* @__PURE__ */ import_react.default.createElement("h2", null, "Stories, thoughtfully covered.")), /* @__PURE__ */ import_react.default.createElement("p", null, "Choose a service to discover how we preserve every chapter with elegant photography, cinematic motion, and genuine care.")), /* @__PURE__ */ import_react.default.createElement("div", { className: "aboutServiceAccordion" }, services.map((service, index) => {
+    const isActive = activeService === index;
+    return /* @__PURE__ */ import_react.default.createElement(
+      "article",
+      {
+        className: `aboutServiceAccordionCard ${isActive ? "is-active" : ""}`,
+        onMouseEnter: () => setActiveService(index),
+        key: service.title
+      },
+      /* @__PURE__ */ import_react.default.createElement("img", { src: service.image, alt: service.alt }),
+      /* @__PURE__ */ import_react.default.createElement("div", { className: "aboutServiceAccordionShade" }),
+      /* @__PURE__ */ import_react.default.createElement(
+        "button",
+        {
+          className: "aboutServiceTrigger",
+          type: "button",
+          "aria-expanded": isActive,
+          onClick: () => setActiveService(index),
+          onFocus: () => setActiveService(index)
+        },
+        /* @__PURE__ */ import_react.default.createElement("span", null, String(index + 1).padStart(2, "0")),
+        /* @__PURE__ */ import_react.default.createElement("strong", null, service.title)
+      ),
+      /* @__PURE__ */ import_react.default.createElement("div", { className: "aboutServiceExpanded", "aria-hidden": !isActive }, /* @__PURE__ */ import_react.default.createElement("p", { className: "eyebrow" }, "JB WEDDINGS / Service ", String(index + 1).padStart(2, "0")), /* @__PURE__ */ import_react.default.createElement("h3", null, service.title), /* @__PURE__ */ import_react.default.createElement("p", null, service.text), /* @__PURE__ */ import_react.default.createElement("ul", null, service.includes.map((item) => /* @__PURE__ */ import_react.default.createElement("li", { key: item }, item))), /* @__PURE__ */ import_react.default.createElement("a", { href: "#contact" }, "Check availability"))
+    );
+  })));
+}
+var AboutServices_default = AboutServices;
 export {
-  __commonJS,
-  require_react
+  AboutServices_default as default
 };
 /*! Bundled license information:
 
@@ -1003,4 +1388,3 @@ react/cjs/react.development.js:
    * LICENSE file in the root directory of this source tree.
    *)
 */
-//# sourceMappingURL=chunk-GSX663UM.js.map

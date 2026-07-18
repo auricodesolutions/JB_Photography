@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 import Header from "./components/Header/Header.jsx";
 import Hero from "./components/Hero/Hero.jsx";
 import ExperienceSlider from "./components/ExperienceSlider/ExperienceSlider.jsx";
+import AboutServices from "./components/AboutServices/AboutServices.jsx";
 import BrandRail from "./components/BrandRail/BrandRail.jsx";
 import Portfolio from "./components/Portfolio/Portfolio.jsx";
+import WeddingChapters from "./components/WeddingChapters/WeddingChapters.jsx";
 import Films from "./components/Films/Films.jsx";
 import Booking from "./components/Booking/Booking.jsx";
 import Footer from "./components/Footer/Footer.jsx";
@@ -12,25 +15,53 @@ import JbReviews from "./components/JbReviews/JbReviews.jsx";
 import FAQ from "./components/FAQ/FAQ.jsx";
 import VideoCTA from "./components/VideoCTA/VideoCTA.jsx";
 import About from "./components/About/About.jsx";
+import useSmoothScroll from "./hooks/useSmoothScroll.js";
 
 function App() {
+  const smoothScrollTo = useSmoothScroll();
+
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(() =>
     window.location.pathname === "/about" ? "about" : "home",
   );
 
+  const changePage = (targetPage) => {
+    const motionDisabled = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (document.startViewTransition && !motionDisabled) {
+      const transition = document.startViewTransition(() => {
+        flushSync(() => setPage(targetPage));
+      });
+
+      return transition.finished.catch(() => undefined);
+    }
+
+    setPage(targetPage);
+    return Promise.resolve();
+  };
+
   const navigate = (targetPage, sectionId) => {
     const path = targetPage === "about" ? "/about" : "/";
     window.history.pushState({}, "", sectionId ? `${path}#${sectionId}` : path);
-    setPage(targetPage);
 
-    if (sectionId) {
+    const scrollToDestination = () => {
       window.setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+        if (sectionId) {
+          smoothScrollTo(document.getElementById(sectionId));
+        } else {
+          smoothScrollTo(0);
+        }
       }, 60);
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    if (targetPage === page) {
+      scrollToDestination();
+      return;
     }
+
+    changePage(targetPage).finally(scrollToDestination);
   };
 
   useEffect(() => {
@@ -40,7 +71,8 @@ function App() {
 
   useEffect(() => {
     const onPopState = () => {
-      setPage(window.location.pathname === "/about" ? "about" : "home");
+      const targetPage = window.location.pathname === "/about" ? "about" : "home";
+      changePage(targetPage);
     };
 
     window.addEventListener("popstate", onPopState);
@@ -60,11 +92,18 @@ function App() {
     ].join(", ");
 
     const contentItems = document.querySelectorAll(
-      `main section:not(.hero):not(.brandRail) :is(${contentSelector})`,
+      `main section:not(.hero):not(.brandRail):not(.weddingChapters):not(.aboutServicesNew) :is(${contentSelector})`,
     );
 
     const mediaItems = document.querySelectorAll(
-      "main section:not(.hero):not(.brandRail) img",
+      [
+        "main section:not(.hero)",
+        ":not(.brandRail)",
+        ":not(.experience)",
+        ":not(.weddingChapters)",
+        ":not(.aboutServicesNew)",
+        " img",
+      ].join(""),
     );
 
     const observer = new IntersectionObserver(
@@ -150,14 +189,16 @@ function App() {
       )}
 
       <Header onNavigate={navigate} />
-      <main>
+      <main className="pageView" key={page}>
         {page === "about" ? (
           <About />
         ) : (
           <>
             <Hero />
             <ExperienceSlider onNavigate={navigate} />
+            <WeddingChapters />
             <Portfolio />
+            <AboutServices />
             <Films />
             <JbReviews />
             <VideoCTA />

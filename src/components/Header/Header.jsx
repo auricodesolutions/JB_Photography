@@ -75,17 +75,22 @@ function Header({ onNavigate }) {
         <span />
       </button>
 
-      <nav id="main-navigation" className={open ? "isOpen" : ""} aria-label="Main navigation">
+      <nav
+        id="main-navigation"
+        className={open ? "isOpen" : ""}
+        aria-label="Main navigation"
+        data-lenis-prevent=""
+      >
         <div className="mobileNavMeta" aria-hidden="true">
           <span>Navigation</span>
           <span>JB WEDDINGS</span>
         </div>
-        <a href="/#home" onClick={(event) => goTo(event, "home", "home")}><span>01</span>Home</a>
-        <a href="/about" onClick={(event) => goTo(event, "about")}><span>02</span>About</a>
-        <a href="/#portfolio" onClick={(event) => goTo(event, "home", "portfolio")}><span>03</span>Portfolio</a>
-        <a href="/#films" onClick={(event) => goTo(event, "home", "films")}><span>04</span>Wedding Films</a>
-        <a href="/#reviews" onClick={(event) => goTo(event, "home", "reviews")}><span>05</span>Reviews</a>
-        <a href="/#contact" className="quoteLink" onClick={(event) => goTo(event, "home", "contact")}><span>06</span>Ask a Quote</a>
+        <a href="/#home" onClick={(event) => goTo(event, "home", "home")}>Home</a>
+        <a href="/about" onClick={(event) => goTo(event, "about")}>About</a>
+        <a href="/#portfolio" onClick={(event) => goTo(event, "home", "portfolio")}>Portfolio</a>
+        <a href="/#films" onClick={(event) => goTo(event, "home", "films")}>Wedding Films</a>
+        <a href="/#reviews" onClick={(event) => goTo(event, "home", "reviews")}>Reviews</a>
+        <a href="/#contact" className="quoteLink" onClick={(event) => goTo(event, "home", "contact")}>Ask a Quote</a>
         <div className="mobileNavFooter" aria-hidden="true">
           <span>Stories made timeless</span>
           <span>Colombo, Sri Lanka</span>

@@ -66,9 +66,12 @@ function ExperienceSlider({ onNavigate }) {
           </a>
 
           <a
-            href="/about#services"
+            href="/#services"
             className="experienceBtn experienceBtnLight"
-            onClick={(event) => goToAbout(event, "services")}
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate("home", "services");
+            }}
           >
             <span className="btnText">Our Services</span>
             <span className="btnArrow">›</span>

@@ -28,6 +28,22 @@ html {
   scrollbar-color: var(--white) var(--black);
 }
 
+html.lenis {
+  height: auto;
+}
+
+html.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+html.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+html.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -89,6 +105,33 @@ h3 {
 
 main {
   background: var(--black);
+}
+
+.pageView {
+  min-height: 100svh;
+  animation: pageViewEnter 820ms var(--ease) both;
+}
+
+@supports (view-transition-name: page-content) {
+  .pageView {
+    view-transition-name: page-content;
+    animation: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  ::view-transition-old(page-content) {
+    z-index: 1;
+    animation: pageViewExit 520ms cubic-bezier(0.76, 0, 0.24, 1) both;
+  }
+
+  ::view-transition-new(page-content) {
+    z-index: 2;
+    animation: pageViewEnter 820ms var(--ease) both;
+  }
 }
 
 .section {
@@ -307,23 +350,32 @@ main {
 
 main .revealContent {
   opacity: 0;
-  transform: translateY(24px);
+  clip-path: inset(0 0 16% 0);
+  filter: blur(5px);
+  transform: translate3d(0, 30px, 0);
+  will-change: opacity, transform, clip-path;
   transition:
-    opacity 720ms ease var(--reveal-delay, 0ms),
-    transform 820ms var(--ease) var(--reveal-delay, 0ms);
+    opacity 780ms ease var(--reveal-delay, 0ms),
+    transform 980ms var(--ease) var(--reveal-delay, 0ms),
+    clip-path 950ms var(--ease) var(--reveal-delay, 0ms),
+    filter 700ms ease var(--reveal-delay, 0ms);
 }
 
 main .revealContent.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  clip-path: inset(0);
+  filter: blur(0);
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
 }
 
 main img.revealMedia {
   opacity: 0;
-  clip-path: inset(7% 0 7% 0);
+  clip-path: inset(0 0 100% 0);
+  will-change: opacity, clip-path;
   transition:
-    opacity 900ms ease var(--reveal-delay, 0ms),
-    clip-path 1100ms var(--ease) var(--reveal-delay, 0ms),
+    opacity 800ms ease var(--reveal-delay, 0ms),
+    clip-path 1250ms var(--ease) var(--reveal-delay, 0ms),
     filter 650ms ease,
     transform 1100ms var(--ease);
 }
@@ -331,6 +383,21 @@ main img.revealMedia {
 main img.revealMedia.is-visible {
   opacity: 1;
   clip-path: inset(0 0 0 0);
+  will-change: auto;
+}
+
+/* Never leave section photography hidden if its parent reveal completes first. */
+main section[data-animate].is-visible img.revealMedia {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  will-change: auto;
+}
+
+/* These sections manage their own slider visibility and must not be hidden twice. */
+main .experience img.revealMedia {
+  opacity: 1;
+  clip-path: none;
+  filter: none;
 }
 
 /* Stagger the main content inside each revealed section. */
@@ -437,10 +504,141 @@ textarea:focus-visible {
   }
 }
 
+@keyframes pageViewEnter {
+  from {
+    opacity: 0;
+    clip-path: inset(6% 0 6% 0);
+    filter: blur(8px);
+    transform: translate3d(0, 30px, 0) scale(1.012);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes pageViewExit {
+  from {
+    opacity: 1;
+    clip-path: inset(0);
+    filter: blur(0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    clip-path: inset(0 0 12% 0);
+    filter: blur(7px);
+    transform: translate3d(0, -22px, 0);
+  }
+}
+
 @media (max-width: 800px) {
   .sectionHeader {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  body {
+    touch-action: pan-y;
+  }
+
+  body::before {
+    display: none;
+  }
+
+  .pageView {
+    animation: mobilePageEnter 560ms var(--ease) both;
+  }
+
+  [data-animate] {
+    transform: translate3d(0, 20px, 0);
+    will-change: auto;
+    transition:
+      opacity 620ms ease,
+      transform 680ms var(--ease);
+  }
+
+  main .revealContent {
+    clip-path: none;
+    filter: none;
+    transform: translate3d(0, 18px, 0);
+    will-change: auto;
+    transition:
+      opacity 540ms ease var(--reveal-delay, 0ms),
+      transform 650ms var(--ease) var(--reveal-delay, 0ms);
+  }
+
+  main img.revealMedia {
+    clip-path: none;
+    transform: translate3d(0, 16px, 0) scale(1.015);
+    will-change: auto;
+    transition:
+      opacity 620ms ease var(--reveal-delay, 0ms),
+      transform 760ms var(--ease) var(--reveal-delay, 0ms),
+      filter 500ms ease;
+  }
+
+  main img.revealMedia.is-visible,
+  main section[data-animate].is-visible img.revealMedia {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .section[data-animate] > *,
+  .experience[data-animate] > *,
+  .jbReviews[data-animate] > *,
+  .footer[data-animate] > * {
+    transform: translate3d(0, 18px, 0);
+    transition:
+      opacity 560ms ease,
+      transform 680ms var(--ease);
+  }
+
+  .section[data-animate].is-visible > :nth-child(2),
+  .experience[data-animate].is-visible > :nth-child(2),
+  .jbReviews[data-animate].is-visible > :nth-child(2),
+  .footer[data-animate].is-visible > :nth-child(2) {
+    transition-delay: 70ms;
+  }
+
+  .section[data-animate].is-visible > :nth-child(3),
+  .experience[data-animate].is-visible > :nth-child(3),
+  .jbReviews[data-animate].is-visible > :nth-child(3),
+  .footer[data-animate].is-visible > :nth-child(3) {
+    transition-delay: 120ms;
+  }
+
+  @supports (view-transition-name: page-content) {
+    ::view-transition-old(page-content) {
+      animation: mobilePageExit 360ms ease both;
+    }
+
+    ::view-transition-new(page-content) {
+      animation: mobilePageEnter 560ms var(--ease) both;
+    }
+  }
+}
+
+@keyframes mobilePageEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes mobilePageExit {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -12px, 0);
   }
 }
 
@@ -464,5 +662,11 @@ textarea:focus-visible {
     opacity: 1;
     clip-path: none;
     transform: none;
+  }
+
+  .pageView,
+  ::view-transition-old(page-content),
+  ::view-transition-new(page-content) {
+    animation: none !important;
   }
 }

@@ -184,22 +184,6 @@
   content: ">";
 }
 
-.jbReviewCounter {
-  min-width: 112px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  color: var(--white);
-  font-size: 26px;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-}
-
-.jbReviewCounter span {
-  color: rgba(255, 255, 255, 0.5);
-}
-
 /* ---------------- ANIMATIONS ---------------- */
 
 @keyframes jbReviewImageIn {
@@ -330,10 +314,6 @@
     font-size: 28px;
   }
 
-  .jbReviewCounter {
-    min-width: 84px;
-    font-size: 18px;
-  }
 }
 
 @keyframes jbReviewImageZoom {

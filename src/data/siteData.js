@@ -24,9 +24,7 @@ const asset = (fileName) => `/assets/${encodeURIComponent(fileName)}`;
 
 export const heroImages = [
   asset("img (2).jpeg"),
-  asset("img (132).jpeg"),
-  asset("img (146).jpeg"),
-  asset("img (119).jpeg"),
+  asset("img (182).jpeg"),
   asset("img1.jpeg"),
 ];
 
@@ -38,11 +36,11 @@ export const experienceMainImages = [
     alt: "Wedding couple portrait by JB WEDDINGS",
   },
   {
-    src: asset("img (11).jpeg"),
+    src: asset("img (5).jpeg"),
     alt: "Bride and groom wedding portrait",
   },
   {
-    src: asset("img (120).jpeg"),
+    src: asset("img (183).jpeg"),
     alt: "Elegant wedding photography moment",
   },
   {
@@ -66,7 +64,7 @@ export const experienceFloatingImages = [
     alt: "Bride and groom photography session",
   },
   {
-    src: asset("img (98).jpeg"),
+    src: asset("img (112).jpeg"),
     alt: "Wedding couple creative portrait",
   },
   {
@@ -115,7 +113,7 @@ export const portfolio = [
   {
     title: "Just Us",
     tag: "Pre-wedding Portrait",
-    image: asset("img (20).jpeg"),
+    image: asset("img (51).jpeg"),
     hoverImage: asset("img (21).jpeg"),
     alt: "Couple dancing together during an evening portrait session",
     layout: "portrait",
@@ -123,7 +121,7 @@ export const portfolio = [
   {
     title: "Garden Promises",
     tag: "Pre-wedding",
-    image: asset("img (28).jpeg"),
+    image: asset("img (75).jpeg"),
     hoverImage: asset("img (29).jpeg"),
     alt: "Couple enjoying a romantic garden picnic",
   },
@@ -146,21 +144,21 @@ export const portfolio = [
     title: "By The Ocean",
     tag: "Love Story",
     image: asset("img (116).jpeg"),
-    hoverImage: asset("img (68).jpeg"),
+    hoverImage: asset("img (164).jpeg"),
     alt: "Couple laughing together on a quiet beach",
     layout: "wide",
   },
   {
     title: "After Dark",
     tag: "Couple Session",
-    image: asset("img (154).jpeg"),
+    image: asset("img (174).jpeg"),
     hoverImage: asset("img (155).jpeg"),
     alt: "Couple dancing together during an evening portrait session",
   },
   {
     title: "Golden Vows",
     tag: "Wedding Portrait",
-    image: asset("img (110).jpeg"),
+    image: asset("img (158).jpeg"),
     hoverImage: asset("img (111).jpeg"),
     alt: "Wedding couple photographed in warm golden light",
   },
@@ -182,8 +180,8 @@ export const portfolio = [
   {
     title: "Endless Romance",
     tag: "Editorial Portrait",
-    image: asset("img (71).jpeg"),
-    hoverImage: asset("img (72).jpeg"),
+    image: asset("img (162).jpeg"),
+    hoverImage: asset("img (68).jpeg"),
     alt: "Romantic editorial portrait captured by JB WEDDINGS",
     layout: "wide",
   },
@@ -213,20 +211,7 @@ export const about = {
     "From intimate ceremonies to grand Sri Lankan weddings, his focus remains the same: to preserve the laughter, emotion, and quiet connections that make each day personal. Every finished collection is created to feel beautiful now and deeply meaningful for years to come.",
     "Under his direction, JB WEDDINGS brings photography and cinematic filmmaking together as one thoughtful experience, from the first conversation through to the final delivery.",
   ],
-  stats: [
-    {
-      value: "10+",
-      label: "Years experience",
-    },
-    {
-      value: "250+",
-      label: "Stories captured",
-    },
-    {
-      value: "4K",
-      label: "Film delivery",
-    },
-  ],
+  
   storytellingTitle: ["Timeless stories", "through the lens"],
   storytellingVideo: asset("video.mp4"),
   storytellingVideoPoster: asset("img (172).jpeg"),
@@ -296,22 +281,22 @@ export const films = [
     youtubeUrl: "https://youtu.be/xvfFOdGKlQM?si=_YBwUfx5XY6GEJXW",
   },
   {
-    title: "Wedding Film 03 | Love Story Video ",
+    title: "Love Story Video",
     label: "Love Story",
     youtubeUrl: "https://youtu.be/D_G-9hgCxNA?si=N95BSWtKK4_jyLul",
   },
   {
-    title: "Wedding Film 04 | Cinematic Wedding Preview ",
+    title: "Cinematic Wedding Preview",
     label: "Cinematic Preview",
     youtubeUrl: "https://youtu.be/mwVzvIxv-pw?si=nY_zzKJLVyYJgVcl",
   },
   {
-    title: "Wedding Film 05 | Wedding Trailer",
+    title: "Wedding Trailer",
     label: "Wedding Trailer",
     youtubeUrl: "https://youtu.be/_0taQStHSQI?si=FMGy401gKMRDoo1Q",
   },
   {
-    title: "Wedding Film 06 | Full Wedding Story",
+    title: "Full Wedding Story",
     label: "Full Wedding Story",
     youtubeUrl: "https://youtu.be/3zEiytT21rk?si=ysdB1QMz8XBd20v3",
   },

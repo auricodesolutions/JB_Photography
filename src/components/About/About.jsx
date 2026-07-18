@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { about, services } from "../../data/siteData.js";
+import React from "react";
+import { about } from "../../data/siteData.js";
 import "./About.css";
 
 function About() {
-  const [activeService, setActiveService] = useState(0);
-
   return (
     <article className="aboutPage">
       <section
@@ -43,57 +41,43 @@ function About() {
         </div>
       </section>
 
-      <section className="aboutServicesNew section" id="services" data-animate>
-        <header className="aboutServicesNewHeader">
-          <div>
-            <p className="eyebrow">The JB WEDDINGS experience</p>
-            <h2>Stories, thoughtfully covered.</h2>
-          </div>
+      <section
+        className="aboutWhy section"
+        aria-labelledby="about-why-title"
+        data-animate
+      >
+        <div className="aboutWhyIntro">
+          <p className="eyebrow">Why choose JB WEDDINGS</p>
+          <h2 id="about-why-title">Your day, handled with care.</h2>
           <p>
-            Choose a service to discover how we preserve every chapter with
-            elegant photography, cinematic motion, and genuine care.
+            A calm, personal experience and photographs that bring every
+            feeling back.
           </p>
-        </header>
+        </div>
 
-        <div className="aboutServiceAccordion">
-          {services.map((service, index) => {
-            const isActive = activeService === index;
+        <figure className="aboutWhyVisual">
+          <img src={about.image} alt={about.imageAlt} />
+        </figure>
 
-            return (
-              <article
-                className={`aboutServiceAccordionCard ${isActive ? "is-active" : ""}`}
-                onMouseEnter={() => setActiveService(index)}
-                key={service.title}
-              >
-                <img src={service.image} alt={service.alt} />
-                <div className="aboutServiceAccordionShade" />
-
-                <button
-                  className="aboutServiceTrigger"
-                  type="button"
-                  aria-expanded={isActive}
-                  onClick={() => setActiveService(index)}
-                  onFocus={() => setActiveService(index)}
-                >
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{service.title}</strong>
-                </button>
-
-                <div className="aboutServiceExpanded" aria-hidden={!isActive}>
-                  <p className="eyebrow">JB WEDDINGS / Service {String(index + 1).padStart(2, "0")}</p>
-                  <h3>{service.title}</h3>
-                  <p>{service.text}</p>
-                  <ul>
-                    {service.includes.map((item) => <li key={item}>{item}</li>)}
-                  </ul>
-                  <a href="/#contact">Check availability</a>
-                </div>
-              </article>
-            );
-          })}
+        <div className="aboutWhyReasons">
+          <article>
+            <h3>Calm guidance</h3>
+            <p>Natural direction when you need it, space to be yourselves when you do not.</p>
+          </article>
+          <article>
+            <h3>Real emotion</h3>
+            <p>Honest moments and meaningful details photographed without forcing the story.</p>
+          </article>
+          <article>
+            <h3>One creative team</h3>
+            <p>Photography and cinematic films shaped with one consistent visual approach.</p>
+          </article>
+          <article>
+            <h3>Made to last</h3>
+            <p>Refined, timeless imagery created to remain meaningful for generations.</p>
+          </article>
         </div>
       </section>
-
 
       <section className="aboutStorytelling section" data-animate>
         <div className="aboutStorytellingVisual">
