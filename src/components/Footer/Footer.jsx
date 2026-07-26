@@ -7,7 +7,7 @@ function Footer() {
   const whatsappMessage = encodeURIComponent(site.whatsappMessage);
 
   return (
-    <footer className="footer" id="contact" data-animate>
+    <footer className="footer" id="footer-contact" data-animate>
       <div className="footerTop">
         <div className="footerBrandBlock">
           <a href="/#home" className="footerLogo" aria-label="JB WEDDINGS home">
@@ -31,7 +31,7 @@ function Footer() {
               Ask a Quote <span>↗</span>
             </a>
 
-            <a href="/#portfolio" className="footerSecondaryBtn">
+            <a href="/portfolio" className="footerSecondaryBtn">
               View Portfolio
             </a>
           </div>
@@ -42,8 +42,8 @@ function Footer() {
             <h3>Explore</h3>
             <a href="/#home">Home</a>
             <a href="/about">About</a>
-            <a href="/#portfolio">Portfolio</a>
-            <a href="/#films">Wedding Films</a>
+            <a href="/portfolio">Portfolio</a>
+            <a href="/portfolio#wedding-trailers">Wedding Films</a>
             <a href="/#reviews">Reviews</a>
           </div>
 

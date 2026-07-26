@@ -21,6 +21,8 @@ export const site = {
 
 // For images inside public/assets
 const asset = (fileName) => `/assets/${encodeURIComponent(fileName)}`;
+const albumGallery = (...imageNumbers) =>
+  imageNumbers.map((number) => asset(`img (${number}).jpeg`));
 
 export const heroImages = [
   asset("img (2).jpeg"),
@@ -105,75 +107,105 @@ export const portfolio = [
   {
     title: "Window Light",
     tag: "Wedding Portrait",
+    coupleName: "Ridmi & Vinod",
+    albumTag: "Wedding Shoot",
     image: asset("img (170).jpeg"),
     hoverImage: asset("img (19).jpeg"),
+    gallery: albumGallery(170, 1, 2, 3, 4, 5, 6, 7, 8),
     alt: "Bride and groom silhouetted beside a bright window",
     layout: "portrait",
   },
   {
     title: "Just Us",
     tag: "Pre-wedding Portrait",
+    coupleName: "Sulani & Dananjaya",
+    albumTag: "Wedding Shoot",
     image: asset("img (51).jpeg"),
     hoverImage: asset("img (21).jpeg"),
+    gallery: albumGallery(51, 10, 11, 12, 13, 14, 15, 16, 17),
     alt: "Couple dancing together during an evening portrait session",
     layout: "portrait",
   },
   {
     title: "Garden Promises",
     tag: "Pre-wedding",
+    coupleName: "Lakshmi & Shaluka",
+    albumTag: "Wedding Shoot",
     image: asset("img (75).jpeg"),
     hoverImage: asset("img (29).jpeg"),
+    gallery: albumGallery(75, 20, 21, 22, 23, 24, 25, 26, 27),
     alt: "Couple enjoying a romantic garden picnic",
   },
   {
     title: "Something Blue",
     tag: "Wedding Day",
+    coupleName: "Ireni & Milan",
+    albumTag: "Wedding Shoot",
     image: asset("img (165).jpeg"),
     hoverImage: asset("img (107).jpeg"),
+    gallery: albumGallery(165, 30, 31, 32, 33, 34, 35, 36, 37),
     alt: "Traditional wedding couple in an elegant blue room",
   },
   {
     title: "Softly, In Light",
     tag: "Bridal Portrait",
+    coupleName: "Tharanga & Nuwan",
+    albumTag: "Wedding Shoot",
     image: asset("img (104).jpeg"),
     hoverImage: asset("img (105).jpeg"),
+    gallery: albumGallery(104, 39, 40, 41, 42, 43, 44, 45, 46),
     alt: "Bride in traditional dress standing in soft garden light",
     layout: "wide",
   },
   {
     title: "By The Ocean",
     tag: "Love Story",
+    coupleName: "Maduka & Dinelka",
+    albumTag: "Wedding Shoot",
     image: asset("img (116).jpeg"),
     hoverImage: asset("img (164).jpeg"),
+    gallery: albumGallery(116, 48, 49, 50, 52, 53, 54, 55, 56),
     alt: "Couple laughing together on a quiet beach",
     layout: "wide",
   },
   {
     title: "After Dark",
     tag: "Couple Session",
+    coupleName: "Hiruni & Sajitha",
+    albumTag: "Wedding Shoot",
     image: asset("img (174).jpeg"),
     hoverImage: asset("img (155).jpeg"),
+    gallery: albumGallery(174, 58, 59, 60, 61, 62, 63, 64, 65),
     alt: "Couple dancing together during an evening portrait session",
   },
   {
     title: "Golden Vows",
     tag: "Wedding Portrait",
+    coupleName: "Chamudi & Nicco",
+    albumTag: "Wedding Shoot",
     image: asset("img (158).jpeg"),
     hoverImage: asset("img (111).jpeg"),
+    gallery: albumGallery(158, 67, 68, 69, 70, 71, 72, 73, 74),
     alt: "Wedding couple photographed in warm golden light",
   },
   {
     title: "Close To You",
     tag: "Wedding Story",
+    coupleName: "Amanda & Tisara",
+    albumTag: "Wedding Shoot",
     image: asset("img (146).jpeg"),
     hoverImage: asset("img (97).jpeg"),
+    gallery: albumGallery(146, 77, 78, 79, 80, 81, 82, 83, 84),
     alt: "Bride and groom sharing an intimate wedding-day moment",
   },
   {
     title: "The First Chapter",
     tag: "Pre-wedding",
+    coupleName: "Hansini & Shehan",
+    albumTag: "Homecoming",
     image: asset("img (138).jpeg"),
     hoverImage: asset("img (139).jpeg"),
+    gallery: albumGallery(138, 86, 87, 88, 89, 90, 91, 92, 93),
     alt: "Couple posing together during an elegant pre-wedding session",
     layout: "wide",
   },
@@ -302,6 +334,49 @@ export const films = [
   },
 ];
 
+export const weddingTrailers = [
+  {
+    title: "Wedding Trailer 01",
+    youtubeUrl: "https://youtu.be/hOOuWKJh348?si=PjC1VbrX0C2koazg",
+  },
+  {
+    title: "Wedding Trailer 02",
+    youtubeUrl: "https://youtu.be/D_G-9hgCxNA?si=VUyYNFDhtqaCpUSO",
+  },
+  {
+    title: "Wedding Trailer 03",
+    youtubeUrl: "https://youtu.be/REOgOPAAQgs?si=I1drqAFH1ebSvlHw",
+  },
+  {
+    title: "Wedding Trailer 04",
+    youtubeUrl: "https://youtu.be/rGHtzBF7-Hw?si=LJU7geHjXDDGqDN0",
+  },
+  {
+    title: "Wedding Trailer 05",
+    youtubeUrl: "https://youtu.be/2lStBoKBsGM?si=znu-N9OIpNGNy7zY",
+  },
+  {
+    title: "Wedding Trailer 06",
+    youtubeUrl: "https://youtu.be/KTB4S-WlGOI?si=z0AjN7a7PApWVYYt",
+  },
+  {
+    title: "Wedding Trailer 07",
+    youtubeUrl: "https://youtu.be/1oDXkQZwGvw?si=_FD6EuXBrKy-FFZZ",
+  },
+  {
+    title: "Wedding Trailer 08",
+    youtubeUrl: "https://youtu.be/xvfFOdGKlQM?si=OFHLqGR9D5dAmZLT",
+  },
+  {
+    title: "Wedding Trailer 09",
+    youtubeUrl: "https://youtu.be/EVSCrge5Vkc?si=E5Tu8l8lGdrmkoGp",
+  },
+  {
+    title: "Wedding Trailer 10",
+    youtubeUrl: "https://youtu.be/jPaSH30HO8s?si=Oz0GCddOepFtPH5k",
+  },
+];
+
 export const reviews = [
   {
     date: "February 25, 2024",
@@ -320,7 +395,7 @@ export const reviews = [
   {
     date: "April 18, 2025",
     title: "Aesthetic Gallery",
-    name: "Dhammika & Kaveesha",
+    name: "Lahirui & Kaveesha",
     image: asset("img (17).jpeg"),
     text: "Absolutely, highly recommended. Words can hardly describe how incredible the final gallery was. Every photo felt artistic, emotional, and beautifully edited.",
   },
@@ -353,6 +428,10 @@ export const reviews = [
     text: "They saw the quiet moments we did not even notice. The final collection told the full story of our wedding day in such a beautiful way.",
   },
 ];
+
+export const reviewSection = {
+  backgroundImage: asset("img (148).jpeg"),
+};
 
 export const socialLinks = [
   {

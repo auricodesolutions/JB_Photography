@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { site } from "../../data/siteData.js";
 import "./Header.css";
 
 function Header({ onNavigate }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const whatsappMessage = encodeURIComponent(site.whatsappMessage);
+  const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${whatsappMessage}`;
 
   useEffect(() => {
     let frameId = 0;
@@ -60,7 +63,7 @@ function Header({ onNavigate }) {
         aria-label="JB WEDDINGS home"
         onClick={(event) => goTo(event, "home")}
       >
-        <img src="/assets/jb-logo-white.png" alt="JB WEDDINGS logo" />
+        <span>JBWEDDINGS</span>
       </a>
 
       <button
@@ -87,10 +90,19 @@ function Header({ onNavigate }) {
         </div>
         <a href="/#home" onClick={(event) => goTo(event, "home", "home")}>Home</a>
         <a href="/about" onClick={(event) => goTo(event, "about")}>About</a>
-        <a href="/#portfolio" onClick={(event) => goTo(event, "home", "portfolio")}>Portfolio</a>
-        <a href="/#films" onClick={(event) => goTo(event, "home", "films")}>Wedding Films</a>
+        <a href="/portfolio" onClick={(event) => goTo(event, "portfolio")}>Portfolio</a>
+        <a href="/#contact" onClick={(event) => goTo(event, "home", "contact")}>Reserve Now</a>
         <a href="/#reviews" onClick={(event) => goTo(event, "home", "reviews")}>Reviews</a>
-        <a href="/#contact" className="quoteLink" onClick={(event) => goTo(event, "home", "contact")}>Ask a Quote</a>
+        <a href="/#contact" onClick={(event) => goTo(event, "home", "contact")}>Contact Us</a>
+        <a
+          href={whatsappUrl}
+          className="quoteLink"
+          target="_blank"
+          rel="noreferrer"
+          onClick={closeMenu}
+        >
+          Ask for Quote
+        </a>
         <div className="mobileNavFooter" aria-hidden="true">
           <span>Stories made timeless</span>
           <span>Colombo, Sri Lanka</span>

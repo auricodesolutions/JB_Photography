@@ -15,15 +15,29 @@ import JbReviews from "./components/JbReviews/JbReviews.jsx";
 import FAQ from "./components/FAQ/FAQ.jsx";
 import VideoCTA from "./components/VideoCTA/VideoCTA.jsx";
 import About from "./components/About/About.jsx";
+import PhotographyPortfolio from "./components/PhotographyPortfolio/PhotographyPortfolio.jsx";
+import WeddingTrailers from "./components/WeddingTrailers/WeddingTrailers.jsx";
 import useSmoothScroll from "./hooks/useSmoothScroll.js";
+
+const pagePaths = {
+  home: "/",
+  about: "/about",
+  portfolio: "/portfolio",
+};
+
+const getPageFromPath = () => {
+  const path = window.location.pathname.replace(/\/+$/, "") || "/";
+
+  if (path === "/about") return "about";
+  if (path === "/portfolio") return "portfolio";
+  return "home";
+};
 
 function App() {
   const smoothScrollTo = useSmoothScroll();
 
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(() =>
-    window.location.pathname === "/about" ? "about" : "home",
-  );
+  const [page, setPage] = useState(getPageFromPath);
 
   const changePage = (targetPage) => {
     const motionDisabled = window.matchMedia(
@@ -43,7 +57,7 @@ function App() {
   };
 
   const navigate = (targetPage, sectionId) => {
-    const path = targetPage === "about" ? "/about" : "/";
+    const path = pagePaths[targetPage] || "/";
     window.history.pushState({}, "", sectionId ? `${path}#${sectionId}` : path);
 
     const scrollToDestination = () => {
@@ -71,8 +85,14 @@ function App() {
 
   useEffect(() => {
     const onPopState = () => {
-      const targetPage = window.location.pathname === "/about" ? "about" : "home";
-      changePage(targetPage);
+      changePage(getPageFromPath()).finally(() => {
+        window.setTimeout(() => {
+          const sectionId = window.location.hash.slice(1);
+          smoothScrollTo(
+            sectionId ? document.getElementById(sectionId) : 0,
+          );
+        }, 60);
+      });
     };
 
     window.addEventListener("popstate", onPopState);
@@ -190,19 +210,25 @@ function App() {
 
       <Header onNavigate={navigate} />
       <main className="pageView" key={page}>
-        {page === "about" ? (
-          <About />
-        ) : (
+        {page === "about" && <About />}
+        {page === "portfolio" && (
           <>
-            <Hero />
+            <PhotographyPortfolio />
+            <WeddingTrailers />
+          </>
+        )}
+        {page === "home" && (
+          <>
+            <Hero onNavigate={navigate} />
             <ExperienceSlider onNavigate={navigate} />
             <WeddingChapters />
             <Portfolio />
             <AboutServices />
             <Films />
             <JbReviews />
-            <VideoCTA />
             <FAQ />
+            <VideoCTA />
+            <Booking />
           </>
         )}
       </main>

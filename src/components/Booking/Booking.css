@@ -1,226 +1,249 @@
-.booking {
-  display: grid;
-  grid-template-columns: minmax(0, 0.86fr) minmax(320px, 1fr);
-  gap: clamp(34px, 7vw, 100px);
-  color: var(--white);
-  background: #080808;
+.simpleContact {
+  position: relative;
+  color: #fff;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.07), transparent 28%),
+    #050505;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-.booking .eyebrow {
-  color: var(--grey);
+.simpleContactHeader {
+  width: min(1320px, 100%);
+  margin: 0 auto clamp(42px, 6vw, 76px);
 }
 
-.bookingInfo h2 {
+.simpleContactHeader h2 {
+  max-width: 920px;
+  margin: 0;
+  font-family: var(--editorial-font);
+  font-size: clamp(3.3rem, 7vw, 7.2rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.simpleContactHeader > p:last-child {
   max-width: 620px;
-  margin: 0 0 24px;
-  font-size: clamp(2.4rem, 5.8vw, 6rem);
-  line-height: 0.96;
+  margin: clamp(24px, 3vw, 38px) 0 0;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: clamp(0.96rem, 1.15vw, 1.12rem);
+  line-height: 1.75;
 }
 
-.bookingInfo > p {
-  max-width: 620px;
-  color: var(--muted);
-  font-size: 1.02rem;
-  line-height: 1.8;
-}
-
-.contactCards {
+.simpleContactDetails {
+  width: min(1320px, 100%);
+  margin: 0 auto;
   display: grid;
-  gap: 10px;
-  margin-top: 34px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.contactCards a,
-.contactCards span {
+.simpleContactDetails > a {
+  position: relative;
+  min-width: 0;
+  min-height: 190px;
+  padding: clamp(24px, 3vw, 42px);
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  transition: background 450ms ease, color 450ms ease;
+}
+
+.simpleContactDetails > a:last-child {
+  border-right: 0;
+}
+
+.simpleContactDetails > a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #fff;
+  transform: translateY(101%);
+  transition: transform 550ms var(--ease);
+}
+
+.simpleContactDetails > a > * {
+  position: relative;
+  z-index: 1;
+}
+
+.simpleContactIcon {
+  flex: 0 0 auto;
+  width: 46px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+}
+
+.simpleContactIcon svg {
+  width: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.simpleContactDetails a > span:nth-child(2) {
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.simpleContactDetails small {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.simpleContactDetails strong {
+  overflow-wrap: anywhere;
+  font-size: clamp(1rem, 1.45vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.simpleContactDetails i {
+  margin-left: auto;
+  font-size: 1.1rem;
+  font-style: normal;
+  transition: transform 400ms var(--ease);
+}
+
+.simpleContactDetails > a:hover::before,
+.simpleContactDetails > a:focus-visible::before {
+  transform: translateY(0);
+}
+
+.simpleContactDetails > a:hover,
+.simpleContactDetails > a:focus-visible {
+  color: #000;
+}
+
+.simpleContactDetails > a:hover small,
+.simpleContactDetails > a:focus-visible small {
+  color: rgba(0, 0, 0, 0.58);
+}
+
+.simpleContactDetails > a:hover .simpleContactIcon,
+.simpleContactDetails > a:focus-visible .simpleContactIcon {
+  border-color: rgba(0, 0, 0, 0.36);
+}
+
+.simpleContactDetails > a:hover i,
+.simpleContactDetails > a:focus-visible i {
+  transform: translate(4px, -4px);
+}
+
+.simpleContactSocial {
+  width: min(1320px, 100%);
+  margin: clamp(44px, 6vw, 78px) auto 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--dark-line);
-  color: var(--white);
-  font-weight: 850;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  gap: 30px;
 }
 
-.contactCards a {
-  transition:
-    color 320ms var(--ease),
-    padding 320ms var(--ease),
-    border-color 320ms ease;
+.simpleContactSocial p {
+  margin: 0 0 8px;
+  font-family: var(--editorial-font);
+  font-size: clamp(1.7rem, 2.6vw, 2.7rem);
 }
 
-.contactCards a:hover,
-.contactCards a:focus-visible {
-  padding-inline: 10px;
-  border-color: var(--black);
-}
-
-.contactCards a span,
-.contactCards a strong {
-  transition: color 320ms ease;
-}
-
-.contactCards a:hover span,
-.contactCards a:hover strong,
-.contactCards a:focus-visible span,
-.contactCards a:focus-visible strong {
-  color: var(--black);
-}
-
-.contactCards a span,
-.contactCards strong {
-  color: var(--grey);
+.simpleContactSocial > div > span {
+  color: rgba(255, 255, 255, 0.55);
   font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
+  line-height: 1.6;
 }
 
-.bookingForm {
+.simpleContactSocial nav {
+  display: flex;
+  gap: 10px;
+}
+
+.simpleContactSocial nav a {
+  width: 52px;
+  aspect-ratio: 1;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 14px;
-  padding: clamp(24px, 4vw, 48px);
-  background: #0b0b0b;
-  border: 1px solid var(--line);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3);
-}
-
-.bookingFormHeader {
-  grid-column: 1 / -1;
-  margin-bottom: 10px;
-}
-
-.bookingFormHeader > span {
-  display: block;
-  margin-bottom: 10px;
-  color: var(--grey);
-  font-size: 0.67rem;
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.bookingFormHeader h3 {
-  margin: 0 0 9px;
-  color: var(--white);
-  font-size: clamp(1.7rem, 2.8vw, 2.7rem);
-  line-height: 1.05;
-}
-
-.bookingFormHeader p,
-.formNote {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.82rem;
-  line-height: 1.5;
-}
-
-.bookingForm label {
-  display: block;
-  color: var(--muted);
-  font-size: 0.76rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.bookingForm label > span {
-  display: inline;
-  color: #ffffff;
-}
-
-.fullField,
-.formButton {
-  grid-column: 1 / -1;
-}
-
-.bookingForm input,
-.bookingForm select,
-.bookingForm textarea {
-  width: 100%;
-  margin-top: 8px;
-  min-height: 54px;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  border-radius: 2px;
-  padding: 14px 16px;
-  color: var(--white);
-  background: #000000;
-  outline: none;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  color: #fff;
   transition:
-    border-color 260ms ease,
-    background 260ms ease,
-    box-shadow 260ms ease,
-    transform 260ms var(--ease);
+    color 350ms ease,
+    background 350ms ease,
+    border-color 350ms ease,
+    transform 450ms var(--ease);
 }
 
-.bookingForm input::placeholder,
-.bookingForm textarea::placeholder {
-  color: rgba(255, 255, 255, 0.48);
+.simpleContactSocial nav svg {
+  width: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.bookingForm textarea {
-  min-height: 150px;
-  resize: vertical;
+.simpleContactSocial nav svg .isFilled {
+  fill: currentColor;
+  stroke: none;
 }
 
-.bookingForm input:focus,
-.bookingForm select:focus,
-.bookingForm textarea:focus {
-  border-color: var(--white);
-  background: #0b0b0b;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-  transform: translateY(-2px);
+.simpleContactSocial nav a:hover,
+.simpleContactSocial nav a:focus-visible {
+  color: #000;
+  background: #fff;
+  border-color: #fff;
+  transform: translateY(-5px);
 }
 
-.formButton {
-  color: var(--white);
-  background: var(--black);
-  border-color: var(--black);
-  min-height: 58px;
-  margin-top: 2px;
-}
-
-.formButton span {
-  font-size: 1.1rem;
-  transition: transform 320ms var(--ease);
-}
-
-.formButton:hover span,
-.formButton:focus-visible span {
-  transform: translateX(5px);
-}
-
-.formNote {
-  grid-column: 1 / -1;
-  text-align: center;
-}
-
-.formButton::before {
-  background: var(--white);
-}
-
-@media (max-width: 980px) {
-  .booking {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 680px) {
-  .bookingForm {
+@media (max-width: 900px) {
+  .simpleContactDetails {
     grid-template-columns: 1fr;
   }
 
-  .fullField,
-  .formButton {
-    grid-column: auto;
+  .simpleContactDetails > a {
+    min-height: 135px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   }
 
-  .contactCards a,
-  .contactCards span {
+  .simpleContactDetails > a:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .simpleContactHeader h2 {
+    font-size: clamp(3rem, 16vw, 5rem);
+  }
+
+  .simpleContactSocial {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .simpleContactSocial nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .simpleContactSocial nav a {
+    width: clamp(47px, 13vw, 54px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .simpleContactDetails > a::before,
+  .simpleContactDetails i,
+  .simpleContactSocial nav a {
+    transition: none;
   }
 }

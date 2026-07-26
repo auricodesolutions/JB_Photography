@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { heroImages } from "../../data/siteData.js";
 import "./Hero.css";
 
-function Hero() {
+function Hero({ onNavigate }) {
   const heroRef = useRef(null);
   const [active, setActive] = useState(0);
 
@@ -159,25 +159,39 @@ function Hero() {
       </div>
 
       <div className="heroContent">
-        <p className="heroEyebrow">Wedding Photography</p>
+        <p className="heroEyebrow">Wedding Photography &amp; Videography</p>
 
         <h1 className="heroTitle">
-          <span>Wedding photographs</span>
+          <span>Wedding stories</span>
           <span>that feel like you.</span>
         </h1>
 
         <p className="heroDescription">
-          Honest moments, beautiful details, and memories you can return to
-          for a lifetime.
+          Honest photographs, cinematic films, and meaningful memories you can
+          return to for a lifetime.
         </p>
 
         <div className="heroActions">
-          <a href="#portfolio" className="heroBtn heroBtnDark">
-            View Gallery <span>›</span>
+          <a
+            href="/portfolio"
+            className="heroBtn heroBtnDark"
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate("portfolio", "photography");
+            }}
+          >
+            JBWEDDINGS <span>›</span>
           </a>
 
-          <a href="#contact" className="heroBtn heroBtnOutline">
-            Check Availability <span>›</span>
+          <a
+            href="/portfolio#wedding-trailers"
+            className="heroBtn heroBtnOutline"
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate("portfolio", "wedding-trailers");
+            }}
+          >
+            JBWF <span>›</span>
           </a>
         </div>
       </div>

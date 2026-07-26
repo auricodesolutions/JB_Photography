@@ -574,40 +574,48 @@
   }
 
   .aboutServiceAccordion {
-    height: min(540px, 72svh);
-    min-height: 470px;
-    gap: 4px;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+    gap: 8px;
+    overflow: visible;
   }
 
   .aboutServiceAccordionCard {
-    min-width: 25px;
-    flex: 0.55 1 0;
+    width: 100%;
+    min-width: 0;
+    min-height: 72px;
+    height: 72px;
+    flex: none;
+    transition:
+      height 700ms var(--ease),
+      filter 450ms ease;
   }
 
   .aboutServiceAccordionCard.is-active {
+    height: clamp(360px, 68svh, 480px);
     min-width: 0;
-    flex: 5 1 0;
+    min-height: 360px;
+    flex: none;
   }
 
   .aboutServiceTrigger {
-    padding: 14px 6px;
+    padding: 0 20px;
+    text-align: left;
   }
 
   .aboutServiceTrigger > strong {
-    bottom: 18px;
-    font-size: clamp(0.72rem, 3.2vw, 0.9rem);
-  }
-
-  .aboutServiceAccordionCard.is-active .aboutServiceTrigger {
-    inset: 12px auto auto 12px;
-    width: 38px;
-    height: 38px;
+    left: 20px;
+    bottom: 50%;
+    font-size: clamp(1.05rem, 5vw, 1.35rem);
+    writing-mode: horizontal-tb;
+    transform: translateY(50%);
   }
 
   .aboutServiceExpanded {
-    left: 14px;
-    right: 14px;
-    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 24px;
   }
 
   .aboutServiceExpanded .eyebrow {
@@ -622,12 +630,10 @@
   }
 
   .aboutServiceExpanded > p:not(.eyebrow) {
-    display: -webkit-box;
-    overflow: hidden;
+    display: block;
+    overflow: visible;
     font-size: 0.76rem;
     line-height: 1.48;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
   }
 
   .aboutServiceExpanded a {
