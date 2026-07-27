@@ -1,0 +1,398 @@
+.bookingPage {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(360px, 0.82fr) minmax(580px, 1.18fr);
+  color: #fff;
+  background: #080808;
+}
+
+.bookingPageVisual {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(100px, 10vw, 150px) clamp(28px, 4.5vw, 72px) clamp(36px, 5vw, 72px);
+  color: #fff;
+  background: #ddd5ca;
+}
+
+.bookingPageVisual > img,
+.bookingPageVisualShade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bookingPageVisual > img {
+  z-index: -2;
+  object-fit: cover;
+  object-position: 34% center;
+  filter: brightness(1.04) saturate(1.04);
+  animation: bookingImageEnter 1.6s var(--ease) both;
+}
+
+.bookingPage .bookingPageVisual > img.revealMedia {
+  opacity: 1;
+  clip-path: none;
+}
+
+.bookingPageVisualShade {
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(20, 15, 10, 0.14), transparent 72%),
+    linear-gradient(180deg, rgba(20, 15, 10, 0.06), transparent 38%),
+    linear-gradient(0deg, rgba(20, 15, 10, 0.72), rgba(20, 15, 10, 0.01) 72%);
+}
+
+.bookingPageIntro {
+  max-width: 680px;
+  animation: bookingCopyEnter 1s var(--ease) 160ms both;
+}
+
+.bookingPageKicker,
+.bookingFormHeader > p {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.bookingPageKicker::before {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  margin-right: 12px;
+  vertical-align: middle;
+  background: currentColor;
+}
+
+.bookingPageIntro h1 {
+  margin: 0;
+  font-family: var(--editorial-font);
+  font-size: clamp(3.4rem, 6vw, 7rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.bookingPageIntro > p:last-child {
+  max-width: 590px;
+  margin: clamp(24px, 3vw, 38px) 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(0.92rem, 1.05vw, 1.08rem);
+  line-height: 1.75;
+}
+
+.bookingPagePromise {
+  margin-top: clamp(36px, 6vh, 72px);
+  padding-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  animation: bookingCopyEnter 1s var(--ease) 280ms both;
+}
+
+.bookingPagePromise span {
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bookingPagePromise span::before {
+  content: "✦";
+  margin-right: 8px;
+  color: #fff;
+}
+
+.bookingPageFormPanel {
+  min-width: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding: clamp(120px, 10vw, 160px) clamp(24px, 6vw, 96px) clamp(80px, 8vw, 130px);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(173, 127, 82, 0.16), transparent 34%),
+    radial-gradient(circle at 100% 55%, rgba(255, 255, 255, 0.055), transparent 32%),
+    linear-gradient(145deg, #181512 0%, #100f0e 54%, #090909 100%);
+}
+
+.bookingFormHeader {
+  max-width: 780px;
+  margin: 0 auto clamp(48px, 6vw, 76px);
+  animation: bookingCopyEnter 900ms var(--ease) 120ms both;
+}
+
+.bookingFormHeader h2 {
+  margin: 0;
+  font-family: var(--editorial-font);
+  font-size: clamp(3rem, 5vw, 5.8rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.bookingFormHeader > span {
+  display: block;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 0.72rem;
+}
+
+.bookingFormHeader > p {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.bookingForm {
+  max-width: 780px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 34px 24px;
+}
+
+.bookingField {
+  min-width: 0;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: bookingFieldEnter 760ms var(--ease) var(--field-delay) forwards;
+}
+
+.bookingField--wide,
+.bookingFormFooter,
+.bookingFormStatus {
+  grid-column: 1 / -1;
+}
+
+.bookingField label {
+  display: block;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bookingField input,
+.bookingField select,
+.bookingField textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0;
+  outline: 0;
+  padding: 7px 0 15px;
+  color: #fff;
+  background: transparent;
+  font-size: clamp(0.92rem, 1.05vw, 1.05rem);
+  transition: border-color 320ms ease, padding-left 420ms var(--ease);
+}
+
+.bookingField textarea {
+  min-height: 126px;
+  resize: vertical;
+  line-height: 1.65;
+}
+
+.bookingField select {
+  color-scheme: dark;
+  cursor: pointer;
+}
+
+.bookingField select option {
+  color: #fff;
+  background: #121110;
+}
+
+.bookingField input::placeholder,
+.bookingField textarea::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.bookingField input:focus,
+.bookingField select:focus,
+.bookingField textarea:focus {
+  padding-left: 8px;
+  border-color: #fff;
+}
+
+.bookingFormFooter {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.bookingFormFooter button {
+  position: relative;
+  min-height: 58px;
+  flex: 0 0 auto;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 42px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid #fff;
+  color: #090909;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.67rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 380ms ease;
+}
+
+.bookingFormFooter button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #090909;
+  transform: translateX(-101%);
+  transition: transform 520ms var(--ease);
+}
+
+.bookingFormFooter button b {
+  font-size: 1.2rem;
+  transition: transform 420ms var(--ease);
+}
+
+.bookingFormFooter button:hover,
+.bookingFormFooter button:focus-visible {
+  color: #fff;
+}
+
+.bookingFormFooter button:hover::before,
+.bookingFormFooter button:focus-visible::before {
+  transform: translateX(0);
+}
+
+.bookingFormFooter button:hover b,
+.bookingFormFooter button:focus-visible b {
+  transform: translateX(5px);
+}
+
+.bookingFormFooter > p {
+  max-width: 310px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.7rem;
+  line-height: 1.6;
+}
+
+.bookingFormStatus {
+  margin: 0;
+  padding: 16px 18px;
+  border-left: 2px solid #fff;
+  color: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  animation: bookingCopyEnter 500ms var(--ease) both;
+}
+
+@media (max-width: 1050px) {
+  .bookingPage {
+    grid-template-columns: 1fr;
+  }
+
+  .bookingPageVisual {
+    position: relative;
+    height: min(780px, 82svh);
+    min-height: 620px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bookingPageVisual {
+    height: 78svh;
+    min-height: 570px;
+    padding: 105px 20px 30px;
+  }
+
+  .bookingPageFormPanel {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 0;
+  }
+
+  .bookingPageIntro h1 {
+    font-size: clamp(3.2rem, 15vw, 5.2rem);
+  }
+
+  .bookingPagePromise {
+    gap: 10px 16px;
+  }
+
+  .bookingPageFormPanel {
+    padding: 72px 18px 82px;
+  }
+
+  .bookingForm {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .bookingField--wide,
+  .bookingFormFooter,
+  .bookingFormStatus {
+    grid-column: auto;
+  }
+
+  .bookingFormFooter {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .bookingFormFooter button {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bookingPageVisual > img,
+  .bookingPageIntro,
+  .bookingPagePromise,
+  .bookingFormHeader,
+  .bookingField,
+  .bookingFormStatus {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .bookingField input,
+  .bookingField select,
+  .bookingField textarea,
+  .bookingFormFooter button,
+  .bookingFormFooter button::before,
+  .bookingFormFooter button b {
+    transition: none;
+  }
+}
+
+@keyframes bookingImageEnter {
+  from { opacity: 0; transform: scale(1.1); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bookingCopyEnter {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bookingFieldEnter {
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -73,7 +73,6 @@ function WeddingChapters() {
 
               <div className="chapterExpanded">
                 <p>{chapter.text}</p>
-                <a href="#portfolio">View photographs <span aria-hidden="true">→</span></a>
               </div>
             </article>
           ))}

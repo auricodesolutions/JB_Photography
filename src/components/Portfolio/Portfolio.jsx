@@ -31,7 +31,7 @@ function Portfolio() {
           <p className="eyebrow">Featured Projects</p>
           <h2>Stories worth remembering</h2>
         </div>
-        <a href="#portfolioGrid">View Portfolio</a>
+        <a href="/portfolio">View Portfolio</a>
       </div>
 
       <div className="portfolioGrid" id="portfolioGrid">

@@ -30,6 +30,11 @@ export const heroImages = [
   asset("img1.jpeg"),
 ];
 
+export const bookingPage = {
+  image: asset("img (93).jpeg"),
+  imageAlt: "Traditional wedding couple photographed in the Sri Lankan hills",
+};
+
 /* ---------------- EXPERIENCE SECTION IMAGES ---------------- */
 /* Large left slider - 5 images */
 export const experienceMainImages = [

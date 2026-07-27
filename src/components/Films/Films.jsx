@@ -17,7 +17,7 @@ const getYouTubeId = (url) => {
   return match?.[1] || "";
 };
 
-function Films() {
+function Films({ onNavigate }) {
   const preparedFilms = useMemo(
     () =>
       films.map((film) => {
@@ -76,9 +76,7 @@ function Films() {
             honest emotion.
           </p>
 
-          <a href="#contact" className="filmsHeaderBtn">
-            Request video coverage
-          </a>
+          
         </div>
 
         <div className="filmGallery">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { services } from "../../data/siteData.js";
 import "../About/About.css";
 
-function AboutServices() {
+function AboutServices({ onNavigate }) {
   const [activeService, setActiveService] = useState(0);
 
   return (
@@ -43,7 +43,15 @@ function AboutServices() {
               <div className="aboutServiceExpanded" aria-hidden={!isActive}>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
-                <a href="#contact">Check availability</a>
+                <a
+                  href="/booking"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    onNavigate("booking");
+                  }}
+                >
+                  Check availability
+                </a>
               </div>
             </article>
           );

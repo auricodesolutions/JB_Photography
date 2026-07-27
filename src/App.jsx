@@ -9,6 +9,7 @@ import Portfolio from "./components/Portfolio/Portfolio.jsx";
 import WeddingChapters from "./components/WeddingChapters/WeddingChapters.jsx";
 import Films from "./components/Films/Films.jsx";
 import Booking from "./components/Booking/Booking.jsx";
+import BookingPage from "./components/BookingPage/BookingPage.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import WhatsAppButton from "./components/WhatsAppButton/WhatsAppButton.jsx";
 import JbReviews from "./components/JbReviews/JbReviews.jsx";
@@ -23,6 +24,7 @@ const pagePaths = {
   home: "/",
   about: "/about",
   portfolio: "/portfolio",
+  booking: "/booking",
 };
 
 const getPageFromPath = () => {
@@ -30,6 +32,7 @@ const getPageFromPath = () => {
 
   if (path === "/about") return "about";
   if (path === "/portfolio") return "portfolio";
+  if (path === "/booking") return "booking";
   return "home";
 };
 
@@ -211,6 +214,7 @@ function App() {
       <Header onNavigate={navigate} />
       <main className="pageView" key={page}>
         {page === "about" && <About />}
+        {page === "booking" && <BookingPage />}
         {page === "portfolio" && (
           <>
             <PhotographyPortfolio />
@@ -223,11 +227,11 @@ function App() {
             <ExperienceSlider onNavigate={navigate} />
             <WeddingChapters />
             <Portfolio />
-            <AboutServices />
-            <Films />
+            <AboutServices onNavigate={navigate} />
+            <Films onNavigate={navigate} />
             <JbReviews />
             <FAQ />
-            <VideoCTA />
+            <VideoCTA onNavigate={navigate} />
             <Booking />
           </>
         )}
