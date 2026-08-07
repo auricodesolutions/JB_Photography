@@ -19,7 +19,6 @@ function VideoCTA({ onNavigate }) {
       <div className="videoCtaOverlay" />
 
       <div className="videoCtaPanel">
-        <p className="eyebrow">Your story deserves to live forever</p>
         <h2>
           <span>Don&apos;t let your precious</span>
           <span>memories fade away.</span>

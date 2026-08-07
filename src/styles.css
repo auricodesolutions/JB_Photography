@@ -1,20 +1,24 @@
 :root {
   --black: #000000;
-  --ink: #000000;
-  --charcoal: #111111;
+  --ink: #050505;
+  --charcoal: #101010;
+  --surface: #0b0b0b;
+  --surface-raised: #141414;
   --white: #ffffff;
   --soft-white: #0b0b0b;
-  --muted: rgba(255, 255, 255, 0.66);
-  --grey: rgba(255, 255, 255, 0.48);
-  --line: rgba(255, 255, 255, 0.16);
-  --dark-line: rgba(255, 255, 255, 0.12);
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --editorial-font: "Bodoni MT", Didot, "Times New Roman", serif;
+  --muted: rgba(255, 255, 255, 0.7);
+  --grey: rgba(255, 255, 255, 0.5);
+  --line: rgba(255, 255, 255, 0.14);
+  --dark-line: rgba(255, 255, 255, 0.1);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --editorial-font: Didot, "Bodoni Moda", "Bodoni MT", "Times New Roman", serif;
+  --body-font: "Archivo", Arial, sans-serif;
+  --script-font: "Allura", "Segoe Script", "Snell Roundhand", cursive;
+  color-scheme: dark;
   color: var(--white);
   background: var(--black);
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: var(--body-font);
   font-synthesis: none;
   text-rendering: geometricPrecision;
 }
@@ -47,7 +51,12 @@ html.lenis.lenis-stopped {
 body {
   margin: 0;
   min-width: 320px;
+  color: var(--white);
   background: var(--black);
+  font-family: var(--body-font);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
@@ -99,8 +108,9 @@ p {
 h1,
 h2,
 h3 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--editorial-font);
   font-weight: 400;
+  letter-spacing: -0.035em;
 }
 
 main {
@@ -335,30 +345,33 @@ main {
 
 [data-animate] {
   opacity: 0;
-  transform: translateY(42px) scale(0.985);
+  clip-path: inset(0 0 10% 0);
+  transform: translate3d(0, 56px, 0) scale(0.99);
   will-change: opacity, transform;
   transition:
-    opacity 950ms ease,
-    transform 950ms var(--ease);
+    opacity 1100ms var(--ease-soft),
+    clip-path 1350ms var(--ease),
+    transform 1350ms var(--ease);
 }
 
 [data-animate].is-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  clip-path: inset(0);
+  transform: translate3d(0, 0, 0) scale(1);
   will-change: auto;
 }
 
 main .revealContent {
   opacity: 0;
-  clip-path: inset(0 0 16% 0);
-  filter: blur(5px);
-  transform: translate3d(0, 30px, 0);
+  clip-path: inset(0 0 22% 0);
+  filter: blur(3px);
+  transform: translate3d(0, 46px, 0);
   will-change: opacity, transform, clip-path;
   transition:
-    opacity 780ms ease var(--reveal-delay, 0ms),
-    transform 980ms var(--ease) var(--reveal-delay, 0ms),
-    clip-path 950ms var(--ease) var(--reveal-delay, 0ms),
-    filter 700ms ease var(--reveal-delay, 0ms);
+    opacity 980ms var(--ease-soft) var(--reveal-delay, 0ms),
+    transform 1250ms var(--ease) var(--reveal-delay, 0ms),
+    clip-path 1250ms var(--ease) var(--reveal-delay, 0ms),
+    filter 900ms ease var(--reveal-delay, 0ms);
 }
 
 main .revealContent.is-visible {
@@ -374,10 +387,10 @@ main img.revealMedia {
   clip-path: inset(0 0 100% 0);
   will-change: opacity, clip-path;
   transition:
-    opacity 800ms ease var(--reveal-delay, 0ms),
-    clip-path 1250ms var(--ease) var(--reveal-delay, 0ms),
-    filter 650ms ease,
-    transform 1100ms var(--ease);
+    opacity 1050ms var(--ease-soft) var(--reveal-delay, 0ms),
+    clip-path 1550ms var(--ease) var(--reveal-delay, 0ms),
+    filter 900ms ease,
+    transform 1450ms var(--ease);
 }
 
 main img.revealMedia.is-visible {
@@ -406,10 +419,10 @@ main .experience img.revealMedia {
 .jbReviews[data-animate] > *,
 .footer[data-animate] > * {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translate3d(0, 38px, 0);
   transition:
-    opacity 780ms ease,
-    transform 900ms var(--ease);
+    opacity 950ms var(--ease-soft),
+    transform 1200ms var(--ease);
 }
 
 .section[data-animate].is-visible > *,
@@ -654,6 +667,7 @@ textarea:focus-visible {
 
   [data-animate] {
     opacity: 1;
+    clip-path: none;
     transform: none;
   }
 

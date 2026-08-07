@@ -16,8 +16,9 @@
 }
 
 .siteHeader.isScrolled {
-  background: #000;
-  border-bottom-color: transparent;
+  background: rgba(0, 0, 0, 0.94);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
 }
 
 .brand {
@@ -96,7 +97,7 @@
   color: var(--black);
   background: var(--white);
   border: 1px solid var(--white);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--editorial-font);
   font-size: clamp(0.7rem, 0.66vw, 0.78rem);
   text-align: center;
 }
@@ -393,7 +394,7 @@
     content: "\2197";
     order: 2;
     color: rgba(255, 255, 255, 0.64);
-    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--body-font);
     font-size: 0.78rem;
     opacity: 0;
     transform: translate(-12px, 12px) rotate(-35deg);
@@ -412,7 +413,7 @@
     padding: 14px 18px;
     justify-content: center;
     color: var(--black);
-    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--body-font);
     font-size: 0.68rem;
     font-weight: 900;
     letter-spacing: 0.16em;
@@ -447,6 +448,7 @@
   .siteHeader nav.isOpen a:nth-of-type(5) { transition-delay: 480ms; }
   .siteHeader nav.isOpen a:nth-of-type(6) { transition-delay: 540ms; }
   .siteHeader nav.isOpen a:nth-of-type(7) { transition-delay: 600ms; }
+  .siteHeader nav.isOpen a:nth-of-type(8) { transition-delay: 660ms; }
 
   @media (prefers-reduced-motion: reduce) {
     .siteHeader nav,

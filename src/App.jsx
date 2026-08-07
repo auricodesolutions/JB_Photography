@@ -18,13 +18,18 @@ import VideoCTA from "./components/VideoCTA/VideoCTA.jsx";
 import About from "./components/About/About.jsx";
 import PhotographyPortfolio from "./components/PhotographyPortfolio/PhotographyPortfolio.jsx";
 import WeddingTrailers from "./components/WeddingTrailers/WeddingTrailers.jsx";
+import ServiceGalleryPage from "./components/ServiceGalleryPage/ServiceGalleryPage.jsx";
+import { serviceGalleries } from "./data/siteData.js";
 import useSmoothScroll from "./hooks/useSmoothScroll.js";
 
 const pagePaths = {
   home: "/",
   about: "/about",
   portfolio: "/portfolio",
+  films: "/wedding-films",
   booking: "/booking",
+  preshoots: "/preshoots",
+  events: "/events",
 };
 
 const getPageFromPath = () => {
@@ -32,7 +37,10 @@ const getPageFromPath = () => {
 
   if (path === "/about") return "about";
   if (path === "/portfolio") return "portfolio";
+  if (path === "/wedding-films") return "films";
   if (path === "/booking") return "booking";
+  if (path === "/preshoots") return "preshoots";
+  if (path === "/events") return "events";
   return "home";
 };
 
@@ -138,7 +146,7 @@ function App() {
           }
         });
       },
-      { threshold: 0.02 },
+      { threshold: 0.05, rootMargin: "0px 0px -7% 0px" },
     );
 
     animatedItems.forEach((item) => observer.observe(item));
@@ -215,28 +223,30 @@ function App() {
       <main className="pageView" key={page}>
         {page === "about" && <About />}
         {page === "booking" && <BookingPage />}
-        {page === "portfolio" && (
-          <>
-            <PhotographyPortfolio />
-            <WeddingTrailers />
-          </>
+        {page === "preshoots" && (
+          <ServiceGalleryPage gallery={serviceGalleries.preshoots} onNavigate={navigate} />
         )}
+        {page === "events" && (
+          <ServiceGalleryPage gallery={serviceGalleries.events} onNavigate={navigate} />
+        )}
+        {page === "portfolio" && (
+          <PhotographyPortfolio onNavigate={navigate} />
+        )}
+        {page === "films" && <WeddingTrailers onNavigate={navigate} />}
         {page === "home" && (
           <>
             <Hero onNavigate={navigate} />
             <ExperienceSlider onNavigate={navigate} />
-            <WeddingChapters />
-            <Portfolio />
+            <Portfolio onNavigate={navigate} />
             <AboutServices onNavigate={navigate} />
             <Films onNavigate={navigate} />
-            <JbReviews />
+            <JbReviews onNavigate={navigate} />
             <FAQ />
-            <VideoCTA onNavigate={navigate} />
             <Booking />
           </>
         )}
       </main>
-      <Footer />
+      <Footer onNavigate={navigate} />
       <WhatsAppButton />
     </>
   );

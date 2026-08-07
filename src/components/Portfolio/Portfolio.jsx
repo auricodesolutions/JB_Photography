@@ -1,64 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { portfolio } from "../../data/siteData.js";
 import "./Portfolio.css";
 
-function Portfolio() {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [touchPreviewIndex, setTouchPreviewIndex] = useState(null);
-
-  useEffect(() => {
-    portfolio.forEach((item) => {
-      const image = new Image();
-      image.src = item.hoverImage;
-    });
-  }, []);
-
-  const handleMouseEnter = (index) => {
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      setHoveredIndex(index);
-    }
-  };
-
-  const handleTouchPreview = (index) => {
-    setHoveredIndex(null);
-    setTouchPreviewIndex((current) => (current === index ? null : index));
-  };
+function Portfolio({ onNavigate }) {
+  const portraits = portfolio.filter((item) => item.layout === "portrait");
+  const landscapes = portfolio.filter((item) => item.layout !== "portrait");
+  const displayedProjects = [
+    portraits[0], landscapes[0], landscapes[1], portraits[1],
+    landscapes[2], landscapes[3], portraits[2], portraits[3],
+    portraits[4], landscapes[4], portraits[5],
+  ].filter(Boolean);
 
   return (
     <section className="portfolio section" id="portfolio" data-animate>
       <div className="sectionHeader">
         <div>
-          <p className="eyebrow">Featured Projects</p>
-          <h2>Stories worth remembering</h2>
+          <h2> Featured Stories</h2>
         </div>
-        <a href="/portfolio">View Portfolio</a>
+        <a
+          href="/portfolio"
+          onClick={(event) => {
+            event.preventDefault();
+            onNavigate("portfolio");
+          }}
+        >
+          View Portfolio
+        </a>
       </div>
 
       <div className="portfolioGrid" id="portfolioGrid">
-        {portfolio.map((item, index) => {
-          const isPreviewing = hoveredIndex === index || touchPreviewIndex === index;
-
-          return (
+        {displayedProjects.map((item, index) => (
             <article
               className={`project${item.layout ? ` project--${item.layout}` : ""}`}
               key={item.title}
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              onTouchEnd={() => handleTouchPreview(index)}
-              data-previewing={touchPreviewIndex === index}
+              tabIndex="0"
               style={{ "--project-delay": `${index * 80}ms` }}
             >
-              <span
-                className={`projectImageTrack${isPreviewing ? " is-previewing" : ""}`}
-              >
+              <span className="projectImage">
                 <img
                   src={item.image}
                   alt={item.alt}
-                  loading="lazy"
-                />
-                <img
-                  src={item.hoverImage}
-                  alt=""
                   loading="lazy"
                 />
               </span>
@@ -68,8 +49,7 @@ function Portfolio() {
                 <span className="projectTitle">{item.title}</span>
               </span>
             </article>
-          );
-        })}
+          ))}
       </div>
     </section>
   );

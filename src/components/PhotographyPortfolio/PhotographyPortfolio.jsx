@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { portfolio } from "../../data/siteData.js";
 import "./PhotographyPortfolio.css";
 
-function PhotographyPortfolio() {
+function PhotographyPortfolio({ onNavigate }) {
   const albums = portfolio.slice(0, 10);
   const [activeAlbum, setActiveAlbum] = useState(null);
   const closeButtonRef = useRef(null);
@@ -45,7 +45,15 @@ function PhotographyPortfolio() {
         </p>
         <nav className="portfolioJumpNav" aria-label="Portfolio sections">
           <a className="isActive" href="#photography">Photography albums</a>
-          <a href="#wedding-trailers">Wedding trailers</a>
+          <a
+            href="/wedding-films"
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate("films");
+            }}
+          >
+            Wedding films
+          </a>
         </nav>
       </header>
 

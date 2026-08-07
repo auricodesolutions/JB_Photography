@@ -1,6 +1,6 @@
 .packages {
-  color: var(--black);
-  background: var(--white);
+  color: var(--white);
+  background: var(--black);
 }
 
 .packages .eyebrow,
@@ -9,14 +9,14 @@
 }
 
 .packages .sectionHeader a::before {
-  background: var(--black);
+  background: var(--white);
 }
 
 .packages .sectionHeader a:hover,
 .packages .sectionHeader a:focus-visible,
 .packages .sectionHeader a:active {
-  color: var(--white);
-  border-color: var(--black);
+  color: var(--black);
+  border-color: var(--white);
 }
 
 .packageGrid {
@@ -32,7 +32,7 @@
   justify-content: space-between;
   padding: 30px;
   border: 1px solid var(--dark-line);
-  background: var(--soft-white);
+  background: var(--surface);
   transition:
     transform 420ms var(--ease),
     background 420ms ease,
@@ -41,7 +41,7 @@
 
 .package:hover {
   color: var(--white);
-  background: var(--black);
+  background: var(--surface-raised);
   transform: translateY(-8px);
 }
 

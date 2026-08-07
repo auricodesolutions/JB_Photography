@@ -9,7 +9,7 @@ const getYouTubeId = (url) => {
   return match?.[1] || "";
 };
 
-function WeddingTrailers() {
+function WeddingTrailers({ onNavigate }) {
   const trailers = useMemo(
     () =>
       weddingTrailers.map((trailer) => {
@@ -65,8 +65,16 @@ function WeddingTrailers() {
           every feeling between the vows.
         </p>
         <nav className="portfolioJumpNav" aria-label="Portfolio sections">
-          <a href="#photography">Photography albums</a>
-          <a className="isActive" href="#wedding-trailers">Wedding trailers</a>
+          <a
+            href="/portfolio"
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate("portfolio");
+            }}
+          >
+            Photography albums
+          </a>
+          <a className="isActive" href="#wedding-trailers">Wedding films</a>
         </nav>
       </header>
 

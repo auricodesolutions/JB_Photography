@@ -40,8 +40,6 @@ function ExperienceSlider({ onNavigate }) {
       </div>
 
       <div className="experienceContent">
-        <p className="eyebrow">The JB Experience</p>
-
         <h2>Experience the art of photography</h2>
 
         <p>

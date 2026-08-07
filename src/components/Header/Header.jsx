@@ -91,6 +91,7 @@ function Header({ onNavigate }) {
         <a href="/#home" onClick={(event) => goTo(event, "home", "home")}>Home</a>
         <a href="/about" onClick={(event) => goTo(event, "about")}>About</a>
         <a href="/portfolio" onClick={(event) => goTo(event, "portfolio")}>Portfolio</a>
+        <a href="/wedding-films" onClick={(event) => goTo(event, "films")}>Films</a>
         <a href="/booking" onClick={(event) => goTo(event, "booking")}>Reserve Now</a>
         <a href="/#reviews" onClick={(event) => goTo(event, "home", "reviews")}>Reviews</a>
         <a href="/#contact" onClick={(event) => goTo(event, "home", "contact")}>Contact Us</a>

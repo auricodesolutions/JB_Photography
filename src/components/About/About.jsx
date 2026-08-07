@@ -16,7 +16,6 @@ function About() {
         </div>
 
         <header className="aboutFounderHeading">
-          <p className="eyebrow">Meet the founder</p>
           <h1 id="about-title">{about.founderTitle}</h1>
           <div className="aboutFounderLine" aria-hidden="true"><span /><span /></div>
         </header>
@@ -47,7 +46,6 @@ function About() {
         data-animate
       >
         <div className="aboutWhyIntro">
-          <p className="eyebrow">Why choose JB WEDDINGS</p>
           <h2 id="about-why-title">Your day, handled with care.</h2>
           <p>
             A calm, personal experience and photographs that bring every
@@ -95,7 +93,6 @@ function About() {
         </div>
 
         <div className="aboutStorytellingCopy">
-          <p className="eyebrow">The vision behind every frame</p>
           <h2>
             {about.storytellingTitle.map((line) => (
               <span key={line}>{line}</span>

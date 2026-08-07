@@ -71,7 +71,7 @@
   background: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 50%;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--editorial-font);
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -83,7 +83,7 @@
 }
 
 .whatsappPanel__header strong {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--editorial-font);
   font-size: 17px;
   letter-spacing: 0.03em;
 }
@@ -156,7 +156,7 @@
   max-width: 330px;
   margin: 0 0 18px;
   color: #111111;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--editorial-font);
   font-size: 1.45rem;
   font-weight: 500;
   line-height: 1.18;

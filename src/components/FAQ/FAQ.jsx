@@ -8,8 +8,7 @@ function FAQ() {
   return (
     <section className="faq section" id="faq" data-animate>
       <header className="faqHeader">
-        <p className="eyebrow">Planning your story</p>
-        <h2>Everything you need to know before your day.</h2>
+        <h2>FAQs</h2>
         <p>Quick answers to help you plan your photography and film coverage with confidence.</p>
       </header>
 

@@ -7,7 +7,6 @@ function Packages() {
     <section className="packages section" id="packages" data-animate>
       <div className="sectionHeader">
         <div>
-          <p className="eyebrow">Packages</p>
           <h2>Choose the right coverage</h2>
         </div>
         <a href="#contact">Ask package price</a>

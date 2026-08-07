@@ -45,7 +45,6 @@ function WeddingChapters() {
     >
       <header className="weddingChaptersHeader">
         <div>
-          <p className="eyebrow">Your story, completely remembered</p>
           <h2 id="chapters-title">A wedding in four chapters.</h2>
         </div>
         <p>

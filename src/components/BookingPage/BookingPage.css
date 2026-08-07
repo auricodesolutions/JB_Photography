@@ -32,7 +32,7 @@
   z-index: -2;
   object-fit: cover;
   object-position: 34% center;
-  filter: brightness(1.04) saturate(1.04);
+  filter: brightness(0.72) saturate(0.78) contrast(1.06);
   animation: bookingImageEnter 1.6s var(--ease) both;
 }
 
@@ -44,9 +44,9 @@
 .bookingPageVisualShade {
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(20, 15, 10, 0.14), transparent 72%),
-    linear-gradient(180deg, rgba(20, 15, 10, 0.06), transparent 38%),
-    linear-gradient(0deg, rgba(20, 15, 10, 0.72), rgba(20, 15, 10, 0.01) 72%);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.34), transparent 72%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.28), transparent 42%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.06) 76%);
 }
 
 .bookingPageIntro {
@@ -121,9 +121,9 @@
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   padding: clamp(120px, 10vw, 160px) clamp(24px, 6vw, 96px) clamp(80px, 8vw, 130px);
   background:
-    radial-gradient(circle at 12% 8%, rgba(173, 127, 82, 0.16), transparent 34%),
+    radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.06), transparent 34%),
     radial-gradient(circle at 100% 55%, rgba(255, 255, 255, 0.055), transparent 32%),
-    linear-gradient(145deg, #181512 0%, #100f0e 54%, #090909 100%);
+    linear-gradient(145deg, #141414 0%, #0d0d0d 54%, #050505 100%);
 }
 
 .bookingFormHeader {

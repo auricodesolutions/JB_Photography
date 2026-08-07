@@ -67,7 +67,6 @@ function Films({ onNavigate }) {
       <div className="filmsInner">
         <div className="filmsHeader">
           <div className="filmsTitleBlock">
-            <p className="eyebrow">Wedding Films</p>
             <h2>Cinematic previews</h2>
           </div>
 
@@ -76,7 +75,17 @@ function Films({ onNavigate }) {
             honest emotion.
           </p>
 
-          
+          <a
+            className="filmsHeaderBtn"
+            href="/wedding-films"
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate("films");
+            }}
+          >
+            View all
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
 
         <div className="filmGallery">
@@ -101,7 +110,7 @@ function Films({ onNavigate }) {
                 <span className="filmCardShade" />
                 <span className="filmCardPlay">
                   <b aria-hidden="true">▶</b>
-                  <span>Play film</span>
+                  <span className="srOnly">Play film</span>
                 </span>
               </button>
 

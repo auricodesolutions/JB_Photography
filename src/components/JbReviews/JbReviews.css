@@ -7,9 +7,8 @@
 }
 
 .jbReviewsHero {
-  position: sticky;
-  top: 0;
-  height: min(100svh, 820px);
+  position: relative;
+  height: min(82svh, 820px);
   min-height: 540px;
   overflow: hidden;
 }
@@ -33,27 +32,49 @@
     linear-gradient(180deg, transparent 72%, #000 100%);
 }
 
-.jbReviewRows {
+.jbReviewGrid {
   position: relative;
   z-index: 3;
   width: min(1145px, 80vw);
-  margin: -24vh auto 0;
-  padding-bottom: clamp(120px, 13vw, 200px);
+  margin: clamp(-210px, -14vw, -150px) auto 0;
+  padding-bottom: clamp(58px, 6vw, 92px);
 }
 
 .jbReviewRow {
-  position: sticky;
-  top: 92px;
-  z-index: calc(4 + var(--review-row));
-  isolation: isolate;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(22px, 2.35vw, 34px);
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 720ms ease,
+    filter 850ms ease,
+    transform 900ms var(--ease);
 }
 
 .jbReviewRow + .jbReviewRow {
-  z-index: 6;
-  margin-top: clamp(28px, 2.35vw, 34px);
+  margin-top: clamp(22px, 2.35vw, 34px);
+  opacity: 0.16;
+  filter: blur(10px);
+  transform: translateY(30px) scale(0.985);
+}
+
+.jbReviewGrid.isSecondActive .jbReviewRow:first-child {
+  opacity: 0;
+  filter: blur(12px);
+  pointer-events: none;
+  transform: translateY(-22px) scale(0.985);
+  transition:
+    filter 720ms ease,
+    opacity 620ms ease 220ms,
+    transform 900ms var(--ease);
+}
+
+.jbReviewGrid.isSecondActive .jbReviewRow + .jbReviewRow {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
 }
 
 .jbReviewTile {
@@ -66,10 +87,16 @@
   background: rgba(12, 12, 12, 0.32);
   backdrop-filter: blur(1px);
   box-shadow: 0 24px 65px rgba(0, 0, 0, 0.38);
+  opacity: 0;
+  transform: translateY(34px);
   transition:
     transform 550ms var(--ease),
     border-color 550ms ease,
     box-shadow 550ms ease;
+}
+
+.jbReviews.is-visible .jbReviewTile {
+  animation: jbReviewCardIn 850ms var(--ease) var(--review-delay) both;
 }
 
 .jbReviewTile > img {
@@ -83,38 +110,13 @@
   transition: transform 850ms var(--ease), filter 850ms ease;
 }
 
-.jbReviewRow:first-child .jbReviewTile {
-  background: rgba(8, 8, 8, 0.14);
-  border-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(1.5px);
-}
-
-.jbReviewRow:first-child .jbReviewTile > img {
-  opacity: 0.5;
-  filter: contrast(0.96) saturate(0.7);
-}
-
-.jbReviewRow:first-child .jbReviewTileContent {
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.78);
-}
-
-.jbReviewRow + .jbReviewRow .jbReviewTile {
-  background: rgba(8, 8, 8, 0.18);
-  border-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(1px);
-}
-
-.jbReviewRow + .jbReviewRow .jbReviewTile > img {
-  opacity: 0.86;
-}
-
 .jbReviewTileShade {
   position: absolute;
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.24)),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.38), transparent 62%);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.34)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.62), transparent 72%);
 }
 
 .jbReviewTileContent {
@@ -129,14 +131,22 @@
 }
 
 .jbReviewTile h3 {
-  margin: 0 0 28px;
+  margin: 0 0 20px;
   color: var(--white);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--editorial-font);
   font-size: clamp(20px, 1.65vw, 25px);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.015em;
   text-transform: uppercase;
+}
+
+.jbReviewBrand {
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
 }
 
 .jbReviewText {
@@ -160,10 +170,107 @@
   transform: scale(1.055);
 }
 
-.jbReviewRow:first-child .jbReviewTile:hover > img {
-  opacity: 0.5;
-  filter: contrast(1.03) saturate(0.78);
-  transform: scale(1.055);
+.jbReviewCta {
+  --cta-opacity: 0;
+  --cta-clip: 100%;
+  --cta-y: 92px;
+  --cta-parallax: 0px;
+  --cta-copy-opacity: 0;
+  --cta-copy-clip: 100%;
+  --cta-copy-y: 58px;
+  position: relative;
+  min-height: clamp(650px, 92svh, 920px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: #000;
+}
+
+.jbReviewCtaMedia {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: var(--cta-opacity);
+  clip-path: inset(var(--cta-clip) 0 0);
+  transform: translateY(calc(var(--cta-y) + var(--cta-parallax))) scale(1.075);
+  transform-origin: center bottom;
+  will-change: clip-path, opacity, transform;
+}
+
+.jbReviewCtaMedia img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.54) saturate(0.72) contrast(1.08);
+}
+
+.jbReviewCtaShade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.76) 9%, rgba(0, 0, 0, 0.4) 34%, rgba(0, 0, 0, 0.48) 72%, rgba(0, 0, 0, 0.74) 100%),
+    radial-gradient(circle at center, transparent 4%, rgba(0, 0, 0, 0.46) 100%);
+}
+
+.jbReviewCtaContent {
+  width: min(1120px, calc(100% - 48px));
+  padding: 110px 0;
+  text-align: center;
+  opacity: var(--cta-copy-opacity);
+  clip-path: inset(var(--cta-copy-clip) 0 0);
+  transform: translateY(var(--cta-copy-y));
+  will-change: clip-path, opacity, transform;
+}
+
+.jbReviewCtaContent h2 {
+  max-width: 1040px;
+  margin: 0 auto;
+  color: #fff;
+  font-family: var(--editorial-font);
+  font-size: clamp(3.5rem, 5vw, 6rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+  text-shadow: 0 5px 30px rgba(0, 0, 0, 0.48);
+}
+
+.jbReviewCtaContent p {
+  max-width: 850px;
+  margin: 36px auto 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(16px, 1.18vw, 21px);
+  line-height: 1.55;
+  text-wrap: balance;
+}
+
+.jbReviewCtaContent a {
+  min-width: 240px;
+  margin-top: 38px;
+  padding: 19px 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(8px);
+  font-size: clamp(1rem, 1.12vw, 1.28rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: none;
+  transition: color 350ms ease, background 350ms ease, transform 350ms var(--ease);
+}
+
+.jbReviewCtaContent a:hover {
+  color: #090909;
+  background: #fff;
+  transform: translateY(-4px);
 }
 
 @media (max-width: 1100px) {
@@ -171,12 +278,13 @@
     height: 560px;
   }
 
-  .jbReviewRows {
+  .jbReviewGrid {
     width: min(920px, 90vw);
-    margin-top: -64px;
+    margin-top: -110px;
   }
 
   .jbReviewRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
   }
 
@@ -198,25 +306,21 @@
     height: 390px;
   }
 
-  .jbReviewRows {
+  .jbReviewGrid {
     width: calc(100% - 40px);
     margin-top: -58px;
-    padding-bottom: 100px;
+    padding-bottom: 64px;
+    gap: 22px;
   }
 
   .jbReviewRow {
-    position: relative;
-    top: auto;
-    display: grid;
     grid-template-columns: 1fr;
     gap: 22px;
   }
 
   .jbReviewRow + .jbReviewRow {
-    z-index: 6;
-    margin-top: -56px;
-    padding-top: 82px;
-    background: linear-gradient(180deg, transparent, #000 76px);
+    margin-top: 22px;
+    filter: blur(7px);
   }
 
   .jbReviewTile {
@@ -235,16 +339,59 @@
     max-width: 360px;
     font-size: 15px;
   }
+
+  .jbReviewCta {
+    min-height: 700px;
+  }
+
+  .jbReviewCtaContent {
+    width: calc(100% - 40px);
+    padding: 90px 0;
+  }
+
+  .jbReviewCtaContent h2 {
+    max-width: 620px;
+    font-size: clamp(2.85rem, 11.5vw, 4.5rem);
+    line-height: 0.98;
+  }
+
+  .jbReviewCtaContent p {
+    max-width: 460px;
+    margin-top: 24px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .jbReviewCtaContent a {
+    margin-top: 28px;
+    min-width: 210px;
+    padding: 17px 24px;
+    font-size: 1rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .jbReviewRow {
-    position: relative;
-    top: auto;
-  }
-
   .jbReviewTile,
-  .jbReviewTile > img {
+  .jbReviewTile > img,
+  .jbReviewRow,
+  .jbReviewRow + .jbReviewRow,
+  .jbReviewGrid.isSecondActive .jbReviewRow {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    animation: none;
     transition: none;
   }
+
+  .jbReviewCtaMedia,
+  .jbReviewCtaContent {
+    opacity: 1;
+    clip-path: none;
+    transform: none;
+  }
+}
+
+@keyframes jbReviewCardIn {
+  from { opacity: 0; transform: translateY(34px); }
+  to { opacity: 1; transform: translateY(0); }
 }

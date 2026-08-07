@@ -33,10 +33,10 @@ export default function useSmoothScroll() {
 
     const root = document.documentElement;
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.38,
       easing: referenceEase,
       smooth: true,
-      mouseMultiplier: 1,
+      mouseMultiplier: 0.88,
       smoothTouch: false,
       touchMultiplier: 2,
       direction: "vertical",

@@ -21,7 +21,8 @@ function Hero({ onNavigate }) {
     const touchDevice = window.matchMedia(
       "(hover: none), (pointer: coarse)",
     ).matches;
-    const smoothing = touchDevice ? 72 : 90;
+    // Keep the hero following the scroll with a gentle cinematic glide.
+    const smoothing = touchDevice ? 140 : 180;
     let frameId = 0;
     let lastTime = 0;
     let targetProgress = 0;
@@ -55,7 +56,7 @@ function Hero({ onNavigate }) {
     };
 
     const animateSlides = (time) => {
-      const elapsed = lastTime ? Math.min(time - lastTime, 34) : 16;
+      const elapsed = lastTime ? Math.min(time - lastTime, 24) : 16;
       lastTime = time;
       const difference = targetProgress - renderedProgress;
       const blend = reduceMotion ? 1 : 1 - Math.exp(-elapsed / smoothing);
@@ -159,16 +160,13 @@ function Hero({ onNavigate }) {
       </div>
 
       <div className="heroContent">
-        <p className="heroEyebrow">Wedding Photography &amp; Videography</p>
-
         <h1 className="heroTitle">
-          <span>Wedding stories</span>
-          <span>that feel like you.</span>
+          <span>JB WEDDINGS</span>
+          <em>photography &amp; films</em>
         </h1>
 
         <p className="heroDescription">
-          Honest photographs, cinematic films, and meaningful memories you can
-          return to for a lifetime.
+          Timeless wedding photography and cinematic films
         </p>
 
         <div className="heroActions">
@@ -177,21 +175,21 @@ function Hero({ onNavigate }) {
             className="heroBtn heroBtnDark"
             onClick={(event) => {
               event.preventDefault();
-              onNavigate("portfolio", "photography");
+              onNavigate("portfolio");
             }}
           >
-            JBWEDDINGS <span>›</span>
+            JBWEDDINGS <span>→</span>
           </a>
 
           <a
-            href="/portfolio#wedding-trailers"
+            href="/wedding-films"
             className="heroBtn heroBtnOutline"
             onClick={(event) => {
               event.preventDefault();
-              onNavigate("portfolio", "wedding-trailers");
+              onNavigate("films");
             }}
           >
-            JBWF <span>›</span>
+            JBWF <span>→</span>
           </a>
         </div>
       </div>

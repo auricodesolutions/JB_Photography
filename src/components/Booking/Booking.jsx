@@ -76,7 +76,6 @@ function Booking() {
       data-animate
     >
       <header className="simpleContactHeader">
-        <p className="eyebrow">Contact us</p>
         <h2 id="contact-title">Let&apos;s stay connected.</h2>
         <p>
           Have a question about your wedding photography or films? Reach out

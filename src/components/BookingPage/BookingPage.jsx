@@ -56,7 +56,6 @@ function BookingPage() {
         <div className="bookingPageVisualShade" />
 
         <div className="bookingPageIntro">
-          <p className="bookingPageKicker">Reserve your date</p>
           <h1 id="booking-page-title">Let&apos;s create something timeless.</h1>
           <p>
             Tell us a little about your celebration. We&apos;ll check
@@ -73,7 +72,6 @@ function BookingPage() {
 
       <div className="bookingPageFormPanel">
         <header className="bookingFormHeader">
-          <p>Booking inquiry</p>
           <h2>Tell us about your day.</h2>
           <span>Fields marked with * are required.</span>
         </header>
