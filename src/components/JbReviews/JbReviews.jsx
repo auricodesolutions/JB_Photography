@@ -4,21 +4,47 @@ import "./JbReviews.css";
 
 function JbReviews({ onNavigate }) {
   const featuredReviews = reviews.slice(0, 6);
-  const [secondRowActive, setSecondRowActive] = useState(false);
-  const secondRowRef = useRef(null);
+  const [activeRow, setActiveRow] = useState(0);
+  const rowRefs = useRef([]);
   const ctaRef = useRef(null);
 
   useEffect(() => {
-    const secondRow = secondRowRef.current;
-    if (!secondRow) return undefined;
+    let frameId = 0;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setSecondRowActive(entry.isIntersecting),
-      { threshold: 0, rootMargin: "-38% 0px -38% 0px" },
-    );
+    const updateFocusedRow = () => {
+      frameId = 0;
+      const viewportCenter = window.innerHeight / 2;
+      let closestRow = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
 
-    observer.observe(secondRow);
-    return () => observer.disconnect();
+      rowRefs.current.forEach((row, index) => {
+        if (!row) return;
+        const rect = row.getBoundingClientRect();
+        const rowCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(rowCenter - viewportCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestRow = index;
+        }
+      });
+
+      setActiveRow((current) => (current === closestRow ? current : closestRow));
+    };
+
+    const requestUpdate = () => {
+      if (!frameId) frameId = window.requestAnimationFrame(updateFocusedRow);
+    };
+
+    updateFocusedRow();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      if (frameId) window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   useEffect(() => {
@@ -39,6 +65,9 @@ function JbReviews({ onNavigate }) {
       cta.style.setProperty("--cta-clip", `${((1 - reveal) * 100).toFixed(2)}%`);
       cta.style.setProperty("--cta-y", `${((1 - reveal) * 92).toFixed(2)}px`);
       cta.style.setProperty("--cta-parallax", `${Math.max(-38, rect.top * 0.035).toFixed(2)}px`);
+      cta.style.setProperty("--cta-tilt", `${((1 - reveal) * 7).toFixed(2)}deg`);
+      cta.style.setProperty("--cta-scale", (0.94 + reveal * 0.06).toFixed(4));
+      cta.style.setProperty("--cta-radius", `${((1 - reveal) * 30).toFixed(2)}px`);
       cta.style.setProperty("--cta-copy-opacity", copyReveal.toFixed(4));
       cta.style.setProperty("--cta-copy-clip", `${((1 - copyReveal) * 100).toFixed(2)}%`);
       cta.style.setProperty("--cta-copy-y", `${((1 - copyReveal) * 72).toFixed(2)}px`);
@@ -104,50 +133,65 @@ function JbReviews({ onNavigate }) {
 
   return (
     <section className="jbReviews" id="reviews" data-animate>
-      <div className="jbReviewsHero">
-        <img
-          className="jbReviewsHeroImage"
-          src={reviewSection.backgroundImage}
-          alt=""
-          aria-hidden="true"
-        />
-        <div className="jbReviewsHeroShade" />
-      </div>
+      <div className="jbReviewExperience">
+        <div className="jbReviewsHero">
+          <img
+            className="jbReviewsHeroImage"
+            src={reviewSection.backgroundImage}
+            alt=""
+            aria-hidden="true"
+          />
+          <div className="jbReviewsHeroShade" />
+        </div>
 
-      <div
-        className={`jbReviewGrid${secondRowActive ? " isSecondActive" : ""}`}
-        aria-label="Reviews from our couples"
-      >
-        {[featuredReviews.slice(0, 3), featuredReviews.slice(3, 6)].map(
-          (row, rowIndex) => (
-            <div
-              className="jbReviewRow"
-              ref={rowIndex === 1 ? secondRowRef : undefined}
-              key={`review-row-${rowIndex}`}
-            >
-              {row.map((review, reviewIndex) => {
-                const index = rowIndex * 3 + reviewIndex;
+        <div className="jbReviewViewportShade" aria-hidden="true" />
 
-                return (
-                  <article
-                    className="jbReviewTile"
-                    key={`${review.name}-${review.date}`}
-                    style={{ "--review-delay": `${index * 80}ms` }}
-                  >
-                    <img src={review.image} alt={`${review.name} wedding`} />
-                    <div className="jbReviewTileShade" />
+        <div className="jbReviewGrid" aria-label="Reviews from our couples">
+          {[featuredReviews.slice(0, 3), featuredReviews.slice(3, 6)].map(
+            (row, rowIndex) => (
+              <div
+                className={`jbReviewRow${activeRow === rowIndex ? " isActive" : ""}`}
+                ref={(element) => {
+                  rowRefs.current[rowIndex] = element;
+                }}
+                key={`review-row-${rowIndex}`}
+              >
+                {row.map((review, reviewIndex) => {
+                  const index = rowIndex * 3 + reviewIndex;
 
-                    <div className="jbReviewTileContent">
-                      <h3>{review.name}</h3>
-                      <span className="jbReviewBrand">JB WEDDINGS</span>
-                      <p className="jbReviewText">{review.text}</p>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          ),
-        )}
+                  return (
+                    <article
+                      className="jbReviewTile"
+                      key={`${review.name}-${review.date}`}
+                      style={{ "--review-delay": `${index * 80}ms` }}
+                    >
+                      <img src={review.image} alt={`${review.name} wedding`} />
+                      <div className="jbReviewTileShade" />
+
+                      <div className="jbReviewTileContent">
+                        <h3>{review.name}</h3>
+                        <span className="jbReviewBrand">JB WEDDINGS</span>
+                        <p className="jbReviewText">{review.text}</p>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            ),
+          )}
+        </div>
+
+        <div className="jbReviewViewAll">
+          <a
+            href="/#reviews"
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate?.("home", "reviews");
+            }}
+          >
+            View All Reviews <span aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
       </div>
 
       <div className="jbReviewCta" ref={ctaRef}>
