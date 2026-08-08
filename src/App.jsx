@@ -19,6 +19,7 @@ import About from "./components/About/About.jsx";
 import PhotographyPortfolio from "./components/PhotographyPortfolio/PhotographyPortfolio.jsx";
 import WeddingTrailers from "./components/WeddingTrailers/WeddingTrailers.jsx";
 import ServiceGalleryPage from "./components/ServiceGalleryPage/ServiceGalleryPage.jsx";
+import ReviewsPage from "./components/ReviewsPage/ReviewsPage.jsx";
 import { serviceGalleries } from "./data/siteData.js";
 import useSmoothScroll from "./hooks/useSmoothScroll.js";
 
@@ -30,6 +31,7 @@ const pagePaths = {
   booking: "/booking",
   preshoots: "/preshoots",
   events: "/events",
+  reviews: "/reviews",
 };
 
 const getPageFromPath = () => {
@@ -41,6 +43,7 @@ const getPageFromPath = () => {
   if (path === "/booking") return "booking";
   if (path === "/preshoots") return "preshoots";
   if (path === "/events") return "events";
+  if (path === "/reviews") return "reviews";
   return "home";
 };
 
@@ -233,6 +236,7 @@ function App() {
           <PhotographyPortfolio onNavigate={navigate} />
         )}
         {page === "films" && <WeddingTrailers onNavigate={navigate} />}
+        {page === "reviews" && <ReviewsPage />}
         {page === "home" && (
           <>
             <Hero onNavigate={navigate} />

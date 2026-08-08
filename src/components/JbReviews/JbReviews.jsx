@@ -183,10 +183,10 @@ function JbReviews({ onNavigate }) {
 
         <div className="jbReviewViewAll">
           <a
-            href="/#reviews"
+            href="/reviews#all-reviews"
             onClick={(event) => {
               event.preventDefault();
-              onNavigate?.("home", "reviews");
+              onNavigate?.("reviews", "all-reviews");
             }}
           >
             View All Reviews <span aria-hidden="true">&#8594;</span>
@@ -204,10 +204,10 @@ function JbReviews({ onNavigate }) {
           <h2>{reviewSection.ctaTitle}</h2>
           <p>{reviewSection.ctaText}</p>
           <a
-            href="/#reviews"
+            href="/reviews#write-review"
             onClick={(event) => {
               event.preventDefault();
-              onNavigate?.("home", "reviews");
+              onNavigate?.("reviews", "write-review");
             }}
           >
             {reviewSection.ctaButton} <span aria-hidden="true">&#8594;</span>

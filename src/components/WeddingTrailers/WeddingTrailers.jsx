@@ -98,15 +98,12 @@ function WeddingTrailers({ onNavigate }) {
               />
               <span className="filmCardShade" />
               <span className="filmCardPlay">
-                <b aria-hidden="true">▶</b>
-                <span>Play trailer</span>
-              </span>
-              <span className="trailerNumber">
-                {String(index + 1).padStart(2, "0")}
+                <b aria-hidden="true">&#9654;</b>
+                <span className="srOnly">Play trailer</span>
               </span>
             </button>
             <div className="filmCardInfo">
-              <p>JB WEDDINGS FILMS</p>
+              <p>{index % 2 === 0 ? "Cinematic Wedding" : "Wedding Highlights"}</p>
               <h3>{trailer.title}</h3>
             </div>
           </article>

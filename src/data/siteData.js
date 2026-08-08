@@ -316,32 +316,32 @@ export const films = [
   {
     title: "Manuli & Dulshan",
     label: "Cinematic Wedding",
-    youtubeUrl: "https://youtu.be/-7Tfe5jDiIw?si=_yT2Y0PzVrfcMzAa",
+    youtubeUrl: "https://youtu.be/hOOuWKJh348?si=PjC1VbrX0C2koazg",
   },
   {
     title: "Manuli & Dulshan ",
     label: "Wedding Highlights",
-    youtubeUrl: "https://youtu.be/xvfFOdGKlQM?si=_YBwUfx5XY6GEJXW",
+    youtubeUrl: "https://youtu.be/D_G-9hgCxNA?si=VUyYNFDhtqaCpUSO",
   },
   {
     title: "Love Story Video",
     label: "Love Story",
-    youtubeUrl: "https://youtu.be/D_G-9hgCxNA?si=N95BSWtKK4_jyLul",
+    youtubeUrl: "https://youtu.be/REOgOPAAQgs?si=I1drqAFH1ebSvlHw",
   },
   {
     title: "Cinematic Wedding",
     label: "Cinematic Preview",
-    youtubeUrl: "https://youtu.be/mwVzvIxv-pw?si=nY_zzKJLVyYJgVcl",
+    youtubeUrl: "https://youtu.be/2lStBoKBsGM?si=znu-N9OIpNGNy7zY",
   },
   {
     title: "Wedding Trailer",
     label: "Wedding Trailer",
-    youtubeUrl: "https://youtu.be/_0taQStHSQI?si=FMGy401gKMRDoo1Q",
+    youtubeUrl: "https://youtu.be/KTB4S-WlGOI?si=z0AjN7a7PApWVYYt",
   },
   {
     title: "Full Wedding Story",
     label: "Full Wedding Story",
-    youtubeUrl: "https://youtu.be/3zEiytT21rk?si=ysdB1QMz8XBd20v3",
+    youtubeUrl: "https://youtu.be/EVSCrge5Vkc?si=E5Tu8l8lGdrmkoGp",
   },
 ];
 
@@ -442,11 +442,12 @@ export const reviews = [
 
 export const reviewSection = {
   backgroundImage: asset("img (148).jpg"),
-  ctaImage: asset("img14.jpg"),
+  pageHeroImage: asset("img (116).jpeg"),
+  ctaImage: asset("img (84).jpeg"),
   ctaTitle: "Love stories, shared by our couples.",
   ctaText:
     "Discover the experiences and kind words shared by couples who trusted JB WEDDINGS to preserve their most meaningful moments.",
-  ctaButton: "Read Our Reviews",
+  ctaButton: "Write a Review",
 };
 
 export const socialLinks = [

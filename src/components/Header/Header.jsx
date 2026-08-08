@@ -94,7 +94,6 @@ function Header({ onNavigate }) {
         <a href="/wedding-films" onClick={(event) => goTo(event, "films")}>Films</a>
         <a href="/booking" onClick={(event) => goTo(event, "booking")}>Reserve Now</a>
         <a href="/#reviews" onClick={(event) => goTo(event, "home", "reviews")}>Reviews</a>
-        <a href="/#contact" onClick={(event) => goTo(event, "home", "contact")}>Contact Us</a>
         <a
           href={whatsappUrl}
           className="quoteLink"
@@ -102,7 +101,8 @@ function Header({ onNavigate }) {
           rel="noreferrer"
           onClick={closeMenu}
         >
-          Ask for Quote
+          <span>Ask for Quote</span>
+          <b aria-hidden="true">&#8599;</b>
         </a>
         <div className="mobileNavFooter" aria-hidden="true">
           <span>Stories made timeless</span>

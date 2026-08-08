@@ -32,23 +32,29 @@
 .trailerGallery {
   width: min(1540px, 100%);
   margin: 0 auto;
-}
-
-.trailerNumber {
-  position: absolute;
-  top: 20px;
-  right: 22px;
-  z-index: 2;
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
+  gap: clamp(16px, 1.4vw, 24px);
 }
 
 .trailerPage .filmCard {
+  min-height: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: clamp(14px, 1.25vw, 20px);
   opacity: 0;
   clip-path: inset(0 0 18% 0);
   transform: translateY(54px) scale(0.97);
+}
+
+.trailerPage .filmCardMedia {
+  aspect-ratio: 1.16 / 1;
+}
+
+.trailerPage .filmCard:nth-child(odd) .filmCardMedia img {
+  filter: grayscale(1) contrast(1.08) brightness(0.82);
+}
+
+.trailerPage .filmCard:nth-child(odd) .filmCardMedia:hover img,
+.trailerPage .filmCard:nth-child(odd) .filmCardMedia:focus-visible img {
+  filter: grayscale(0.25) contrast(1.04) brightness(0.94);
 }
 
 .trailerPage.is-visible .filmCard {
@@ -70,6 +76,8 @@
 
 .trailerPage .filmCardPlay {
   overflow: hidden;
+  background: rgba(8, 8, 8, 0.28);
+  backdrop-filter: blur(8px);
 }
 
 .trailerPage .filmCardPlay b {
@@ -83,8 +91,21 @@
 
 .trailerPage .filmCardInfo h3 {
   font-family: var(--editorial-font);
+  font-size: clamp(2.15rem, 3.35vw, 4rem);
   font-weight: 400;
   transition: letter-spacing 500ms var(--ease), color 400ms ease;
+}
+
+.trailerPage .filmCardInfo p {
+  margin-bottom: 12px;
+  font-family: var(--script-font);
+  font-size: clamp(1rem, 1.45vw, 1.55rem);
+}
+
+.trailerPage .filmCardShade {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.12), transparent 42%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.92), transparent 58%);
 }
 
 .trailerPage .filmCard:hover .filmCardInfo h3 {
@@ -98,7 +119,11 @@
   }
 
   .trailerPageHeader h1 {
-    font-size: clamp(3.2rem, 15vw, 5.4rem);
+    font-size: clamp(2.8rem, 12vw, 4rem);
+  }
+
+  .trailerPage .filmCardMedia {
+    aspect-ratio: 4 / 5;
   }
 }
 
